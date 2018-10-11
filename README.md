@@ -4,7 +4,11 @@
 This version makes quite a few changes from the original, such as:
 - Unicode support
 - Non-Markov stuff
-- its very cute
+- Stores toots in a sqlite database rather than a text file
+  - Doesn't unecessarily redownload all toots every time
+  
+## Install/usage guide
+An installation and usage guide is available for unix-based platforms (linux, macOS...) [here](https://cloud.lynnesbian.space/s/Qxxm2sYdMZaqWat).
 
 ## Original README
 hey look it's an ebooks bot
