@@ -1,7 +1,7 @@
 # mastodon-ebooks
 **Lynnear Edition**
 
-This version makes quite a few changes from the original, such as:
+This version makes quite a few changes from [the original](https://github.com/Jess3Jane/mastodon-ebooks), such as:
 - Unicode support
 - Non-Markov stuff
 - Stores toots in a sqlite database rather than a text file
