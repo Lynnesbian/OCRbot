@@ -1,4 +1,4 @@
-# mastodon-ebooks
+# mstdn-ebooks
 **Lynnear Edition**
 
 This version makes quite a few changes from [the original](https://github.com/Jess3Jane/mastodon-ebooks), such as:
