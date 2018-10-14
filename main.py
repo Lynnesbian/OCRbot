@@ -4,23 +4,22 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 from mastodon import Mastodon
-from getpass import getpass
 from os import path
 from bs4 import BeautifulSoup
-import shutil, os, sqlite3, signal, sys
+import shutil, os, sqlite3, signal, sys, json
 # import re
 
-api_base_url = "https://botsin.space"
 scopes = ["read:statuses", "read:accounts", "read:follows", "write:statuses"]
+cfg = json.load(open('config.json', 'r'))
 
 if not path.exists("clientcred.secret"):
 
     print("No clientcred.secret, registering application")
-    Mastodon.create_app("lynnesbian_mastodon_ebooks", api_base_url=api_base_url, to_file="clientcred.secret", scopes=scopes, website="https://github.com/Lynnesbian/mastodon-ebooks")
+    Mastodon.create_app("lynnesbian_mastodon_ebooks", api_base_url=cfg['site'], to_file="clientcred.secret", scopes=scopes, website="https://github.com/Lynnesbian/mastodon-ebooks")
 
 if not path.exists("usercred.secret"):
     print("No usercred.secret, registering application")
-    client = Mastodon(client_id="clientcred.secret", api_base_url=api_base_url)
+    client = Mastodon(client_id="clientcred.secret", api_base_url=cfg['site'])
     print("Visit this url:")
     print(client.auth_request_url(scopes=scopes))
     client.log_in(code=input("Secret: "), to_file="usercred.secret", scopes=scopes)
@@ -68,7 +67,10 @@ def parse_toot(toot):
 	# next up: store this and patch markovify to take it
 	# return {"text": text, "mentions": mentions, "links": links}
 	# it's 4am though so we're not doing that now, but i still want the parser updates
-	return "\0".join(list(text))
+	#todo: we split above and join now, which is dumb, but i don't wanna mess with the map code bc i don't understand it uwu
+	text = "\n".join(list(text)) 
+	text = text.replace("&apos;", "'")
+	return text
 
 def get_toots(client, id, since_id):
 	i = 0
@@ -95,7 +97,7 @@ def get_toots(client, id, since_id):
 client = Mastodon(
 		client_id="clientcred.secret", 
 		access_token="usercred.secret", 
-		api_base_url=api_base_url)
+		api_base_url=cfg['site'])
 
 me = client.account_verify_credentials()
 following = client.account_following(me.id)
