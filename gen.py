@@ -15,12 +15,13 @@ parser.add_argument('-s', '--simulate', dest='simulate', action='store_true',
 
 args = parser.parse_args()
 
-cfg = json.load(open('config.json', 'r'))
+cfg = json.load(open('config.json'))
 
 client = Mastodon(
-        client_id="clientcred.secret", 
-        access_token="usercred.secret", 
-        api_base_url=cfg['site'])
+  client_id=cfg['client']['id'],
+  client_secret=cfg['client']['secret'], 
+  access_token=cfg['secret'], 
+  api_base_url=cfg['site'])
 
 toot = create.make_toot()
 if not args.simulate:
@@ -34,7 +35,7 @@ if not args.simulate:
 	except Exception as err:
 		toot = {
 		"toot":
-		"Mistress @lynnesbian@deadinsi.de, something has gone terribly" \
+		"Mistress @lynnesbian@fedi.lynnesbian.space, something has gone terribly" \
 		+ " wrong! While attempting to post a toot, I received the following" \
 		+ " error:\n" + "\n".join(traceback.format_tb(sys.exc_info()[2]))
 		}
