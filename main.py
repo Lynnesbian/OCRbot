@@ -114,13 +114,17 @@ for f in following:
 	print("Harvesting toots for user @{}, starting from {}".format(f.acct, last_toot))
 
 	#find the user's activitypub outbox
-	print("WebFingering...")
+	#print("WebFingering...")
 	instance = re.search(r"^.*@(.+)", f.acct)
 	if instance == None:
 		instance = re.search(r"https?:\/\/(.*)", cfg['site']).group(1)
 	else:
 		instance = instance.group(1)
 
+	if instance == "bofa.lol":
+		print("rest in piece bofa, skipping")
+		continue
+        
 	# print("{} is on {}".format(f.acct, instance))
 	try:
 		r = requests.get("https://{}/.well-known/host-meta".format(instance))
