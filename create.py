@@ -29,20 +29,19 @@ def make_sentence(output):
 	os.remove("toots-copy.db")
 
 	sentence = None
-	while sentence is None:
-		sentence = model.make_short_sentence(500, tries=100000)
-	sentence = sentence.replace("\0", "\n")
+	while sentence is None or re.match("^@\u202B", sentence):
+		sentence = model.make_short_sentence(500, tries=10000)
 	output.send(sentence)
 
 def make_toot(force_markov = False, args = None):
 	return make_toot_markov()
 
-def make_toot_markov():
+def make_toot_markov(query = None):
 	tries = 0
 	toot = None
-	while toot == None and tries < 10:
+	while toot == None and tries < 25:
 		pin, pout = multiprocessing.Pipe(False)
-		p = multiprocessing.Process(target = make_sentence, args = [pout])
+		p = multiprocessing.Process(target = make_sentence, args = [pout, query])
 		p.start()
 		p.join(10)
 		if p.is_alive():
@@ -52,6 +51,8 @@ def make_toot_markov():
 			tries = tries + 1
 		else:
 			toot = pin.recv()
+	if toot == None:
+		toot = "Mistress @lynnesbian@fedi.lynnesbian.space, I was unable to generate a toot using the markov method! This probably means that my corpus wasn't big enough... I need them to be big, Mistress, otherwise I won't work... Can you, um, help me with that, somehow?"
 	return {
 			"toot":toot,
 			"media":None
