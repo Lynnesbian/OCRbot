@@ -41,7 +41,7 @@ def make_toot_markov(query = None):
 	toot = None
 	while toot == None and tries < 25:
 		pin, pout = multiprocessing.Pipe(False)
-		p = multiprocessing.Process(target = make_sentence, args = [pout, query])
+		p = multiprocessing.Process(target = make_sentence, args = [pout])
 		p.start()
 		p.join(10)
 		if p.is_alive():
