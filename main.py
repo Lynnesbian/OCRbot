@@ -147,17 +147,17 @@ for f in following:
 				
 	# print("{} is on {}".format(f.acct, instance))
 	try:
-		r = requests.get("https://{}/.well-known/host-meta".format(instance))
+		r = requests.get("https://{}/.well-known/host-meta".format(instance), timeout=10)
 		uri = re.search(r'template="([^"]+)"', r.text).group(1)
 		uri = uri.format(uri = "{}@{}".format(f.username, instance))
-		r = requests.get(uri, headers={"Accept": "application/json"})
+		r = requests.get(uri, headers={"Accept": "application/json"}, timeout=10)
 		j = r.json()
 		if len(j['aliases']) == 1: #TODO: this is a hack on top of a hack, fix it
 			uri = j['aliases'][0]
 		else:
 			uri = j['aliases'][1]
 		uri = "{}/outbox?page=true&min_id={}".format(uri, last_toot)
-		r = requests.get(uri)
+		r = requests.get(uri, timeout=10)
 		j = r.json()
 	except Exception:
 		print("oopsy woopsy!! we made a fucky wucky!!!\n(we're probably rate limited, please hang up and try again)")
@@ -208,7 +208,7 @@ for f in following:
 						except:
 							pass #ignore any toots that don't go into the DB
 				# sys.exit(0)
-				r = requests.get(j['prev'])
+				r = requests.get(j['prev'], timeout=10)
 				j = r.json()
 				print('.', end='', flush=True)
 		print(" Done!")
