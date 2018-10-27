@@ -46,7 +46,10 @@ class ReplyListener(mastodon.StreamListener):
 			toot = create.make_toot(True)['toot']
 			toot = acct + " " + toot
 			print(acct + " says " + mention)
-			client.status_post(toot, post_id, visibility=notification['status']['visibility'])
+			visibility = notification['status']['visibility']
+			if visibility == "public":
+				visibility = "unlisted"
+			client.status_post(toot, post_id, visibility=visibility)
 			print("replied with " + toot)
 
 rl = ReplyListener()
