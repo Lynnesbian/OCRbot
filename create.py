@@ -29,8 +29,9 @@ def make_sentence(output):
 	os.remove("toots-copy.db")
 
 	sentence = None
-	while sentence is None or re.match("^@\u202B", sentence):
+	while sentence is None:
 		sentence = model.make_short_sentence(500, tries=10000)
+	sentence = re.sub("^@\u202B[^ ]* ", "", sentence)
 	output.send(sentence)
 
 def make_toot(force_markov = False, args = None):
