@@ -10,7 +10,7 @@ from bs4 import BeautifulSoup
 import os, sqlite3, signal, sys, json, re
 import requests
 
-scopes = ["read:statuses", "read:accounts", "read:follows", "write:statuses"]
+scopes = ["read:statuses", "read:accounts", "read:follows", "write:statuses", "read:notifications"]
 cfg = json.load(open('config.json', 'r'))
 
 if os.path.exists("clientcred.secret"):
