@@ -214,10 +214,11 @@ for f in following:
 		print(" Done!")
 		db.commit()
 	except:
-		print("Encountered an error! Saving toots to database and exiting.")
+		print("Encountered an error! Saving toots to database and continuing.")
 		db.commit()
-		db.close()
-		sys.exit(1)
+		# db.close()
+
+print("Done!")
 
 db.commit()
 db.execute("VACUUM") #compact db
