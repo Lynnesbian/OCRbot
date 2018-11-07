@@ -156,7 +156,7 @@ for f in following:
 			uri = j['aliases'][0]
 		else:
 			uri = j['aliases'][1]
-		uri = "{}/outbox?page=true&min_id={}".format(uri, last_toot)
+		uri = "{}/outbox?page=true".format(uri)
 		r = requests.get(uri, timeout=10)
 		j = r.json()
 	except Exception:
@@ -164,53 +164,56 @@ for f in following:
 		sys.exit(1)
 
 	pleroma = False
-	if 'first' in j:
-		print("{} is a pleroma instance -- falling back to legacy toot collection method".format(instance))
+	if type(j['first']) != str:
+		print("Pleroma instance detected")
 		pleroma = True
-	
-	print("Downloading and parsing toots", end='', flush=True)
-	current = None
-	try:
-		if pleroma:
-			for t in get_toots_legacy(client, f.id):
-				try:
-					c.execute("REPLACE INTO toots (id, userid, uri, content) VALUES (?, ?, ?, ?)",
-						(t['id'],
-						f.id,
-						t['uri'],
-						t['toot']
-						)
-					)
-				except:
-					pass
+		j = j['first']
 
-		else:
-			while len(j['orderedItems']) > 0:
-				for oi in j['orderedItems']:
-					if (not pleroma and oi['type'] == "Create") or (pleroma and oi['to']['type'] == "Create"):
-						# its a toost baby
-						content = oi['object']['content']
-						if oi['object']['summary'] != None:
-							#don't download CW'd toots
-							continue
-						toot = extract_toot(content)
-						# print(toot)
-						try:
-							pid = re.search(r"[^\/]+$", oi['object']['id']).group(0)
-							c.execute("REPLACE INTO toots (id, userid, uri, content) VALUES (?, ?, ?, ?)",
-								(pid,
-								f.id,
-								oi['object']['id'],
-								toot
-								)
+	if not pleroma:
+		print("Mastodon instance detected")
+		uri = "{}/outbox?page=true&min_id={}".format(uri, last_toot)
+		r = requests.get(uri)
+		j = r.json()
+		j = j['first']
+
+	print("Downloading and parsing toots", end='', flush=True)
+	done = False
+	try:
+		while not done and len(j['orderedItems']) > 0:
+			for oi in j['orderedItems']:
+				# if (not pleroma and oi['type'] == "Create") or (pleroma and oi['to']['type'] == "Create"):
+				if oi['type'] == "Create":
+					# its a toost baby
+					content = oi['object']['content']
+					if oi['object']['summary'] != None:
+						#don't download CW'd toots
+						continue
+					toot = extract_toot(content)
+					# print(toot)
+					try:
+						if pleroma:
+							if c.execute("SELECT COUNT(*) FROM toots WHERE id LIKE ?", (oi['object']['id'],)).fetchone()[0] > 0:
+								#we've caught up to the notices we've already downloaded, so we can stop now
+								done = True
+								break
+						pid = re.search(r"[^\/]+$", oi['object']['id']).group(0)
+						c.execute("REPLACE INTO toots (id, userid, uri, content) VALUES (?, ?, ?, ?)",
+							(pid,
+							f.id,
+							oi['object']['id'],
+							toot
 							)
-							pass
-						except:
-							pass #ignore any toots that don't go into the DB
-				# sys.exit(0)
-				r = requests.get(j['prev'], timeout=10)
-				j = r.json()
-				print('.', end='', flush=True)
+						)
+						pass
+					except:
+						pass #ignore any toots that don't go into the DB
+			# sys.exit(0)
+			if not pleroma:
+				r = requests.get(j['prev'], timeout=15)
+			else:
+				r = requests.get(j['next'], timeout=15)
+			j = r.json()
+			print('.', end='', flush=True)
 		print(" Done!")
 		db.commit()
 	except:
