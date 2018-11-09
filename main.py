@@ -168,16 +168,16 @@ for f in following:
 		print("Pleroma instance detected")
 		pleroma = True
 		j = j['first']
-
-	if not pleroma:
+	else:
 		print("Mastodon instance detected")
-		uri = "{}/outbox?page=true&min_id={}".format(uri, last_toot)
+		uri = "{}&min_id={}".format(uri, last_toot)
+		print(uri)
 		r = requests.get(uri)
 		j = r.json()
 
 	print("Downloading and parsing toots", end='', flush=True)
 	done = False
-	try:
+	if True:
 		while not done and len(j['orderedItems']) > 0:
 			for oi in j['orderedItems']:
 				# if (not pleroma and oi['type'] == "Create") or (pleroma and oi['to']['type'] == "Create"):
@@ -215,9 +215,9 @@ for f in following:
 			print('.', end='', flush=True)
 		print(" Done!")
 		db.commit()
-	except:
-		print("Encountered an error! Saving toots to database and continuing.")
-		db.commit()
+	# except:
+	# 	print("Encountered an error! Saving toots to database and continuing.")
+	# 	db.commit()
 		# db.close()
 
 print("Done!")
