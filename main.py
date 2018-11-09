@@ -174,7 +174,6 @@ for f in following:
 		uri = "{}/outbox?page=true&min_id={}".format(uri, last_toot)
 		r = requests.get(uri)
 		j = r.json()
-		j = j['first']
 
 	print("Downloading and parsing toots", end='', flush=True)
 	done = False
