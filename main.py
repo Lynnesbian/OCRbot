@@ -164,7 +164,7 @@ for f in following:
 		sys.exit(1)
 
 	pleroma = False
-	if type(j['first']) != str:
+	if 'first' in j and type(j['first']) != str:
 		print("Pleroma instance detected")
 		pleroma = True
 		j = j['first']
