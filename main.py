@@ -177,7 +177,7 @@ for f in following:
 
 	print("Downloading and parsing toots", end='', flush=True)
 	done = False
-	if True:
+	try:
 		while not done and len(j['orderedItems']) > 0:
 			for oi in j['orderedItems']:
 				# if (not pleroma and oi['type'] == "Create") or (pleroma and oi['to']['type'] == "Create"):
@@ -215,9 +215,9 @@ for f in following:
 			print('.', end='', flush=True)
 		print(" Done!")
 		db.commit()
-	# except:
-	# 	print("Encountered an error! Saving toots to database and continuing.")
-	# 	db.commit()
+	except:
+		print("Encountered an error! Saving toots to database and continuing.")
+		db.commit()
 		# db.close()
 
 print("Done!")
