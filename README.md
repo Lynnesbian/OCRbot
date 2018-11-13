@@ -15,7 +15,7 @@ hey look it's an ebooks bot
 
 python3
 
-install the requirements with `sudo pip3 install -r requirements`
+install the requirements with `sudo pip3 install -r requirements.txt`
 
 make a bot (probably on bots in space) and follow the target accounts
 
