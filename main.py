@@ -171,7 +171,6 @@ for f in following:
 	else:
 		print("Mastodon instance detected")
 		uri = "{}&min_id={}".format(uri, last_toot)
-		print(uri)
 		r = requests.get(uri)
 		j = r.json()
 
