@@ -55,7 +55,7 @@ def make_toot_markov(query = None):
 		else:
 			toot = pin.recv()
 	if toot == None:
-		toot = "Mistress @lynnesbian@fedi.lynnesbian.space, I was unable to generate a toot using the markov method! This probably means that my corpus wasn't big enough... I need them to be big, Mistress, otherwise I won't work... Can you, um, help me with that, somehow?"
+		toot = "Toot generation failed! Contact Lynne for assistance."
 	return {
 			"toot":toot,
 			"media":None
