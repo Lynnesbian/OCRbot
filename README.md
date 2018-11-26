@@ -8,7 +8,7 @@ This version makes quite a few changes from [the original](https://github.com/Je
   - Doesn't unecessarily redownload all toots every time
   
 ## Install/usage guide
-An installation and usage guide is available for unix-based platforms (linux, macOS...) [here](https://cloud.lynnesbian.space/s/Qxxm2sYdMZaqWat).
+An installation and usage guide is available for unix-based platforms (linux, macOS...) [here](https://cloud.lynnesbian.space/s/jozbRi69t4TpD95).
 
 ## Original README
 hey look it's an ebooks bot
