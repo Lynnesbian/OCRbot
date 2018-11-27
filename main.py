@@ -80,7 +80,7 @@ def extract_toot(toot):
 
 	toot = soup.get_text()
 	toot = toot.rstrip("\n") #remove trailing newline
-	toot = toot.replace("@", "@\u202B") #put a zws between @ and username to avoid mentioning
+	toot = toot.replace("@", "@\u200B") #put a zws between @ and username to avoid mentioning
 	return(toot)
 
 client = Mastodon(
