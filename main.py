@@ -179,32 +179,33 @@ for f in following:
 	try:
 		while not done and len(j['orderedItems']) > 0:
 			for oi in j['orderedItems']:
-				# if (not pleroma and oi['type'] == "Create") or (pleroma and oi['to']['type'] == "Create"):
-				if oi['type'] == "Create":
-					# its a toost baby
-					content = oi['object']['content']
-					if oi['object']['summary'] != None:
-						#don't download CW'd toots
-						continue
-					toot = extract_toot(content)
-					# print(toot)
-					try:
-						if pleroma:
-							if c.execute("SELECT COUNT(*) FROM toots WHERE id LIKE ?", (oi['object']['id'],)).fetchone()[0] > 0:
-								#we've caught up to the notices we've already downloaded, so we can stop now
-								done = True
-								break
-						pid = re.search(r"[^\/]+$", oi['object']['id']).group(0)
-						c.execute("REPLACE INTO toots (id, userid, uri, content) VALUES (?, ?, ?, ?)",
-							(pid,
-							f.id,
-							oi['object']['id'],
-							toot
-							)
+				if oi['type'] != "Create":
+					continue #not a toost. fuck outta here
+				
+				# its a toost baby
+				content = oi['object']['content']
+				if oi['object']['summary'] != None:
+					#don't download CW'd toots
+					continue
+				toot = extract_toot(content)
+				# print(toot)
+				try:
+					if pleroma:
+						if c.execute("SELECT COUNT(*) FROM toots WHERE id LIKE ?", (oi['object']['id'],)).fetchone()[0] > 0:
+							#we've caught up to the notices we've already downloaded, so we can stop now
+							done = True
+							break
+					pid = re.search(r"[^\/]+$", oi['object']['id']).group(0)
+					c.execute("REPLACE INTO toots (id, userid, uri, content) VALUES (?, ?, ?, ?)",
+						(pid,
+						f.id,
+						oi['object']['id'],
+						toot
 						)
-						pass
-					except:
-						pass #ignore any toots that don't go into the DB
+					)
+					pass
+				except:
+					pass #ignore any toots that don't successfully go into the DB
 			# sys.exit(0)
 			if not pleroma:
 				r = requests.get(j['prev'], timeout=15)
