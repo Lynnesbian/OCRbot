@@ -1,4 +1,6 @@
 # mstdn-ebooks
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+
 **Lynnear Edition**
 
 This version makes quite a few changes from [the original](https://github.com/Jess3Jane/mastodon-ebooks), such as:
