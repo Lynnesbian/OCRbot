@@ -30,9 +30,9 @@ if __name__ == '__main__':
 			if toot['media'] != None:
 				mediaID = client.media_post(toot['media'], description = toot['toot'])
 				client.status_post(toot['toot'].replace("\n", " "),
-					media_ids = [mediaID], visibility = "unlisted")
+					media_ids = [mediaID], visibility = "unlisted", spoiler_text = cfg['cw'])
 			else:
-				client.status_post(toot['toot'], visibility = 'unlisted')
+				client.status_post(toot['toot'], visibility = 'unlisted', spoiler_text = cfg['cw'])
 		except Exception as err:
 			toot = {
 			"toot":
