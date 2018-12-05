@@ -1,0 +1,8 @@
+{
+	"name": "mstdn-ebooks",
+	"description": "An ebooks bot for Mastodon (and compatible) users",
+	"repository": "https://github.com/Lynnesbian/mstdn-ebooks",
+	"keywords": ["python", "mastodon"],
+	"website":"https://fedi.lynnesbian.space/@lynnesbian",
+	"image":"heroku/heroku"
+}
