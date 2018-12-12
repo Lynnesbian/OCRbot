@@ -54,7 +54,6 @@ def extract_toot(toot):
 	soup = BeautifulSoup(toot, "html.parser")
 	
 	# this is the code that removes all mentions
-	# TODO: make it so that it removes the @ and instance but keeps the name
 	for mention in soup.select("span.h-card"):
 		mention.a.unwrap()
 		mention.span.unwrap()
