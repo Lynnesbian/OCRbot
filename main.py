@@ -13,6 +13,13 @@ import requests
 scopes = ["read:statuses", "read:accounts", "read:follows", "write:statuses", "read:notifications"]
 cfg = json.load(open('config.json', 'r'))
 
+#config.json *MUST* contain the instance URL, and the CW text. if they're not provided, we'll fall back to defaults.
+if 'site' not in cfg:
+	cfg['website'] = "https://botsin.space"
+if 'cw' not in cfg:
+	cfg['cw'] = ""
+
+#if the user is using a (very!) old version that still uses the .secret files, migrate to the new method
 if os.path.exists("clientcred.secret"):
 		print("Upgrading to new storage method")
 		cc = open("clientcred.secret").read().split("\n")
