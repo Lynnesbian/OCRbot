@@ -111,26 +111,6 @@ def handleCtrlC(signal, frame):
 
 signal.signal(signal.SIGINT, handleCtrlC)
 
-def get_toots_legacy(client, id):
-	i = 0
-	toots = client.account_statuses(id)
-	while toots is not None and len(toots) > 0:
-		for toot in toots:
-			if toot.spoiler_text != "": continue
-			if toot.reblog is not None: continue
-			if toot.visibility not in ["public", "unlisted"]: continue
-			t = extract_toot(toot.content)
-			if t != None:
-				yield {
-					"toot": t,
-					"id": toot.id,
-					"uri": toot.uri
-				}
-			toots = client.fetch_next(toots)
-			i += 1
-			if i%20 == 0:
-				print('.', end='', flush=True)
-
 for f in following:
 	last_toot = c.execute("SELECT id FROM `toots` WHERE userid LIKE ? ORDER BY id DESC LIMIT 1", (f.id,)).fetchone()
 	if last_toot != None:
