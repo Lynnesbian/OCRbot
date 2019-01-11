@@ -18,7 +18,7 @@ cfg = json.load(open('config.json', 'r'))
 if 'site' not in cfg:
 	cfg['website'] = "https://botsin.space"
 if 'cw' not in cfg:
-	cfg['cw'] = ""
+	cfg['cw'] = None
 
 #if the user is using a (very!) old version that still uses the .secret files, migrate to the new method
 if os.path.exists("clientcred.secret"):
@@ -154,8 +154,8 @@ for f in following:
 							done = True
 							break
 					pid = re.search(r"[^\/]+$", oi['object']['id']).group(0)
-					c.execute("REPLACE INTO toots (id, userid, uri, content) VALUES (?, ?, ?, ?)",
-						(pid,
+					c.execute("REPLACE INTO toots (id, userid, uri, content) VALUES (?, ?, ?, ?)", (
+						pid,
 						f.id,
 						oi['object']['id'],
 						toot
@@ -164,7 +164,6 @@ for f in following:
 					pass
 				except:
 					pass #ignore any toots that don't successfully go into the DB
-			# sys.exit(0)
 			if not pleroma:
 				r = requests.get(j['prev'], timeout=15)
 			else:
@@ -176,7 +175,6 @@ for f in following:
 	except:
 		print("Encountered an error! Saving toots to database and moving to next followed account.")
 		db.commit()
-		# db.close()
 
 print("Done!")
 
