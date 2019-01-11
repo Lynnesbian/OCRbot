@@ -62,6 +62,8 @@ def make_toot_markov(query = None):
 		}
 
 def extract_toot(toot):
+	toot = toot.replace("&apos;", "'") #convert HTML stuff to normal stuff
+	toot = toot.replace("&quot;", '"') #ditto
 	soup = BeautifulSoup(toot, "html.parser")
 	for lb in soup.select("br"): #replace <br> with linebreak
 		lb.insert_after("\n")
@@ -78,7 +80,7 @@ def extract_toot(toot):
 		link.insert_after(link["href"])
 		link.decompose()
 
-	toot = soup.get_text()
+	text = soup.get_text()
 	text = re.sub("https://([^/]+)/(@[^ ]+)", r"\2@\1", text) #put mastodon-style mentions back in
 	text = re.sub("https://([^/]+)/users/([^ ]+)", r"@\2@\1", text) #put pleroma-style mentions back in
 	text = text.rstrip("\n") #remove trailing newline

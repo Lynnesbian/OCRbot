@@ -17,40 +17,25 @@ client = mastodon.Mastodon(
   api_base_url=cfg['site'])
 
 def extract_toot(toot):
-	#copied from main.py, see there for comments
-	soup = BeautifulSoup(toot, "html.parser")
-	for lb in soup.select("br"):
-		lb.insert_after("\n")
-		lb.decompose()
-	for p in soup.select("p"):
-		p.insert_after("\n")
-		p.unwrap()
-	for ht in soup.select("a.hashtag"):
-		ht.unwrap()
-	for link in soup.select("a"):
-		link.insert_after(link["href"])
-		link.decompose()
-	text = map(lambda a: a.strip(), soup.get_text().strip().split("\n"))
-	text = "\n".join(list(text))
-	text = re.sub("https?://([^/]+)/(@[^ ]+)", r"\2@\1", text) #put mentions back in
-	text = re.sub("^@[^@]+@[^ ]+ *", r"", text) #...but remove the initial one
-	text = text.lower() #for easier matching
+	text = functions.extract_toot(toot)
+	text = re.sub(r"^@[^@]+@[^ ]+\s*", r"", text) #remove the initial mention
+	text = text.lower() #treat text as lowercase for easier keyword matching (if this bot uses it)
 	return text
 
 class ReplyListener(mastodon.StreamListener):
-	def on_notification(self, notification):
-		if notification['type'] == 'mention':
-			acct = "@" + notification['account']['acct']
+	def on_notification(self, notification): #listen for notifications
+		if notification['type'] == 'mention': #if we're mentioned:
+			acct = "@" + notification['account']['acct'] #get the account's @
 			post_id = notification['status']['id']
 			mention = extract_toot(notification['status']['content'])
-			toot = functions.make_toot(True)['toot']
-			toot = acct + " " + toot
-			print(acct + " says " + mention)
+			toot = functions.make_toot(True)['toot'] #generate a toot
+			toot = acct + " " + toot #prepend the @
+			print(acct + " says " + mention) #logging
 			visibility = notification['status']['visibility']
 			if visibility == "public":
 				visibility = "unlisted"
-			client.status_post(toot, post_id, visibility=visibility, spoiler_text = cfg['cw'])
-			print("replied with " + toot)
+			client.status_post(toot, post_id, visibility=visibility, spoiler_text = cfg['cw']) #send toost
+			print("replied with " + toot) #logging
 
 rl = ReplyListener()
-client.stream_user(rl)
+client.stream_user(rl) #go!
