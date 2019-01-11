@@ -5,7 +5,7 @@
 
 import mastodon
 import os, random, re, json
-import create
+import functions
 from bs4 import BeautifulSoup
 
 cfg = json.load(open('config.json', 'r'))
@@ -43,7 +43,7 @@ class ReplyListener(mastodon.StreamListener):
 			acct = "@" + notification['account']['acct']
 			post_id = notification['status']['id']
 			mention = extract_toot(notification['status']['content'])
-			toot = create.make_toot(True)['toot']
+			toot = functions.make_toot(True)['toot']
 			toot = acct + " " + toot
 			print(acct + " says " + mention)
 			visibility = notification['status']['visibility']

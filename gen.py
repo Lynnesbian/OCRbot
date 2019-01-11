@@ -5,13 +5,11 @@
 
 from mastodon import Mastodon
 import argparse, sys, traceback, json
-import create
+import functions
 
 parser = argparse.ArgumentParser(description='Generate and post a toot.')
-parser.add_argument('reply', metavar='reply', type=str, nargs='?', 
-	help='ID of the status to reply to')
 parser.add_argument('-s', '--simulate', dest='simulate', action='store_true',
-	help="Print the toot to stdout without posting it")
+	help="Print the toot without actually posting it. Use this to make sure your bot's actually working.")
 
 args = parser.parse_args()
 
@@ -24,7 +22,7 @@ client = Mastodon(
   api_base_url=cfg['site'])
 
 if __name__ == '__main__':
-	toot = create.make_toot()
+	toot = functions.make_toot()
 	if not args.simulate:
 		try:
 			if toot['media'] != None:
@@ -35,10 +33,7 @@ if __name__ == '__main__':
 				client.status_post(toot['toot'], visibility = 'unlisted', spoiler_text = cfg['cw'])
 		except Exception as err:
 			toot = {
-			"toot":
-			"Mistress @lynnesbian@fedi.lynnesbian.space, something has gone terribly" \
-			+ " wrong! While attempting to post a toot, I received the following" \
-			+ " error:\n" + "\n".join(traceback.format_tb(sys.exc_info()[2]))
+			"toot": "An unknown error that should never happen occurred. Maybe it's because of the spoiler text, which is {}. If not, I have no idea what went wrong. This is an error message -- contact lynnesbian@fedi.lynnesbian.space for assistance.".format(cfg['cw'])
 			}
 			client.status_post(toot['toot'], visibility = 'unlisted', spoiler_text = "Error!")
 	print(toot['toot'])
