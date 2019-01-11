@@ -9,6 +9,7 @@ from os import path
 from bs4 import BeautifulSoup
 import os, sqlite3, signal, sys, json, re
 import requests
+import functions
 
 scopes = ["read:statuses", "read:accounts", "read:follows", "write:statuses", "read:notifications"]
 cfg = json.load(open('config.json', 'r'))
@@ -56,36 +57,7 @@ if "secret" not in cfg:
 json.dump(cfg, open("config.json", "w+"))
 
 def extract_toot(toot):
-	toot = toot.replace("&apos;", "'")
-	toot = toot.replace("&quot;", '"')
-	soup = BeautifulSoup(toot, "html.parser")
-	
-	# this is the code that removes all mentions
-	for mention in soup.select("span.h-card"):
-		mention.a.unwrap()
-		mention.span.unwrap()
-	
-	# replace <br> with linebreak
-	for lb in soup.select("br"):
-		lb.insert_after("\n")
-		lb.decompose()
-
-	# replace <p> with linebreak
-	for p in soup.select("p"):
-		p.insert_after("\n")
-		p.unwrap()
-	
-	# fix hashtags
-	for ht in soup.select("a.hashtag"):
-		ht.unwrap()
-
-	# fix links
-	for link in soup.select("a"):
-		link.insert_after(link["href"])
-		link.decompose()
-
-	toot = soup.get_text()
-	toot = toot.rstrip("\n") #remove trailing newline
+	toot = functions.extract_toot(toot)
 	toot = toot.replace("@", "@\u200B") #put a zws between @ and username to avoid mentioning
 	return(toot)
 
