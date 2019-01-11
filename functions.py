@@ -5,7 +5,7 @@
 
 import markovify
 from bs4 import BeautifulSoup
-import re, random, multiprocessing, sqlite3, shutil, os, json
+import re, multiprocessing, sqlite3, shutil, os, json
 
 def make_sentence(output):
 	class nlt_fixed(markovify.NewlineText): #modified version of NewlineText that never rejects sentences
