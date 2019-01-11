@@ -130,8 +130,7 @@ for f in following:
 	if instance == "bofa.lol":
 		print("rest in piece bofa, skipping")
 		continue
-				
-	# print("{} is on {}".format(f.acct, instance))
+
 	try:
 		r = requests.get("https://{}/.well-known/host-meta".format(instance), timeout=10)
 		uri = re.search(r'template="([^"]+)"', r.text).group(1)
@@ -166,12 +165,12 @@ for f in following:
 		while not done and len(j['orderedItems']) > 0:
 			for oi in j['orderedItems']:
 				if oi['type'] != "Create":
-					continue #not a toost. fuck outta here
+					continue #this isn't a toot/post/status/whatever, it's a boost or a follow or some other activitypub thing. ignore
 				
 				# its a toost baby
 				content = oi['object']['content']
 				if oi['object']['summary'] != None:
-					#don't download CW'd toots
+					#don't download CW'd toots. if you want your bot to download and learn from CW'd toots, replace "continue" with "pass". (todo: add a config.json option for this)
 					continue
 				toot = extract_toot(content)
 				# print(toot)
