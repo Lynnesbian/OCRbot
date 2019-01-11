@@ -12,9 +12,6 @@ def make_sentence(output):
 		def test_sentence_input(self, sentence):
 			return True #all sentences are valid <3
 
-	# with open("corpus.txt", encoding="utf-8") as fp:
-	#   model = nlt_fixed(fp.read())
-
 	shutil.copyfile("toots.db", "toots-copy.db")
 	db = sqlite3.connect("toots-copy.db")
 	db.text_factory=str
@@ -55,7 +52,7 @@ def make_toot_markov(query = None):
 		else:
 			toot = pin.recv()
 	if toot == None:
-		toot = "Toot generation failed! Contact Lynne for assistance."
+		toot = "Toot generation failed! Contact Lynne (lynnesbian@fedi.lynnesbian.space) for assistance."
 	return {
 			"toot":toot,
 			"media":None
