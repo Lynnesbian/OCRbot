@@ -33,7 +33,7 @@ if os.path.exists("clientcred.secret"):
 		
 
 if "client" not in cfg:
-	print("No client credentials, registering application")
+	print("No application info -- registering application with {}".format(cfg['site']))
 	client_id, client_secret = Mastodon.create_app("mstdn-ebooks",
 		api_base_url=cfg['site'],
 		scopes=scopes,
@@ -45,12 +45,12 @@ if "client" not in cfg:
 	}
 
 if "secret" not in cfg:
-	print("No user credentials, logging in")
+	print("No user credentials -- logging in to {}".format(cfg['site']))
 	client = Mastodon(client_id = cfg['client']['id'],
 		client_secret = cfg['client']['secret'],
 		api_base_url=cfg['site'])
 
-	print("Open this URL: {}".format(client.auth_request_url(scopes=scopes)))
+	print("Open this URL and authenticate to give mstdn-ebooks access to your bot's account: {}".format(client.auth_request_url(scopes=scopes)))
 	cfg['secret'] = client.log_in(code=input("Secret: "), scopes=scopes)
 
 json.dump(cfg, open("config.json", "w+"))
@@ -180,7 +180,7 @@ for f in following:
 		r = requests.get(uri)
 		j = r.json()
 
-	print("Downloading and parsing toots", end='', flush=True)
+	print("Downloading and saving toots", end='', flush=True)
 	done = False
 	try:
 		while not done and len(j['orderedItems']) > 0:
@@ -222,7 +222,7 @@ for f in following:
 		print(" Done!")
 		db.commit()
 	except:
-		print("Encountered an error! Saving toots to database and continuing.")
+		print("Encountered an error! Saving toots to database and moving to next followed account.")
 		db.commit()
 		# db.close()
 
