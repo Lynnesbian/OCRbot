@@ -16,7 +16,7 @@ def make_sentence(output):
 	db = sqlite3.connect("toots-copy.db")
 	db.text_factory=str
 	c = db.cursor()
-	toots = c.execute("SELECT content FROM `toots`").fetchall()
+	toots = c.execute("SELECT content FROM `toots` ORDER BY RANDOM() LIMIT 10000").fetchall()
 	toots_str = ""
 	for toot in toots:
 		toots_str += "\n{}".format(toot[0])
