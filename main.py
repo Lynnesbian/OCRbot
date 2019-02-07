@@ -114,10 +114,10 @@ for f in following:
 		uri = uri.format(uri = "{}@{}".format(f.username, instance))
 		r = requests.get(uri, headers={"Accept": "application/json"}, timeout=10)
 		j = r.json()
-		if len(j['aliases']) == 1: #TODO: this is a hack on top of a hack, fix it
-			uri = j['aliases'][0]
-		else:
-			uri = j['aliases'][1]
+		for link in j['links']:
+			if link['rel'] == 'self':
+				#this is a link formatted like "https://instan.ce/users/username", which is what we need
+				uri = link['href']
 		uri = "{}/outbox?page=true".format(uri)
 		r = requests.get(uri, timeout=10)
 		j = r.json()
@@ -131,7 +131,7 @@ for f in following:
 		pleroma = True
 		j = j['first']
 	else:
-		print("Mastodon instance detected")
+		print("Mastodon/Misskey instance detected")
 		uri = "{}&min_id={}".format(uri, last_toot)
 		r = requests.get(uri)
 		j = r.json()
