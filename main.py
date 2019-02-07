@@ -97,7 +97,7 @@ for f in following:
 	print("Harvesting toots for user @{}, starting from {}".format(f.acct, last_toot))
 
 	#find the user's activitypub outbox
-	print("WebFingering...")
+	print("WebFingering... (do not laugh at this. WebFinger is a federated protocol. https://wikipedia.org/wiki/WebFinger)")
 	instance = re.search(r"^.*@(.+)", f.acct)
 	if instance == None:
 		instance = re.search(r"https?:\/\/(.*)", cfg['site']).group(1)
