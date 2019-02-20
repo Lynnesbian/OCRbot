@@ -21,7 +21,6 @@ from bs4 import BeautifulSoup
 
 from multiprocessing import Pool
 import os, random, re, json
-import functions
 
 cfg = json.load(open('config.json', 'r'))
 
@@ -32,9 +31,30 @@ client = Mastodon(
   api_base_url=cfg['site'])
 
 def extract_toot(toot):
-	text = functions.extract_toot(toot)
+	toot = toot.replace("&apos;", "'") #convert HTML stuff to normal stuff
+	toot = toot.replace("&quot;", '"') #ditto
+	soup = BeautifulSoup(toot, "html.parser")
+	for lb in soup.select("br"): #replace <br> with linebreak
+		lb.insert_after("\n")
+		lb.decompose()
+
+	for p in soup.select("p"): #ditto for <p>
+		p.insert_after("\n")
+		p.unwrap()
+
+	for ht in soup.select("a.hashtag"): #make hashtags no longer links, just text
+		ht.unwrap()
+
+	for link in soup.select("a"): #ocnvert <a href='https://example.com>example.com</a> to just https://example.com
+		link.insert_after(link["href"])
+		link.decompose()
+
+	text = soup.get_text()
+	text = re.sub("https://([^/]+)/(@[^ ]+)", r"\2@\1", text) #put mastodon-style mentions back in
+	text = re.sub("https://([^/]+)/users/([^ ]+)", r"@\2@\1", text) #put pleroma-style mentions back in
+	text = text.rstrip("\n") #remove trailing newline
 	text = re.sub(r"^@[^@]+@[^ ]+\s*", r"", text) #remove the initial mention
-	text = text.lower() #treat text as lowercase for easier keyword matching (if this bot uses it)
+	text = text.lower() #treat text as lowercase for easier keyword matching
 	return text
 
 def process_mention(client, notification):
