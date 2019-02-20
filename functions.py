@@ -11,7 +11,6 @@
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU Affero General Public License for more details.
 
-import markovify
 from bs4 import BeautifulSoup
 import re, multiprocessing, sqlite3, shutil, os, json
 

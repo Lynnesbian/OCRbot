@@ -41,7 +41,7 @@ if __name__ == '__main__':
 				client.status_post(toot['toot'], visibility = 'unlisted', spoiler_text = cfg['cw'])
 		except Exception as err:
 			toot = {
-			"toot": "An unknown error that should never happen occurred. Maybe it's because of the spoiler text, which is {}. If not, I have no idea what went wrong. This is an error message -- contact lynnesbian@fedi.lynnesbian.space for assistance.".format(cfg['cw'])
+				"toot": "An unknown error occurred. This is an error message -- contact lynnesbian@fedi.lynnesbian.space for assistance."
 			}
 			client.status_post(toot['toot'], visibility = 'unlisted', spoiler_text = "Error!")
 	print(toot['toot'])
