@@ -13,10 +13,7 @@
 # GNU Affero General Public License for more details.
 
 from mastodon import Mastodon
-from os import path
-from bs4 import BeautifulSoup
-import os, signal, sys, json, re, shutil
-import requests
+import os, json, re, shutil
 
 scopes = ["read:statuses", "read:accounts", "write:statuses", "read:notifications"]
 try:
@@ -25,7 +22,8 @@ except:
 	shutil.copy2("config.sample.json", "config.json")
 	cfg = json.load(open('config.json', 'r'))
 
-#config.json *should* contain the instance URL, the instance blacklist (for dead/broken instances), and the CW text. if they're not provided, we'll fall back to defaults.
+#config.json *should* contain the instance URL, the instance blacklist (for dead/broken instances), the instance character limit, and the CW text. if they're not provided, we'll fall back to defaults.
+#TODO: clean this up
 if 'site' not in cfg:
 	cfg['website'] = "https://botsin.space"
 if 'cw' not in cfg:
@@ -35,6 +33,10 @@ if 'instance_blacklist' not in cfg:
 		"bofa.lol",
 		"witches.town"
 	]	
+if 'char_limit' not in cfg:
+	cfg['char_limit'] = 500
+if 'ocr_threads' not in cfg:
+	cfg['ocr_threads'] = None
 
 if "client" not in cfg:
 	print("No application info -- registering application with {}".format(cfg['site']))

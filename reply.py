@@ -62,6 +62,7 @@ def process_mention(client, notification):
 	# first, we'll check if the mention contains at least one image. if so, we'll use that.
 	# otherwise, we'll check if the post the mention is replying to (if any) contains any images.
 	# if not, we'll give up.
+	print("mention detected")
 	post = None
 	no_images = True
 	if len(notification['status']['media_attachments']) != 0:
@@ -69,16 +70,20 @@ def process_mention(client, notification):
 	else:
 		# get the post it's replying to
 		try:
-			post = Mastodon.status(notification['status']['in_reply_to_id'])
+			print("fetching post being replied to")
+			post = client.status(notification['status']['in_reply_to_id'])
 			if len(post['media_attachments']) == 0:
 				post = None
 		except:
-			pass # todo: specific error message?
+			client.status_post(acct + "\nFailed to find post containing image. Contact lynnesbian@fedi.lynnesbian.space for assistance.", post_id, visibility=visibility, spoiler_text = "Error")
 
 	if post != None:
+		print("found post with media, extracting content")
 		acct = "@" + post['account']['acct'] #get the account's @
 		post_id = post['id']
 		mention = extract_toot(post['content'])
+
+		toot = ""
 
 		# the actual OCR
 		i = 0
@@ -86,8 +91,10 @@ def process_mention(client, notification):
 			if media['type'] == "image":
 				i += 1
 				no_images = False
+				print("downloading image {}".format(i))
 				try:
 					image = Image.open(requests.get(media['url'], stream = True, timeout = 30).raw)
+					print("downloaded image successfully, processing OCR...")
 				except:
 					client.status_post(acct + "\nFailed to read image. Contact lynnesbian@fedi.lynnesbian.space for assistance.", post_id, visibility=visibility, spoiler_text = "Error")
 					return
@@ -104,8 +111,7 @@ def process_mention(client, notification):
 		client.status_post(toot, post_id, visibility=visibility, spoiler_text = cfg['cw']) #send toost
 
 	else:
-		pass
-		# post error message
+		client.status_post(acct + "\nFailed to find post with media attached. Contact lynnesbian@fedi.lynnesbian.space for assistance.", post_id, visibility=visibility, spoiler_text = "Error")
 
 class ReplyListener(StreamListener):
 	def __init__(self):

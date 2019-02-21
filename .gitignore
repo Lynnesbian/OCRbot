@@ -9,3 +9,4 @@ toots.db-wal
 __pycache__/*
 .vscode/
 .editorconfig
+config.json
