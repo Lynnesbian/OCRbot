@@ -20,7 +20,7 @@ from mastodon import Mastodon, StreamListener
 from bs4 import BeautifulSoup
 
 from multiprocessing import Pool
-import os, random, re, json
+import os, random, re, json, re
 
 cfg = json.load(open('config.json', 'r'))
 
@@ -99,10 +99,18 @@ def process_mention(client, notification):
 					client.status_post(acct + "\nFailed to read image. Contact lynnesbian@fedi.lynnesbian.space for assistance.", post_id, visibility=visibility, spoiler_text = "Error")
 					return
 				try:
-					out = pytesseract.image_to_string(image).replace("|", "I")
+					out = pytesseract.image_to_string(image).replace("|", "I") # tesseract often mistakenly identifies I as a |
+					out = re.sub("\n{3,}", "\n\n", out) #replace any group of 3+ linebreaks with just two
 					if out == "":
 						out = "Couldn't read this image, sorry!"
-					toot += "\nImage {}:\n{}".format(i, out) # tesseract often mistakenly identifies I as a |
+
+					if len(post['media_attachments']) > 1:
+						# more than one image, need to seperate them
+						toot += "\nImage {}:\n{}".format(i, out)
+					else: 
+						# only one image -- don't bother saying "image 1"
+						toot += "\n{}".format(out)
+							
 				except:
 					client.status_post(acct + "\nFailed to run tesseract. Contact lynnesbian@fedi.lynnesbian.space for assistance.", post_id, visibility=visibility, spoiler_text = "Error")
 					return
@@ -111,7 +119,12 @@ def process_mention(client, notification):
 		visibility = post['visibility']
 		if visibility == "public":
 			visibility = "unlisted"
-		client.status_post(toot, post_id, visibility=visibility, spoiler_text = cfg['cw']) #send toost
+		if toot.replace("\n", "").replace(" ", "") != "":
+			# toot isn't blank -- go ahead
+			client.status_post(toot, post_id, visibility=visibility, spoiler_text = cfg['cw']) #send toost
+		else:
+			# it's blank :c
+			client.status_post(acct + "\nGeneric error occurred. Contact lynnesbian@fedi.lynnesbian.space for assistance.", post_id, visibility=visibility, spoiler_text = "Error")
 
 	else:
 		client.status_post(acct + "\nFailed to find post with media attached. Contact lynnesbian@fedi.lynnesbian.space for assistance.", post_id, visibility=visibility, spoiler_text = "Error")
