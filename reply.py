@@ -133,11 +133,11 @@ def process_mention(client, notification):
 					out = pytesseract.image_to_string(image).replace("|", "I") # tesseract often mistakenly identifies I as a |
 					out = re.sub("(?:\n\s*){3,}", "\n\n", out) #replace any group of 3+ linebreaks with just two
 					if out == "":
-						out = "Couldn't read this image, sorry!"
+						out = "Couldn't read this image, sorry!\nOCRbot works best with plain black text on a plain white background. Here is some information about what it can and can't do: https://github.com/Lynnesbian/OCRbot/blob/master/README.md#caveats"
 
 					if len(post['media_attachments']) > 1:
 						# more than one image, need to seperate them
-						toot += "\nImage {}:\n{}".format(i, out)
+						toot += "\nImage {}:\n{}\n".format(i, out)
 					else: 
 						# only one image -- don't bother saying "image 1"
 						toot += "\n{}".format(out)

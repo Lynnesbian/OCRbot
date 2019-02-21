@@ -28,7 +28,7 @@ Copy or rename `config.sample.json` to `config.json`, and edit the settings as y
 You can use something like systemd or SysVinit to manage running `reply.py` for you.
 
 ## Caveats
-OCRbot is *not* designed to replace captions, merely to supplement them. It will fail (at least partially) for:
+OCRbot is *not* designed to replace captions, merely to supplement them. It works best with plain black text on a plain white background. For example, PDF scans and Wikipedia screenshots will work great, but handwriting and distorted text won't. It will fail (at least partially) for:
 - Anything using handwriting
 - Anything that's not in English (although I'm planning on fixing this)
 - Text that is skewed, rotated, stretched, or otherwise distorted
