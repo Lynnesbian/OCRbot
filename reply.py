@@ -81,18 +81,21 @@ def process_mention(client, notification):
 		mention = extract_toot(post['content'])
 
 		# the actual OCR
+		i = 0
 		for media in post['media_attachments']:
 			if media['type'] == "image":
+				i += 1
 				no_images = False
 				try:
-					i = Image.open(requests.get(media['url'], stream = True, timeout = 30).raw)
+					image = Image.open(requests.get(media['url'], stream = True, timeout = 30).raw)
 				except:
 					client.status_post(acct + "\nFailed to read image. Contact lynnesbian@fedi.lynnesbian.space for assistance.", post_id, visibility=visibility, spoiler_text = "Error")
+					return
 				try:
-					toot = pytesseract.image_to_string(i)
-					toot = toot.replace("|", "I") # tesseract often mistakenly identifies I as a |
+					toot += "\nImage {}:\n{}".format(i, pytesseract.image_to_string(image).replace("|", "I")) # tesseract often mistakenly identifies I as a |
 				except:
 					client.status_post(acct + "\nFailed to run tesseract. Contact lynnesbian@fedi.lynnesbian.space for assistance.", post_id, visibility=visibility, spoiler_text = "Error")
+					return
 
 		toot = acct + "\n" + toot #prepend the @
 		visibility = post['visibility']

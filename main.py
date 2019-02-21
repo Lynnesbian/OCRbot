@@ -15,12 +15,16 @@
 from mastodon import Mastodon
 from os import path
 from bs4 import BeautifulSoup
-import os, sqlite3, signal, sys, json, re
+import os, sqlite3, signal, sys, json, re, shutil
 import requests
 import functions
 
 scopes = ["read:statuses", "read:accounts", "read:follows", "write:statuses", "read:notifications"]
-cfg = json.load(open('config.json', 'r'))
+try:
+	cfg = json.load(open('config.json', 'r'))
+except:
+	shutil.copy2("config.sample.json", "config.json")
+	cfg = json.load(open('config.json', 'r'))
 
 #config.json *MUST* contain the instance URL, the instance blacklist (for dead/broken instances), and the CW text. if they're not provided, we'll fall back to defaults.
 if 'site' not in cfg:
