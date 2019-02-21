@@ -11,13 +11,15 @@
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU Affero General Public License for more details.
 try:
-	from PIL import Image
+	from PIL import Image, ImageOps, ImageEnhance
 except ImportError:
-	import Image
+	import Image, ImageOps, ImageEnhance
 import pytesseract
 import requests
 from mastodon import Mastodon, StreamListener
 from bs4 import BeautifulSoup
+import cv2
+import numpy as np
 
 from multiprocessing import Pool
 import os, random, re, json, re
@@ -94,9 +96,38 @@ def process_mention(client, notification):
 				print("downloading image {}".format(i))
 				try:
 					image = Image.open(requests.get(media['url'], stream = True, timeout = 30).raw)
-					print("downloaded image successfully, processing OCR...")
 				except:
 					client.status_post(acct + "\nFailed to read image. Contact lynnesbian@fedi.lynnesbian.space for assistance.", post_id, visibility=visibility, spoiler_text = "Error")
+					return
+
+				try:
+					if False:
+						# this part is switched off because it doesn't work at all :c
+						print("downloaded image successfully, cleaning it up...")
+						# image cleanup. most of these ideas come from this page: https://github.com/tesseract-ocr/tesseract/wiki/ImproveQuality
+						# step 1: add a 10px white border around the image. this helps tesseract work with characters that are right on the edge of the image
+						print("step 1/2")
+						image = ImageOps.expand(image, 10, "white")
+						# step 2: increase the sharpness
+						print("step 2/3")
+						enhancer = ImageEnhance.Sharpness(image)
+						image = enhancer.enhance(1.5)
+						# step 3: binarisation (making it so the pixels are either 100% black or 100% white)
+						# tesseract does this by itself but the default method is kinda unreliable, so we'll use openCV
+						print("step 3/3")
+						print("converting to array")
+						image = image.convert("L")
+						image_array = np.asarray(image)
+						print("binarising")
+						image_array = cv2.adaptiveThreshold(image_array, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 11, 2)
+						# # steps such as de-skewing and flattening the image are rather difficult to do, and the recommended python scripts linked in the article are standalone scripts. they're not on pypi and they seem to break with newer versions of openCV.
+
+						# # convert image array back to pillow image
+						print("converting to pillow image")
+						image = Image.fromarray(image_array)
+
+				except:
+					client.status_post(acct + "\nFailed to process image. Contact lynnesbian@fedi.lynnesbian.space for assistance.", post_id, visibility=visibility, spoiler_text = "Error")
 					return
 				try:
 					out = pytesseract.image_to_string(image).replace("|", "I") # tesseract often mistakenly identifies I as a |
@@ -110,7 +141,7 @@ def process_mention(client, notification):
 					else: 
 						# only one image -- don't bother saying "image 1"
 						toot += "\n{}".format(out)
-							
+
 				except:
 					client.status_post(acct + "\nFailed to run tesseract. Contact lynnesbian@fedi.lynnesbian.space for assistance.", post_id, visibility=visibility, spoiler_text = "Error")
 					return
