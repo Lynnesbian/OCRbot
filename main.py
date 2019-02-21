@@ -26,7 +26,7 @@ except:
 	shutil.copy2("config.sample.json", "config.json")
 	cfg = json.load(open('config.json', 'r'))
 
-#config.json *MUST* contain the instance URL, the instance blacklist (for dead/broken instances), and the CW text. if they're not provided, we'll fall back to defaults.
+#config.json *should* contain the instance URL, the instance blacklist (for dead/broken instances), and the CW text. if they're not provided, we'll fall back to defaults.
 if 'site' not in cfg:
 	cfg['website'] = "https://botsin.space"
 if 'cw' not in cfg:
