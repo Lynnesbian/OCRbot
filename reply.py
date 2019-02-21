@@ -80,7 +80,7 @@ def process_mention(client, notification):
 
 	if post != None:
 		print("found post with media, extracting content")
-		post_id = post['id']
+		post_id = notification['status']['id']
 		mention = extract_toot(post['content'])
 
 		toot = ""
