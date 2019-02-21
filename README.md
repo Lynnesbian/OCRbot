@@ -4,6 +4,10 @@ OCRbot is a Mastodon (and compatible, such as Pleroma) bot that uses OCR to auto
 
 ![Screenshot of OCRbot in action](https://lynnesbian.space/res/ceres/sshot_2019-02-21_at_14-41-06-1550724066.png)
 
+## Working Example
+
+A working version of OCRbot can be found [here](https://fedi.lynnesbian.space/@OCRbot). I'll always run the latest version, and the instance hosting it has a much higher character limit than Mastodon's default of 500 or Pleroma's default of 5000 (specifically, it has a limit of 65535 chars). If you'd like to run your own version that works differently (for example, maybe you want a version that works with Japanese text instead, or a version that uses a different OCR engine), then you're free to fork and modify!
+
 ## Installation
 ### Tesseract (Required)
 
@@ -18,7 +22,7 @@ cd OCRbot
 pip3 install -r requirements.txt
 ```
 
-## Usage
+## Running OCRbot
 Copy or rename `config.sample.json` to `config.json`, and edit the settings as you wish. Most importantly, make sure you choose the instance your OCRbot account will post from. Then, run `main.py` and log in with the account you'd like OCRbot to post from. Finally, run `reply.py` and OCRbot will take care of the rest.
 
 You can use something like systemd or SysVinit to manage running `reply.py` for you.
