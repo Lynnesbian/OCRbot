@@ -18,8 +18,8 @@ import pytesseract
 import requests
 from mastodon import Mastodon, StreamListener
 from bs4 import BeautifulSoup
-import cv2
-import numpy as np
+# import cv2
+# import numpy as np
 
 from multiprocessing import Pool
 import os, random, re, json, re
