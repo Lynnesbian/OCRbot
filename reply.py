@@ -100,7 +100,7 @@ def process_mention(client, notification):
 					return
 				try:
 					out = pytesseract.image_to_string(image).replace("|", "I") # tesseract often mistakenly identifies I as a |
-					out = re.sub("\n{3,}", "\n\n", out) #replace any group of 3+ linebreaks with just two
+					out = re.sub("(?:\n\s*){3,}", "\n\n", out) #replace any group of 3+ linebreaks with just two
 					if out == "":
 						out = "Couldn't read this image, sorry!"
 
