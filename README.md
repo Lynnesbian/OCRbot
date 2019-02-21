@@ -13,7 +13,7 @@ OCRbot is a Mastodon (and compatible, such as Pleroma) bot that uses OCR to auto
 ```
 git clone https://github.com/Lynnesbian/OCRbot/
 cd OCRbot
-pip install -r requirements
+pip3 install -r requirements
 ```
 
 ## Donating
