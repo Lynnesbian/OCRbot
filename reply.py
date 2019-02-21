@@ -62,6 +62,7 @@ def process_mention(client, notification):
 	# first, we'll check if the mention contains at least one image. if so, we'll use that.
 	# otherwise, we'll check if the post the mention is replying to (if any) contains any images.
 	# if not, we'll give up.
+	acct = "@" + notification['account']['acct'] #get the account's @
 	print("mention detected")
 	post = None
 	no_images = True
@@ -79,7 +80,6 @@ def process_mention(client, notification):
 
 	if post != None:
 		print("found post with media, extracting content")
-		acct = "@" + post['account']['acct'] #get the account's @
 		post_id = post['id']
 		mention = extract_toot(post['content'])
 
