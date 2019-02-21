@@ -17,7 +17,6 @@ from os import path
 from bs4 import BeautifulSoup
 import os, signal, sys, json, re, shutil
 import requests
-import functions
 
 scopes = ["read:statuses", "read:accounts", "write:statuses", "read:notifications"]
 try:
