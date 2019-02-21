@@ -104,7 +104,7 @@ def process_mention(client, notification):
 					client.status_post(acct + "\nFailed to run tesseract. Contact lynnesbian@fedi.lynnesbian.space for assistance.", post_id, visibility=visibility, spoiler_text = "Error")
 					return
 
-		toot = acct + "\n" + toot #prepend the @
+		toot = acct + toot #prepend the @
 		visibility = post['visibility']
 		if visibility == "public":
 			visibility = "unlisted"
