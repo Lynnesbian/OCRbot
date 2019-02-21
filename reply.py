@@ -89,7 +89,7 @@ def process_mention(client, notification):
 				except:
 					client.status_post(acct + "\nFailed to read image. Contact lynnesbian@fedi.lynnesbian.space for assistance.", post_id, visibility=visibility, spoiler_text = "Error")
 				try:
-					toot = pytesseract.image_(i)
+					toot = pytesseract.image_to_string(i)
 					toot = toot.replace("|", "I") # tesseract often mistakenly identifies I as a |
 				except:
 					client.status_post(acct + "\nFailed to run tesseract. Contact lynnesbian@fedi.lynnesbian.space for assistance.", post_id, visibility=visibility, spoiler_text = "Error")
