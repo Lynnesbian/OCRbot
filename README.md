@@ -18,6 +18,11 @@ cd OCRbot
 pip3 install -r requirements.txt
 ```
 
+## Usage
+Copy or rename `config.sample.json` to `config.json`, and edit the settings as you wish. Most importantly, make sure you choose the instance your OCRbot account will post from. Then, run `main.py` and log in with the account you'd like OCRbot to post from. Finally, run `reply.py` and OCRbot will take care of the rest.
+
+You can use something like systemd or SysVinit to manage running `reply.py` for you.
+
 ## Donating
 Donations can be provided via [LiberaPay](https://liberapay.com/lynnesbian) (recurring), [PayPal](https://paypal.me/lynnesbian) (singular), or [Ko-fi](https://ko-fi.com/lynnesbian) (singular). Don't feel obligated to donate!
 
