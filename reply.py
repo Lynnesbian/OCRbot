@@ -18,6 +18,9 @@ import pytesseract
 import requests
 from mastodon import Mastodon, StreamListener
 from bs4 import BeautifulSoup
+# import pyocr
+# import pyocr.builders
+import sys
 # import cv2
 # import numpy as np
 
@@ -79,10 +82,11 @@ def process_mention(client, notification):
 				post = None
 		except:
 			client.status_post(acct + "\nFailed to find post containing image. Contact lynnesbian@fedi.lynnesbian.space for assistance.", post_id, visibility=visibility, spoiler_text = "Error")
+			return
 
+	post_id = notification['status']['id']
 	if post != None:
 		print("found post with media, extracting content")
-		post_id = notification['status']['id']
 		mention = extract_toot(post['content'])
 
 		toot = ""
@@ -101,9 +105,6 @@ def process_mention(client, notification):
 					return
 
 				try:
-					print("downloaded image successfully, cleaning it up...")
-					greyscale = image.convert("L")
-					
 					if False:
 						# this part is switched off because it doesn't work at all :c
 						print("downloaded image successfully, cleaning it up...")
@@ -159,7 +160,6 @@ def process_mention(client, notification):
 		else:
 			# it's blank :c
 			client.status_post(acct + "\nGeneric error occurred. Contact lynnesbian@fedi.lynnesbian.space for assistance.", post_id, visibility=visibility, spoiler_text = "Error")
-
 	else:
 		client.status_post(acct + "\nFailed to find post with media attached. Contact lynnesbian@fedi.lynnesbian.space for assistance.", post_id, visibility=visibility, spoiler_text = "Error")
 
@@ -172,6 +172,11 @@ class ReplyListener(StreamListener):
 			# p = Process(target=process_mention, args=(client, notification))
 			self.pool.apply_async(process_mention, args=(client, notification))
 			
+
+# tools = pyocr.get_available_tools()
+# if len(tools) == 0:
+# 	print("No OCR tool found")
+# 	sys.exit(1)
 
 rl = ReplyListener()
 client.stream_user(rl) #go!
