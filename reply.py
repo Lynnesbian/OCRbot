@@ -101,6 +101,9 @@ def process_mention(client, notification):
 					return
 
 				try:
+					print("downloaded image successfully, cleaning it up...")
+					greyscale = image.convert("L")
+					
 					if False:
 						# this part is switched off because it doesn't work at all :c
 						print("downloaded image successfully, cleaning it up...")
@@ -130,7 +133,7 @@ def process_mention(client, notification):
 					client.status_post(acct + "\nFailed to process image. Contact lynnesbian@fedi.lynnesbian.space for assistance.", post_id, visibility=visibility, spoiler_text = "Error")
 					return
 				try:
-					out = pytesseract.image_to_string(image).replace("|", "I") # tesseract often mistakenly identifies I as a |
+					out = pytesseract.image_to_string(image , config="--psm 1").replace("|", "I") # tesseract often mistakenly identifies I as a |
 					out = re.sub("(?:\n\s*){3,}", "\n\n", out) #replace any group of 3+ linebreaks with just two
 					if out == "":
 						out = "Couldn't read this image, sorry!\nOCRbot works best with plain black text on a plain white background. Here is some information about what it can and can't do: https://github.com/Lynnesbian/OCRbot/blob/master/README.md#caveats"

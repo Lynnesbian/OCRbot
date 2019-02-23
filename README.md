@@ -14,6 +14,13 @@ A working version of OCRbot can be found [here](https://fedi.lynnesbian.space/@O
 - Debian/Ubuntu: `sudo apt install tesseract-ocr`
 - Arch Linux: `sudo pacman -Syu tesseract tesseract-data-eng`
 
+#### What about the higher quality data packs?
+
+According to [tesseract's GitHub wiki](https://github.com/tesseract-ocr/tesseract/wiki/Data-Files#updated-data-files-for-version-400-september-15-2017):
+> Most users will want `tessdata_fast` and that is what will be shipped as part of Linux distributions. `tessdata_best` is for people willing to trade a lot of speed for slightly better accuracy.
+
+With the setup I'm using, I really can't afford to use much more processing power just for "slightly better accuracy". Additionally, most Linux distributions only ship the `fast` set, which makes obtaining the `best` set an extra step. I haven't tested how much better `fast` is than `best`, but given that distributions like Arch and Debian deemed `fast` good enough to be the only package available, I'm inclinded to suspect that this is a case of diminishing returns, and that it's not worth the extra effort of obtaining these files, as well as the extra CPU usage required to use them.
+
 ### OCRbot (Required)
 
 ```
@@ -39,6 +46,7 @@ OCRbot is *not* designed to replace captions, merely to supplement them. It work
 - Unusual fonts
 - Videos and GIFs
 - Very large or very small text
+- Text on a complex background
 
 So in short, please caption your images. Don't rely on OCRbot.
 
