@@ -71,6 +71,8 @@ def process_mention(client, notification):
 	print("mention detected")
 	post = None
 	no_images = True
+	visibility = "unlisted"
+	post_id = notification['status']['id']
 	if len(notification['status']['media_attachments']) != 0:
 		post = notification['status']
 	else:
@@ -81,10 +83,10 @@ def process_mention(client, notification):
 			if len(post['media_attachments']) == 0:
 				post = None
 		except:
+			print("error")
 			client.status_post(acct + "\nFailed to find post containing image. Contact lynnesbian@fedi.lynnesbian.space for assistance.", post_id, visibility=visibility, spoiler_text = "Error")
 			return
 
-	post_id = notification['status']['id']
 	if post != None:
 		print("found post with media, extracting content")
 		mention = extract_toot(post['content'])
