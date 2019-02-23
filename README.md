@@ -32,7 +32,12 @@ pip3 install -r requirements.txt
 ## Running OCRbot
 Copy or rename `config.sample.json` to `config.json`, and edit the settings as you wish. Most importantly, make sure you choose the instance your OCRbot account will post from. Then, run `main.py` and log in with the account you'd like OCRbot to post from. Finally, run `reply.py` and OCRbot will take care of the rest.
 
-You can use something like systemd or SysVinit to manage running `reply.py` for you.
+You can use something like systemd or SysVinit to manage running `reply.py` for you. I've provided an example systemd script [here](systemd-example.service). It requires some editing (to specify where your OCRbot folder is located, and to specify the user to run it as -- *don't run it as root*), and then you simply need to
+```
+sudo mv systemd-example.service /etc/systemd/system/OCRbot.service
+sudo systemctl start OCRbot
+```
+You may also `sudo systemctl enable OCRbot` if you want it to start on boot.
 
 ## Caveats
 OCRbot is *not* designed to replace captions, merely to supplement them. It works best with plain black text on a plain white background. For example, PDF scans and Wikipedia screenshots will work great, but handwriting and distorted text won't. It will fail (at least partially) for:

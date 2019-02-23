@@ -1,0 +1,16 @@
+[Unit]
+Description=OCRbot reply manager
+After=network.target
+
+[Service]
+Type=simple
+User=bots
+WorkingDirectory=/path/to/OCRbot
+ExecStart=/usr/bin/python3 /path/to/OCRbot/reply.py
+TimeoutSec=3600
+Restart=always
+RestartSec=30
+StartLimitBurst=3
+
+[Install]
+WantedBy=multi-user.target
