@@ -62,7 +62,7 @@ def extract_toot(toot):
 	text = text.lower() #treat text as lowercase for easier keyword matching
 	return text
 
-def error(client, message, acct, post_id, visibility):
+def error(message, acct, post_id, visibility):
 	print("error: {}".format(message))
 	client.status_post("{}\n{}\nContact Lynne (lynnesbian@fedi.lynnesbian.space) for assistance.".format(acct, message), post_id, visibility = visibility, spoiler_text = "Error")
 
@@ -87,13 +87,12 @@ def process_mention(client, notification):
 			if len(post['media_attachments']) == 0:
 				post = None
 		except:
-			error(client, "Failed to find post containing image. This may be a federation issue, or you may have tagged OCRbot in a conversation without an image.", acct, post_id, visibility)
+			error("Failed to find post containing image. This may be a federation issue, or you may have tagged OCRbot in a conversation without an image.", acct, post_id, visibility)
 			return
 
 	if post != None:
 		print("found post with media, extracting content")
 		mention = extract_toot(post['content'])
-
 		toot = ""
 
 		# the actual OCR
@@ -106,7 +105,7 @@ def process_mention(client, notification):
 				try:
 					image = Image.open(requests.get(media['url'], stream = True, timeout = 30).raw)
 				except:
-					error(client, "Failed to read image. Download may have timed out.", acct, post_id, visibility)
+					error("Failed to read image. Download may have timed out.", acct, post_id, visibility)
 					return
 
 				try:
@@ -123,7 +122,7 @@ def process_mention(client, notification):
 						toot += "\n{}".format(out)
 
 				except:
-					error(client, "Failed to run tesseract.", acct, post_id, visibility)
+					error("Failed to run tesseract.", acct, post_id, visibility)
 					return
 
 		toot = acct + toot #prepend the @
@@ -135,9 +134,9 @@ def process_mention(client, notification):
 			client.status_post(toot, post_id, visibility=visibility, spoiler_text = cfg['cw']) #send toost
 		else:
 			# it's blank :c
-			error(client, "Tesseract returned no text.", acct, post_id, visibility)
+			error("Tesseract returned no text.", acct, post_id, visibility)
 	else:
-		error(client, "Failed to find post with media attached.", acct, post_id, visibility)
+		error("Failed to find post with media attached.", acct, post_id, visibility)
 
 class ReplyListener(StreamListener):
 	def __init__(self):
