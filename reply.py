@@ -132,7 +132,7 @@ def process_mention(client, notification):
 			visibility = "unlisted"
 		if toot.replace("\n", "").replace(" ", "") != "":
 			# toot isn't blank -- go ahead
-			error(toot, post_id, visibility=visibility, spoiler_text = cfg['cw']) #send toost
+			client.status_post(toot, post_id, visibility=visibility, spoiler_text = cfg['cw']) #send toost
 		else:
 			# it's blank :c
 			error(client, "Tesseract returned no text.", acct, post_id, visibility)
