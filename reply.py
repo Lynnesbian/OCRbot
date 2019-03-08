@@ -62,6 +62,10 @@ def extract_toot(toot):
 	text = text.lower() #treat text as lowercase for easier keyword matching
 	return text
 
+def error(client, message, acct, post_id, visibility):
+	print("error: {}".format(message))
+	client.status_post("{}\n{}\nContact Lynne (lynnesbian@fedi.lynnesbian.space) for assistance.".format(acct, message), post_id, visibility = visibility, spoiler_text = "Error")
+
 def process_mention(client, notification):
 	# for now we'll just ignore what the mention says, but in future we should check for a language name to use
 	# first, we'll check if the mention contains at least one image. if so, we'll use that.
@@ -83,8 +87,7 @@ def process_mention(client, notification):
 			if len(post['media_attachments']) == 0:
 				post = None
 		except:
-			print("error")
-			client.status_post(acct + "\nFailed to find post containing image. Contact lynnesbian@fedi.lynnesbian.space for assistance.", post_id, visibility=visibility, spoiler_text = "Error")
+			error(client, "Failed to find post containing image. This may be a federation issue, or you may have tagged OCRbot in a conversation without an image.", acct, post_id, visibility)
 			return
 
 	if post != None:
@@ -103,38 +106,9 @@ def process_mention(client, notification):
 				try:
 					image = Image.open(requests.get(media['url'], stream = True, timeout = 30).raw)
 				except:
-					client.status_post(acct + "\nFailed to read image. Contact lynnesbian@fedi.lynnesbian.space for assistance.", post_id, visibility=visibility, spoiler_text = "Error")
+					error(client, "Failed to read image. Download may have timed out.", acct, post_id, visibility)
 					return
 
-				try:
-					if False:
-						# this part is switched off because it doesn't work at all :c
-						print("downloaded image successfully, cleaning it up...")
-						# image cleanup. most of these ideas come from this page: https://github.com/tesseract-ocr/tesseract/wiki/ImproveQuality
-						# step 1: add a 10px white border around the image. this helps tesseract work with characters that are right on the edge of the image
-						print("step 1/2")
-						image = ImageOps.expand(image, 10, "white")
-						# step 2: increase the sharpness
-						print("step 2/3")
-						enhancer = ImageEnhance.Sharpness(image)
-						image = enhancer.enhance(1.5)
-						# step 3: binarisation (making it so the pixels are either 100% black or 100% white)
-						# tesseract does this by itself but the default method is kinda unreliable, so we'll use openCV
-						print("step 3/3")
-						print("converting to array")
-						image = image.convert("L")
-						image_array = np.asarray(image)
-						print("binarising")
-						image_array = cv2.adaptiveThreshold(image_array, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 11, 2)
-						# # steps such as de-skewing and flattening the image are rather difficult to do, and the recommended python scripts linked in the article are standalone scripts. they're not on pypi and they seem to break with newer versions of openCV.
-
-						# # convert image array back to pillow image
-						print("converting to pillow image")
-						image = Image.fromarray(image_array)
-
-				except:
-					client.status_post(acct + "\nFailed to process image. Contact lynnesbian@fedi.lynnesbian.space for assistance.", post_id, visibility=visibility, spoiler_text = "Error")
-					return
 				try:
 					out = pytesseract.image_to_string(image , config="--psm 1").replace("|", "I") # tesseract often mistakenly identifies I as a |
 					out = re.sub("(?:\n\s*){3,}", "\n\n", out) #replace any group of 3+ linebreaks with just two
@@ -149,7 +123,7 @@ def process_mention(client, notification):
 						toot += "\n{}".format(out)
 
 				except:
-					client.status_post(acct + "\nFailed to run tesseract. Contact lynnesbian@fedi.lynnesbian.space for assistance.", post_id, visibility=visibility, spoiler_text = "Error")
+					error(client, "Failed to run tesseract.", acct, post_id, visibility)
 					return
 
 		toot = acct + toot #prepend the @
@@ -158,12 +132,12 @@ def process_mention(client, notification):
 			visibility = "unlisted"
 		if toot.replace("\n", "").replace(" ", "") != "":
 			# toot isn't blank -- go ahead
-			client.status_post(toot, post_id, visibility=visibility, spoiler_text = cfg['cw']) #send toost
+			error(toot, post_id, visibility=visibility, spoiler_text = cfg['cw']) #send toost
 		else:
 			# it's blank :c
-			client.status_post(acct + "\nGeneric error occurred. Contact lynnesbian@fedi.lynnesbian.space for assistance.", post_id, visibility=visibility, spoiler_text = "Error")
+			error(client, "Tesseract returned no text.", acct, post_id, visibility)
 	else:
-		client.status_post(acct + "\nFailed to find post with media attached. Contact lynnesbian@fedi.lynnesbian.space for assistance.", post_id, visibility=visibility, spoiler_text = "Error")
+		error(client, "Failed to find post with media attached.", acct, post_id, visibility)
 
 class ReplyListener(StreamListener):
 	def __init__(self):
