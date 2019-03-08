@@ -1,11 +1,3 @@
-clientcred.secret
-usercred.secret
-run.sh
-corpus.txt
-meme.jpg
-toots.db
-toots.db-journal
-toots.db-wal
 __pycache__/*
 .vscode/
 .editorconfig
