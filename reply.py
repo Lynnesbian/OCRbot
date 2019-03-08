@@ -64,7 +64,12 @@ def extract_toot(toot):
 
 def error(message, acct, post_id, visibility):
 	print("error: {}".format(message))
-	client.status_post("{}\n{}\nContact Lynne (lynnesbian@fedi.lynnesbian.space) for assistance.".format(acct, message), post_id, visibility = visibility, spoiler_text = "Error")
+	temp_client = Mastodon(
+		client_id=cfg['client']['id'],
+		client_secret=cfg['client']['secret'], 
+		access_token=cfg['secret'], 
+		api_base_url=cfg['site'])
+	temp_client.status_post("{}\n{}\nContact Lynne (lynnesbian@fedi.lynnesbian.space) for assistance.".format(acct, message), post_id, visibility = visibility, spoiler_text = "Error")
 
 def process_mention(client, notification):
 	# for now we'll just ignore what the mention says, but in future we should check for a language name to use
