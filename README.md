@@ -53,10 +53,12 @@ OCRbot is *not* designed to replace captions, merely to supplement them. It work
 - Very large or very small text
 - Text on a complex background
 
+Additionally, OCRbot may sometimes fail to find images due to federation issues. This is a known bug, and I am currently looking into solving it, but it will never be completely solved. If any instances have blocked fedi.lynnesbian.space (or vice versa), the post will not make it to my instance, and OCRbot won't be able to find it.
+
 So in short, please caption your images. Don't rely on OCRbot.
 
 ## Donating
-Donations can be provided via [LiberaPay](https://liberapay.com/lynnesbian) (recurring), [PayPal](https://paypal.me/lynnesbian) (singular), or [Ko-fi](https://ko-fi.com/lynnesbian) (singular). Don't feel obligated to donate!
+Donations can be provided via [Patreon](https://patreon.com/lynnesbian) [LiberaPay](https://liberapay.com/lynnesbian) (recurring), [PayPal](https://paypal.me/lynnesbian) (singular), or [Ko-fi](https://ko-fi.com/lynnesbian) (singular). Don't feel obligated to donate!
 
 ## License
 Copyright (C)2019 Lynnesbian (https://fedi.lynnesbian.space/@lynnesbian)
