@@ -40,7 +40,7 @@ sudo systemctl start OCRbot
 You may also `sudo systemctl enable OCRbot` if you want it to start on boot.
 
 ## Caveats
-OCRbot is *not* designed to replace captions, merely to supplement them. It works best with plain black text on a plain white background. For example, PDF scans and Wikipedia screenshots will work great, but handwriting and distorted text won't. It will fail (at least partially) for:
+OCRbot is *not* designed to replace captions, merely to supplement them. It works best with plain black text on a plain white background. For example, PDF scans and Wikipedia screenshots will work great, but handwriting and distorted text won't. It will almost always fail (at least partially) for:
 - Anything using handwriting
 - Anything that's not in English (although I'm planning on fixing this)
 - Text that is skewed, rotated, stretched, or otherwise distorted
