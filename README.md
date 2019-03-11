@@ -44,7 +44,6 @@ OCRbot is *not* designed to replace captions, merely to supplement them. It work
 - Anything using handwriting
 - Anything that's not in English (although I'm planning on fixing this)
 - Text that is skewed, rotated, stretched, or otherwise distorted
-- Handwriting
 - Heavily compressed images
 - Text with layouts more complex than this page
 - WordArt
