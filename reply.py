@@ -14,12 +14,12 @@ try:
 	from PIL import Image, ImageOps, ImageEnhance
 except ImportError:
 	import Image, ImageOps, ImageEnhance
-import pytesseract
+# import pytesseract
 import requests
 from mastodon import Mastodon, StreamListener
 from bs4 import BeautifulSoup
-# import pyocr
-# import pyocr.builders
+import pyocr
+import pyocr.builders
 import sys
 # import cv2
 # import numpy as np
@@ -153,10 +153,10 @@ class ReplyListener(StreamListener):
 			self.pool.apply_async(process_mention, args=(client, notification))
 			
 
-# tools = pyocr.get_available_tools()
-# if len(tools) == 0:
-# 	print("No OCR tool found")
-# 	sys.exit(1)
+tools = pyocr.get_available_tools()
+if len(tools) == 0:
+	print("No OCR tools found. Please install tesseract-ocr and/or libtesseract.")
+	sys.exit(1)
 
 rl = ReplyListener()
 client.stream_user(rl) #go!
