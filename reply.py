@@ -14,12 +14,10 @@ try:
 	from PIL import Image, ImageOps, ImageEnhance
 except ImportError:
 	import Image, ImageOps, ImageEnhance
-# import pytesseract
 import requests
 from mastodon import Mastodon, StreamListener
 from bs4 import BeautifulSoup
 import pyocr
-import pyocr.builders
 import sys
 # import cv2
 # import numpy as np
@@ -114,7 +112,8 @@ def process_mention(client, notification):
 					return
 
 				try:
-					out = pytesseract.image_to_string(image , config="--psm 1").replace("|", "I") # tesseract often mistakenly identifies I as a |
+					lang = "eng" # TODO: allow users to specify language
+					out = tool.image_to_string(image, lang).replace("|", "I") # tesseract often mistakenly identifies I as a |
 					out = re.sub("(?:\n\s*){3,}", "\n\n", out) #replace any group of 3+ linebreaks with just two
 					if out == "":
 						out = "Couldn't read this image, sorry!\nOCRbot works best with plain black text on a plain white background. Here is some information about what it can and can't do: https://github.com/Lynnesbian/OCRbot/blob/master/README.md#caveats"
@@ -157,6 +156,14 @@ tools = pyocr.get_available_tools()
 if len(tools) == 0:
 	print("No OCR tools found. Please install tesseract-ocr and/or libtesseract.")
 	sys.exit(1)
+
+tool = tools[0]
+print("Using {}".format(tool.get_name()))
+
+langs = tool.get_available_languages()
+langs.remove("osd") # remove orientation and script detection from the list, as it's not actually a language
+print("Available languages: {}".format(", ".join(langs)))
+print("Starting OCRbot.")
 
 rl = ReplyListener()
 client.stream_user(rl) #go!
