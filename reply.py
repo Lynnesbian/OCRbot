@@ -19,19 +19,20 @@ from mastodon import Mastodon, StreamListener
 from bs4 import BeautifulSoup
 import pyocr
 import sys
-# import cv2
-# import numpy as np
 
 from multiprocessing import Pool
 import os, random, re, json, re
 
 cfg = json.load(open('config.json', 'r'))
 
+print("Logging in...")
+
 client = Mastodon(
-  client_id=cfg['client']['id'],
-  client_secret=cfg['client']['secret'], 
-  access_token=cfg['secret'], 
-  api_base_url=cfg['site'])
+	client_id=cfg['client']['id'],
+	client_secret=cfg['client']['secret'], 
+	access_token=cfg['secret'], 
+	api_base_url=cfg['site'])
+handle = "@{}@{}".format(client.account_verify_credentials()['username'], re.match("https://([^/]*)/?", cfg['site']).group(1)).lower()
 
 def extract_toot(toot):
 	toot = toot.replace("&apos;", "'") #convert HTML stuff to normal stuff
@@ -56,7 +57,7 @@ def extract_toot(toot):
 	text = re.sub("https://([^/]+)/(@[^ ]+)", r"\2@\1", text) #put mastodon-style mentions back in
 	text = re.sub("https://([^/]+)/users/([^ ]+)", r"@\2@\1", text) #put pleroma-style mentions back in
 	text = text.rstrip("\n") #remove trailing newline
-	text = re.sub(r"^@[^@]+@[^ ]+\s*", r"", text) #remove the initial mention
+	# text = re.sub(r"^@[^@]+@[^ ]+\s*", r"", text) #remove the initial mention
 	text = text.lower() #treat text as lowercase for easier keyword matching
 	return text
 
@@ -95,8 +96,34 @@ def process_mention(client, notification):
 
 	if post != None:
 		print("found post with media, extracting content")
-		mention = extract_toot(post['content'])
 		toot = ""
+		mention = extract_toot(notification['status']['content'])
+		print("parsing mention: {}".format(mention))
+		search = re.search("{}\\s(\\w+)".format(handle), mention)
+		if search != None:
+			lang = search.group(1)
+			found = False
+			print("checking for language: {}".format(lang))
+			if lang not in language_dict:
+				for code in language_dict:
+					for name in language_dict[code]:
+						if lang == name:
+							lang = code
+							found = True
+							break
+			else:
+				found = True
+
+			if not found:
+				# fall back to default, because we didn't understand this language name
+				toot += "(Couldn't find a language with the name '{}'.)\n".format(lang)
+				lang = cfg['default_language']
+
+			else:
+				# now that we have a language code, we need to see if the tesseract language pack is actually installed
+				if lang not in langs:
+					toot += "(Your requested language is supported by OCRbot, but the tesseract data package needs to be installed. Contact the admin and ask them to install language support for {}.)\n".format(lang)
+					lang = cfg['default_language']
 
 		# the actual OCR
 		i = 0
@@ -112,7 +139,6 @@ def process_mention(client, notification):
 					return
 
 				try:
-					lang = "eng" # TODO: allow users to specify language
 					out = tool.image_to_string(image, lang).replace("|", "I") # tesseract often mistakenly identifies I as a |
 					out = re.sub("(?:\n\s*){3,}", "\n\n", out) #replace any group of 3+ linebreaks with just two
 					if out == "":
@@ -127,6 +153,7 @@ def process_mention(client, notification):
 
 				except:
 					error("Failed to run tesseract.", acct, post_id, visibility)
+					raise
 					return
 
 		toot = acct + toot #prepend the @
@@ -159,6 +186,8 @@ if len(tools) == 0:
 
 tool = tools[0]
 print("Using {}".format(tool.get_name()))
+
+language_dict = json.load(open("language-codes.json"))
 
 langs = tool.get_available_languages()
 langs.remove("osd") # remove orientation and script detection from the list, as it's not actually a language
