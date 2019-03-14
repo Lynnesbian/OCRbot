@@ -100,6 +100,7 @@ def process_mention(client, notification):
 		mention = extract_toot(notification['status']['content'])
 		print("parsing mention: {}".format(mention))
 		search = re.search("{}\\s(\\w+)".format(handle), mention)
+		lang = cfg['default_language']
 		if search != None:
 			lang = search.group(1)
 			found = False
@@ -139,6 +140,7 @@ def process_mention(client, notification):
 					return
 
 				try:
+					print(lang)
 					out = tool.image_to_string(image, lang).replace("|", "I") # tesseract often mistakenly identifies I as a |
 					out = re.sub("(?:\n\s*){3,}", "\n\n", out) #replace any group of 3+ linebreaks with just two
 					if out == "":
