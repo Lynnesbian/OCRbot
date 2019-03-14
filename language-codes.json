@@ -1,0 +1,3403 @@
+{
+	"aar": [
+		"aa",
+		"aar",
+		"danakil-sprache",
+		"afar",
+		"afar"
+	],
+	"abk": [
+		"ab",
+		"abk",
+		"abchasisch",
+		"abkhazian",
+		"abkhaze"
+	],
+	"ace": [
+		"ace",
+		"aceh-sprache",
+		"achinese",
+		"aceh"
+	],
+	"ach": [
+		"ach",
+		"acholi-sprache",
+		"acoli",
+		"acoli"
+	],
+	"ada": [
+		"ada",
+		"adangme-sprache",
+		"adangme",
+		"adangme"
+	],
+	"ady": [
+		"ady",
+		"adygisch",
+		"adyghe",
+		"adygei",
+		"adyghé"
+	],
+	"afa": [
+		"afa",
+		"hamitosemitische sprachen (andere)",
+		"afro-asiatic languages",
+		"afro-asiatiques, langues"
+	],
+	"afh": [
+		"afh",
+		"afrihili",
+		"afrihili",
+		"afrihili"
+	],
+	"afr": [
+		"af",
+		"afr",
+		"afrikaans",
+		"afrikaans",
+		"afrikaans"
+	],
+	"ain": [
+		"ain",
+		"ainu-sprache",
+		"ainu",
+		"aïnou"
+	],
+	"aka": [
+		"ak",
+		"aka",
+		"akan-sprache",
+		"akan",
+		"akan"
+	],
+	"akk": [
+		"akk",
+		"akkadisch",
+		"akkadian",
+		"akkadien"
+	],
+	"alb": [
+		"sq",
+		"sqi",
+		"alb",
+		"albanisch",
+		"albanian",
+		"albanais"
+	],
+	"ale": [
+		"ale",
+		"aleutisch",
+		"aleut",
+		"aléoute"
+	],
+	"alg": [
+		"alg",
+		"algonkin-sprachen (andere)",
+		"algonquian languages",
+		"algonquines, langues"
+	],
+	"alt": [
+		"alt",
+		"altaisch",
+		"southern altai",
+		"altai du sud"
+	],
+	"amh": [
+		"am",
+		"amh",
+		"amharisch",
+		"amharic",
+		"amharique"
+	],
+	"ang": [
+		"ang",
+		"altenglisch",
+		"english, old (ca.450-1100)",
+		"anglo-saxon (ca.450-1100)"
+	],
+	"anp": [
+		"anp",
+		"anga-sprache",
+		"angika",
+		"angika"
+	],
+	"apa": [
+		"apa",
+		"apachen-sprachen",
+		"apache languages",
+		"apaches, langues"
+	],
+	"ara": [
+		"ar",
+		"ara",
+		"arabisch",
+		"arabic",
+		"arabe"
+	],
+	"arc": [
+		"arc",
+		"aramäisch",
+		"official aramaic (700-300 bce)",
+		"imperial aramaic (700-300 bce)",
+		"araméen d'empire (700-300 bce)"
+	],
+	"arg": [
+		"an",
+		"arg",
+		"aragonesisch",
+		"aragonese",
+		"aragonais"
+	],
+	"arm": [
+		"hy",
+		"hye",
+		"arm",
+		"armenisch",
+		"armenian",
+		"arménien"
+	],
+	"arn": [
+		"arn",
+		"arauka-sprachen",
+		"mapudungun",
+		"mapuche",
+		"mapudungun",
+		"mapuche",
+		"mapuce"
+	],
+	"arp": [
+		"arp",
+		"arapaho-sprache",
+		"arapaho",
+		"arapaho"
+	],
+	"art": [
+		"art",
+		"kunstsprachen (andere)",
+		"artificial languages",
+		"artificielles, langues"
+	],
+	"arw": [
+		"arw",
+		"arawak-sprachen",
+		"arawak",
+		"arawak"
+	],
+	"asm": [
+		"as",
+		"asm",
+		"assamesisch",
+		"assamese",
+		"assamais"
+	],
+	"ast": [
+		"ast",
+		"asturisch",
+		"asturian",
+		"bable",
+		"leonese",
+		"asturleonese",
+		"asturien",
+		"bable",
+		"léonais",
+		"asturoléonais"
+	],
+	"ath": [
+		"ath",
+		"athapaskische sprachen (andere)",
+		"athapascan languages",
+		"athapascanes, langues"
+	],
+	"aus": [
+		"aus",
+		"australische sprachen",
+		"australian languages",
+		"australiennes, langues"
+	],
+	"ava": [
+		"av",
+		"ava",
+		"awarisch",
+		"avaric",
+		"avar"
+	],
+	"ave": [
+		"ae",
+		"ave",
+		"avestisch",
+		"avestan",
+		"avestique"
+	],
+	"awa": [
+		"awa",
+		"awadhi",
+		"awadhi",
+		"awadhi"
+	],
+	"aym": [
+		"ay",
+		"aym",
+		"aymará-sprache",
+		"aymara",
+		"aymara"
+	],
+	"aze": [
+		"az",
+		"aze",
+		"aserbeidschanisch",
+		"azerbaijani",
+		"azéri"
+	],
+	"bad": [
+		"bad",
+		"banda-sprachen (ubangi-sprachen)",
+		"banda languages",
+		"banda, langues"
+	],
+	"bai": [
+		"bai",
+		"bamileke-sprachen",
+		"bamileke languages",
+		"bamiléké, langues"
+	],
+	"bak": [
+		"ba",
+		"bak",
+		"baschkirisch",
+		"bashkir",
+		"bachkir"
+	],
+	"bal": [
+		"bal",
+		"belutschisch",
+		"baluchi",
+		"baloutchi"
+	],
+	"bam": [
+		"bm",
+		"bam",
+		"bambara-sprache",
+		"bambara",
+		"bambara"
+	],
+	"ban": [
+		"ban",
+		"balinesisch",
+		"balinese",
+		"balinais"
+	],
+	"baq": [
+		"eu",
+		"eus",
+		"baq",
+		"baskisch",
+		"basque",
+		"basque"
+	],
+	"bas": [
+		"bas",
+		"basaa-sprache",
+		"basa",
+		"basa"
+	],
+	"bat": [
+		"bat",
+		"baltische sprachen (andere)",
+		"baltic languages",
+		"baltes, langues"
+	],
+	"bej": [
+		"bej",
+		"bedauye",
+		"beja",
+		"bedawiyet",
+		"bedja"
+	],
+	"bel": [
+		"be",
+		"bel",
+		"weißrussisch",
+		"belarusian",
+		"biélorusse"
+	],
+	"bem": [
+		"bem",
+		"bemba-sprache",
+		"bemba",
+		"bemba"
+	],
+	"ben": [
+		"bn",
+		"ben",
+		"bengali",
+		"bengali",
+		"bengali"
+	],
+	"ber": [
+		"ber",
+		"berbersprachen (andere)",
+		"berber languages",
+		"berbères, langues"
+	],
+	"bho": [
+		"bho",
+		"bhojpuri",
+		"bhojpuri",
+		"bhojpuri"
+	],
+	"bih": [
+		"bh",
+		"bih",
+		"bihari (andere)",
+		"bihari languages",
+		"langues biharis"
+	],
+	"bik": [
+		"bik",
+		"bikol-sprache",
+		"bikol",
+		"bikol"
+	],
+	"bin": [
+		"bin",
+		"edo-sprache",
+		"bini",
+		"edo",
+		"bini",
+		"edo"
+	],
+	"bis": [
+		"bi",
+		"bis",
+		"beach-la-mar",
+		"bislama",
+		"bichlamar"
+	],
+	"bla": [
+		"bla",
+		"blackfoot-sprache",
+		"siksika",
+		"blackfoot"
+	],
+	"bnt": [
+		"bnt",
+		"bantusprachen (andere)",
+		"bantu languages",
+		"bantou, langues"
+	],
+	"bod": [
+		"bo",
+		"bod",
+		"tib",
+		"tibetisch",
+		"tibetan",
+		"tibétain"
+	],
+	"bos": [
+		"bs",
+		"bos",
+		"bosnisch",
+		"bosnian",
+		"bosniaque"
+	],
+	"bra": [
+		"bra",
+		"braj-bhakha",
+		"braj",
+		"braj"
+	],
+	"bre": [
+		"br",
+		"bre",
+		"bretonisch",
+		"breton",
+		"breton"
+	],
+	"btk": [
+		"btk",
+		"batak-sprache",
+		"batak languages",
+		"batak, langues"
+	],
+	"bua": [
+		"bua",
+		"burjatisch",
+		"buriat",
+		"bouriate"
+	],
+	"bug": [
+		"bug",
+		"bugi-sprache",
+		"buginese",
+		"bugi"
+	],
+	"bul": [
+		"bg",
+		"bul",
+		"bulgarisch",
+		"bulgarian",
+		"bulgare"
+	],
+	"bur": [
+		"my",
+		"mya",
+		"bur",
+		"birmanisch",
+		"burmese",
+		"birman"
+	],
+	"byn": [
+		"byn",
+		"bilin-sprache",
+		"blin",
+		"bilin",
+		"blin",
+		"bilen"
+	],
+	"cad": [
+		"cad",
+		"caddo-sprachen",
+		"caddo",
+		"caddo"
+	],
+	"cai": [
+		"cai",
+		"indianersprachen, zentralamerika (andere)",
+		"central american indian languages",
+		"amérindiennes de l'amérique centrale,  langues"
+	],
+	"car": [
+		"car",
+		"karibische sprachen",
+		"galibi carib",
+		"karib",
+		"galibi",
+		"carib"
+	],
+	"cat": [
+		"ca",
+		"cat",
+		"katalanisch",
+		"catalan",
+		"valencian",
+		"catalan",
+		"valencien"
+	],
+	"cau": [
+		"cau",
+		"kaukasische sprachen (andere)",
+		"caucasian languages",
+		"caucasiennes, langues"
+	],
+	"ceb": [
+		"ceb",
+		"cebuano",
+		"cebuano",
+		"cebuano"
+	],
+	"cel": [
+		"cel",
+		"keltische sprachen (andere)",
+		"celtic languages",
+		"celtiques, langues",
+		"celtes, langues"
+	],
+	"ces": [
+		"cs",
+		"ces",
+		"cze",
+		"tschechisch",
+		"czech",
+		"tchèque"
+	],
+	"cha": [
+		"ch",
+		"cha",
+		"chamorro-sprache",
+		"chamorro",
+		"chamorro"
+	],
+	"chb": [
+		"chb",
+		"chibcha-sprachen",
+		"chibcha",
+		"chibcha"
+	],
+	"che": [
+		"ce",
+		"che",
+		"tschetschenisch",
+		"chechen",
+		"tchétchène"
+	],
+	"chg": [
+		"chg",
+		"tschagataisch",
+		"chagatai",
+		"djaghataï"
+	],
+	"chi": [
+		"zh",
+		"zho",
+		"chi",
+		"chinesisch",
+		"chinese",
+		"chinois"
+	],
+	"chk": [
+		"chk",
+		"trukesisch",
+		"chuukese",
+		"chuuk"
+	],
+	"chm": [
+		"chm",
+		"tscheremissisch",
+		"mari",
+		"mari"
+	],
+	"chn": [
+		"chn",
+		"chinook-jargon",
+		"chinook jargon",
+		"chinook, jargon"
+	],
+	"cho": [
+		"cho",
+		"choctaw-sprache",
+		"choctaw",
+		"choctaw"
+	],
+	"chp": [
+		"chp",
+		"chipewyan-sprache",
+		"chipewyan",
+		"dene suline",
+		"chipewyan"
+	],
+	"chr": [
+		"chr",
+		"cherokee-sprache",
+		"cherokee",
+		"cherokee"
+	],
+	"chu": [
+		"cu",
+		"chu",
+		"kirchenslawisch",
+		"church slavic",
+		"old slavonic",
+		"church slavonic",
+		"old bulgarian",
+		"old church slavonic",
+		"slavon d'église",
+		"vieux slave",
+		"slavon liturgique",
+		"vieux bulgare"
+	],
+	"chv": [
+		"cv",
+		"chv",
+		"tschuwaschisch",
+		"chuvash",
+		"tchouvache"
+	],
+	"chy": [
+		"chy",
+		"cheyenne-sprache",
+		"cheyenne",
+		"cheyenne"
+	],
+	"cmc": [
+		"cmc",
+		"cham-sprachen",
+		"chamic languages",
+		"chames, langues"
+	],
+	"cop": [
+		"cop",
+		"koptisch",
+		"coptic",
+		"copte"
+	],
+	"cor": [
+		"kw",
+		"cor",
+		"kornisch",
+		"cornish",
+		"cornique"
+	],
+	"cos": [
+		"co",
+		"cos",
+		"korsisch",
+		"corsican",
+		"corse"
+	],
+	"cpe": [
+		"cpe",
+		"kreolisch-englisch (andere)",
+		"creoles and pidgins, english based",
+		"créoles et pidgins basés sur l'anglais"
+	],
+	"cpf": [
+		"cpf",
+		"kreolisch-französisch (andere)",
+		"creoles and pidgins, french-based",
+		"créoles et pidgins basés sur le français"
+	],
+	"cpp": [
+		"cpp",
+		"kreolisch-portugiesisch (andere)",
+		"creoles and pidgins, portuguese-based",
+		"créoles et pidgins basés sur le portugais"
+	],
+	"cre": [
+		"cr",
+		"cre",
+		"cree-sprache",
+		"cree",
+		"cree"
+	],
+	"crh": [
+		"crh",
+		"krimtatarisch",
+		"crimean tatar",
+		"crimean turkish",
+		"tatar de crimé"
+	],
+	"crp": [
+		"crp",
+		"kreolische sprachen",
+		"pidginsprachen (andere)",
+		"creoles and pidgins",
+		"créoles et pidgins"
+	],
+	"csb": [
+		"csb",
+		"kaschubisch",
+		"kashubian",
+		"kachoube"
+	],
+	"cus": [
+		"cus",
+		"kuschitische sprachen (andere)",
+		"cushitic languages",
+		"couchitiques,  langues"
+	],
+	"cym": [
+		"cy",
+		"cym",
+		"wel",
+		"kymrisch",
+		"welsh",
+		"gallois"
+	],
+	"cze": [
+		"cs",
+		"ces",
+		"cze",
+		"tschechisch",
+		"czech",
+		"tchèque"
+	],
+	"dak": [
+		"dak",
+		"dakota-sprache",
+		"dakota",
+		"dakota"
+	],
+	"dan": [
+		"da",
+		"dan",
+		"dänisch",
+		"danish",
+		"danois"
+	],
+	"dar": [
+		"dar",
+		"darginisch",
+		"dargwa",
+		"dargwa"
+	],
+	"day": [
+		"day",
+		"dajakisch",
+		"land dayak languages",
+		"dayak, langues"
+	],
+	"del": [
+		"del",
+		"delaware-sprache",
+		"delaware",
+		"delaware"
+	],
+	"den": [
+		"den",
+		"slave-sprache",
+		"slave (athapascan)",
+		"esclave (athapascan)"
+	],
+	"deu": [
+		"de",
+		"deu",
+		"ger",
+		"deutsch",
+		"german",
+		"allemand"
+	],
+	"dgr": [
+		"dgr",
+		"dogrib-sprache",
+		"dogrib",
+		"dogrib"
+	],
+	"din": [
+		"din",
+		"dinka-sprache",
+		"dinka",
+		"dinka"
+	],
+	"div": [
+		"dv",
+		"div",
+		"maledivisch",
+		"divehi",
+		"dhivehi",
+		"maldivian",
+		"maldivien"
+	],
+	"doi": [
+		"doi",
+		"dogri",
+		"dogri",
+		"dogri"
+	],
+	"dra": [
+		"dra",
+		"drawidische sprachen (andere)",
+		"dravidian languages",
+		"dravidiennes,  langues"
+	],
+	"dsb": [
+		"dsb",
+		"niedersorbisch",
+		"lower sorbian",
+		"bas-sorabe"
+	],
+	"dua": [
+		"dua",
+		"duala-sprachen",
+		"duala",
+		"douala"
+	],
+	"dum": [
+		"dum",
+		"mittelniederländisch",
+		"dutch, middle (ca.1050-1350)",
+		"néerlandais moyen (ca. 1050-1350)"
+	],
+	"dut": [
+		"nl",
+		"nld",
+		"dut",
+		"niederländisch",
+		"dutch",
+		"flemish",
+		"néerlandais",
+		"flamand"
+	],
+	"dyu": [
+		"dyu",
+		"dyula-sprache",
+		"dyula",
+		"dioula"
+	],
+	"dzo": [
+		"dz",
+		"dzo",
+		"dzongkha",
+		"dzongkha",
+		"dzongkha"
+	],
+	"efi": [
+		"efi",
+		"efik",
+		"efik",
+		"efik"
+	],
+	"egy": [
+		"egy",
+		"ägyptisch",
+		"egyptian (ancient)",
+		"égyptien"
+	],
+	"eka": [
+		"eka",
+		"ekajuk",
+		"ekajuk",
+		"ekajuk"
+	],
+	"ell": [
+		"el",
+		"ell",
+		"gre",
+		"neugriechisch",
+		"greek, modern (1453-)",
+		"grec moderne (après 1453)"
+	],
+	"elx": [
+		"elx",
+		"elamisch",
+		"elamite",
+		"élamite"
+	],
+	"eng": [
+		"en",
+		"eng",
+		"englisch",
+		"english",
+		"anglais"
+	],
+	"enm": [
+		"enm",
+		"mittelenglisch",
+		"english, middle (1100-1500)",
+		"anglais moyen (1100-1500)"
+	],
+	"epo": [
+		"eo",
+		"epo",
+		"esperanto",
+		"esperanto",
+		"espéranto"
+	],
+	"est": [
+		"et",
+		"est",
+		"estnisch",
+		"estonian",
+		"estonien"
+	],
+	"eus": [
+		"eu",
+		"eus",
+		"baq",
+		"baskisch",
+		"basque",
+		"basque"
+	],
+	"ewe": [
+		"ee",
+		"ewe",
+		"ewe-sprache",
+		"ewe",
+		"éwé"
+	],
+	"ewo": [
+		"ewo",
+		"ewondo",
+		"ewondo",
+		"éwondo"
+	],
+	"fan": [
+		"fan",
+		"pangwe-sprache",
+		"fang",
+		"fang"
+	],
+	"fao": [
+		"fo",
+		"fao",
+		"färöisch",
+		"faroese",
+		"féroïen"
+	],
+	"fas": [
+		"fa",
+		"fas",
+		"per",
+		"persisch",
+		"persian",
+		"persan"
+	],
+	"fat": [
+		"fat",
+		"fante-sprache",
+		"fanti",
+		"fanti"
+	],
+	"fij": [
+		"fj",
+		"fij",
+		"fidschi-sprache",
+		"fijian",
+		"fidjien"
+	],
+	"fil": [
+		"fil",
+		"pilipino",
+		"filipino",
+		"pilipino",
+		"filipino",
+		"pilipino"
+	],
+	"fin": [
+		"fi",
+		"fin",
+		"finnisch",
+		"finnish",
+		"finnois"
+	],
+	"fiu": [
+		"fiu",
+		"finnougrische sprachen (andere)",
+		"finno-ugrian languages",
+		"finno-ougriennes,  langues"
+	],
+	"fon": [
+		"fon",
+		"fon-sprache",
+		"fon",
+		"fon"
+	],
+	"fra": [
+		"fr",
+		"fra",
+		"fre",
+		"französisch",
+		"french",
+		"français"
+	],
+	"fre": [
+		"fr",
+		"fra",
+		"fre",
+		"französisch",
+		"french",
+		"français"
+	],
+	"frm": [
+		"frm",
+		"mittelfranzösisch",
+		"french, middle (ca.1400-1600)",
+		"français moyen (1400-1600)"
+	],
+	"fro": [
+		"fro",
+		"altfranzösisch",
+		"french, old (842-ca.1400)",
+		"français ancien (842-ca.1400)"
+	],
+	"frr": [
+		"frr",
+		"nordfriesisch",
+		"northern frisian",
+		"frison septentrional"
+	],
+	"frs": [
+		"frs",
+		"ostfriesisch",
+		"eastern frisian",
+		"frison oriental"
+	],
+	"fry": [
+		"fy",
+		"fry",
+		"friesisch",
+		"western frisian",
+		"frison occidental"
+	],
+	"ful": [
+		"ff",
+		"ful",
+		"ful",
+		"fulah",
+		"peul"
+	],
+	"fur": [
+		"fur",
+		"friulisch",
+		"friulian",
+		"frioulan"
+	],
+	"gaa": [
+		"gaa",
+		"ga-sprache",
+		"ga",
+		"ga"
+	],
+	"gay": [
+		"gay",
+		"gayo-sprache",
+		"gayo",
+		"gayo"
+	],
+	"gba": [
+		"gba",
+		"gbaya-sprache",
+		"gbaya",
+		"gbaya"
+	],
+	"gem": [
+		"gem",
+		"germanische sprachen (andere)",
+		"germanic languages",
+		"germaniques, langues"
+	],
+	"geo": [
+		"ka",
+		"kat",
+		"geo",
+		"georgisch",
+		"georgian",
+		"géorgien"
+	],
+	"ger": [
+		"de",
+		"deu",
+		"ger",
+		"deutsch",
+		"german",
+		"allemand"
+	],
+	"gez": [
+		"gez",
+		"altäthiopisch",
+		"geez",
+		"guèze"
+	],
+	"gil": [
+		"gil",
+		"gilbertesisch",
+		"gilbertese",
+		"kiribati"
+	],
+	"gla": [
+		"gd",
+		"gla",
+		"gälisch-schottisch",
+		"gaelic",
+		"scottish gaelic",
+		"gaélique",
+		"gaélique écossais"
+	],
+	"gle": [
+		"ga",
+		"gle",
+		"irisch",
+		"irish",
+		"irlandais"
+	],
+	"glg": [
+		"gl",
+		"glg",
+		"galicisch",
+		"galician",
+		"galicien"
+	],
+	"glv": [
+		"gv",
+		"glv",
+		"manx",
+		"manx",
+		"manx",
+		"mannois"
+	],
+	"gmh": [
+		"gmh",
+		"mittelhochdeutsch",
+		"german, middle high (ca.1050-1500)",
+		"allemand, moyen haut (ca. 1050-1500)"
+	],
+	"goh": [
+		"goh",
+		"althochdeutsch",
+		"german, old high (ca.750-1050)",
+		"allemand, vieux haut (ca. 750-1050)"
+	],
+	"gon": [
+		"gon",
+		"gondi-sprache",
+		"gondi",
+		"gond"
+	],
+	"gor": [
+		"gor",
+		"gorontalesisch",
+		"gorontalo",
+		"gorontalo"
+	],
+	"got": [
+		"got",
+		"gotisch",
+		"gothic",
+		"gothique"
+	],
+	"grb": [
+		"grb",
+		"grebo-sprache",
+		"grebo",
+		"grebo"
+	],
+	"grc": [
+		"grc",
+		"griechisch",
+		"greek, ancient (to 1453)",
+		"grec ancien (jusqu'à 1453)"
+	],
+	"gre": [
+		"el",
+		"ell",
+		"gre",
+		"neugriechisch",
+		"greek, modern (1453-)",
+		"grec moderne (après 1453)"
+	],
+	"grn": [
+		"gn",
+		"grn",
+		"guaraní-sprache",
+		"guarani",
+		"guarani"
+	],
+	"gsw": [
+		"gsw",
+		"schweizerdeutsch",
+		"swiss german",
+		"alemannic",
+		"alsatian",
+		"suisse alémanique",
+		"alémanique",
+		"alsacien"
+	],
+	"guj": [
+		"gu",
+		"guj",
+		"gujarati-sprache",
+		"gujarati",
+		"goudjrati"
+	],
+	"gwi": [
+		"gwi",
+		"kutchin-sprache",
+		"gwich'in",
+		"gwich'in"
+	],
+	"hai": [
+		"hai",
+		"haida-sprache",
+		"haida",
+		"haida"
+	],
+	"hat": [
+		"ht",
+		"hat",
+		"haïtien (haiti-kreolisch)",
+		"haitian",
+		"haitian creole",
+		"haïtien",
+		"créole haïtien"
+	],
+	"hau": [
+		"ha",
+		"hau",
+		"haussa-sprache",
+		"hausa",
+		"haoussa"
+	],
+	"haw": [
+		"haw",
+		"hawaiisch",
+		"hawaiian",
+		"hawaïen"
+	],
+	"heb": [
+		"he",
+		"heb",
+		"hebräisch",
+		"hebrew",
+		"hébreu"
+	],
+	"her": [
+		"hz",
+		"her",
+		"herero-sprache",
+		"herero",
+		"herero"
+	],
+	"hil": [
+		"hil",
+		"hiligaynon-sprache",
+		"hiligaynon",
+		"hiligaynon"
+	],
+	"him": [
+		"him",
+		"himachali",
+		"himachali languages",
+		"western pahari languages",
+		"langues himachalis",
+		"langues paharis occidentales"
+	],
+	"hin": [
+		"hi",
+		"hin",
+		"hindi",
+		"hindi",
+		"hindi"
+	],
+	"hit": [
+		"hit",
+		"hethitisch",
+		"hittite",
+		"hittite"
+	],
+	"hmn": [
+		"hmn",
+		"miao-sprachen",
+		"hmong",
+		"mong",
+		"hmong"
+	],
+	"hmo": [
+		"ho",
+		"hmo",
+		"hiri-motu",
+		"hiri motu",
+		"hiri motu"
+	],
+	"hrv": [
+		"hr",
+		"hrv",
+		"kroatisch",
+		"croatian",
+		"croate"
+	],
+	"hsb": [
+		"hsb",
+		"obersorbisch",
+		"upper sorbian",
+		"haut-sorabe"
+	],
+	"hun": [
+		"hu",
+		"hun",
+		"ungarisch",
+		"hungarian",
+		"hongrois"
+	],
+	"hup": [
+		"hup",
+		"hupa-sprache",
+		"hupa",
+		"hupa"
+	],
+	"hye": [
+		"hy",
+		"hye",
+		"arm",
+		"armenisch",
+		"armenian",
+		"arménien"
+	],
+	"iba": [
+		"iba",
+		"iban-sprache",
+		"iban",
+		"iban"
+	],
+	"ibo": [
+		"ig",
+		"ibo",
+		"ibo-sprache",
+		"igbo",
+		"igbo"
+	],
+	"ice": [
+		"is",
+		"isl",
+		"ice",
+		"isländisch",
+		"icelandic",
+		"islandais"
+	],
+	"ido": [
+		"io",
+		"ido",
+		"ido",
+		"ido",
+		"ido"
+	],
+	"iii": [
+		"ii",
+		"iii",
+		"lalo-sprache",
+		"sichuan yi",
+		"nuosu",
+		"yi de sichuan"
+	],
+	"ijo": [
+		"ijo",
+		"ijo-sprache",
+		"ijo languages",
+		"ijo, langues"
+	],
+	"iku": [
+		"iu",
+		"iku",
+		"inuktitut",
+		"inuktitut",
+		"inuktitut"
+	],
+	"ile": [
+		"ie",
+		"ile",
+		"interlingue",
+		"interlingue",
+		"occidental",
+		"interlingue"
+	],
+	"ilo": [
+		"ilo",
+		"ilokano-sprache",
+		"iloko",
+		"ilocano"
+	],
+	"ina": [
+		"ia",
+		"ina",
+		"interlingua",
+		"interlingua (international auxiliary language association)",
+		"interlingua (langue auxiliaire internationale)"
+	],
+	"inc": [
+		"inc",
+		"indoarische sprachen (andere)",
+		"indic languages",
+		"indo-aryennes, langues"
+	],
+	"ind": [
+		"id",
+		"ind",
+		"bahasa indonesia",
+		"indonesian",
+		"indonésien"
+	],
+	"ine": [
+		"ine",
+		"indogermanische sprachen (andere)",
+		"indo-european languages",
+		"indo-européennes, langues"
+	],
+	"inh": [
+		"inh",
+		"inguschisch",
+		"ingush",
+		"ingouche"
+	],
+	"ipk": [
+		"ik",
+		"ipk",
+		"inupik",
+		"inupiaq",
+		"inupiaq"
+	],
+	"ira": [
+		"ira",
+		"iranische sprachen (andere)",
+		"iranian languages",
+		"iraniennes, langues"
+	],
+	"iro": [
+		"iro",
+		"irokesische sprachen",
+		"iroquoian languages",
+		"iroquoises, langues"
+	],
+	"isl": [
+		"is",
+		"isl",
+		"ice",
+		"isländisch",
+		"icelandic",
+		"islandais"
+	],
+	"ita": [
+		"it",
+		"ita",
+		"italienisch",
+		"italian",
+		"italien"
+	],
+	"jav": [
+		"jv",
+		"jav",
+		"javanisch",
+		"javanese",
+		"javanais"
+	],
+	"jbo": [
+		"jbo",
+		"lojban",
+		"lojban",
+		"lojban"
+	],
+	"jpn": [
+		"ja",
+		"jpn",
+		"japanisch",
+		"japanese",
+		"japonais"
+	],
+	"jpr": [
+		"jpr",
+		"jüdisch-persisch",
+		"judeo-persian",
+		"judéo-persan"
+	],
+	"jrb": [
+		"jrb",
+		"jüdisch-arabisch",
+		"judeo-arabic",
+		"judéo-arabe"
+	],
+	"kaa": [
+		"kaa",
+		"karakalpakisch",
+		"kara-kalpak",
+		"karakalpak"
+	],
+	"kab": [
+		"kab",
+		"kabylisch",
+		"kabyle",
+		"kabyle"
+	],
+	"kac": [
+		"kac",
+		"kachin-sprache",
+		"kachin",
+		"jingpho",
+		"kachin",
+		"jingpho"
+	],
+	"kal": [
+		"kl",
+		"kal",
+		"grönländisch",
+		"kalaallisut",
+		"greenlandic",
+		"groenlandais"
+	],
+	"kam": [
+		"kam",
+		"kamba-sprache",
+		"kamba",
+		"kamba"
+	],
+	"kan": [
+		"kn",
+		"kan",
+		"kannada",
+		"kannada",
+		"kannada"
+	],
+	"kar": [
+		"kar",
+		"karenisch",
+		"karen languages",
+		"karen, langues"
+	],
+	"kas": [
+		"ks",
+		"kas",
+		"kaschmiri",
+		"kashmiri",
+		"kashmiri"
+	],
+	"kat": [
+		"ka",
+		"kat",
+		"geo",
+		"georgisch",
+		"georgian",
+		"géorgien"
+	],
+	"kau": [
+		"kr",
+		"kau",
+		"kanuri-sprache",
+		"kanuri",
+		"kanouri"
+	],
+	"kaw": [
+		"kaw",
+		"kawi",
+		"kawi",
+		"kawi"
+	],
+	"kaz": [
+		"kk",
+		"kaz",
+		"kasachisch",
+		"kazakh",
+		"kazakh"
+	],
+	"kbd": [
+		"kbd",
+		"kabardinisch",
+		"kabardian",
+		"kabardien"
+	],
+	"kha": [
+		"kha",
+		"khasi-sprache",
+		"khasi",
+		"khasi"
+	],
+	"khi": [
+		"khi",
+		"khoisan-sprachen (andere)",
+		"khoisan languages",
+		"khoïsan, langues"
+	],
+	"khm": [
+		"km",
+		"khm",
+		"kambodschanisch",
+		"central khmer",
+		"khmer central"
+	],
+	"kho": [
+		"kho",
+		"sakisch",
+		"khotanese",
+		"sakan",
+		"khotanais",
+		"sakan"
+	],
+	"kik": [
+		"ki",
+		"kik",
+		"kikuyu-sprache",
+		"kikuyu",
+		"gikuyu",
+		"kikuyu"
+	],
+	"kin": [
+		"rw",
+		"kin",
+		"rwanda-sprache",
+		"kinyarwanda",
+		"rwanda"
+	],
+	"kir": [
+		"ky",
+		"kir",
+		"kirgisisch",
+		"kirghiz",
+		"kyrgyz",
+		"kirghiz"
+	],
+	"kmb": [
+		"kmb",
+		"kimbundu-sprache",
+		"kimbundu",
+		"kimbundu"
+	],
+	"kok": [
+		"kok",
+		"konkani",
+		"konkani",
+		"konkani"
+	],
+	"kom": [
+		"kv",
+		"kom",
+		"komi-sprache",
+		"komi",
+		"kom"
+	],
+	"kon": [
+		"kg",
+		"kon",
+		"kongo-sprache",
+		"kongo",
+		"kongo"
+	],
+	"kor": [
+		"ko",
+		"kor",
+		"koreanisch",
+		"korean",
+		"coréen"
+	],
+	"kos": [
+		"kos",
+		"kosraeanisch",
+		"kosraean",
+		"kosrae"
+	],
+	"kpe": [
+		"kpe",
+		"kpelle-sprache",
+		"kpelle",
+		"kpellé"
+	],
+	"krc": [
+		"krc",
+		"karatschaiisch-balkarisch",
+		"karachay-balkar",
+		"karatchai balkar"
+	],
+	"krl": [
+		"krl",
+		"karelisch",
+		"karelian",
+		"carélien"
+	],
+	"kro": [
+		"kro",
+		"kru-sprachen (andere)",
+		"kru languages",
+		"krou, langues"
+	],
+	"kru": [
+		"kru",
+		"oraon-sprache",
+		"kurukh",
+		"kurukh"
+	],
+	"kua": [
+		"kj",
+		"kua",
+		"kwanyama-sprache",
+		"kuanyama",
+		"kwanyama",
+		"kuanyama",
+		"kwanyama"
+	],
+	"kum": [
+		"kum",
+		"kumükisch",
+		"kumyk",
+		"koumyk"
+	],
+	"kur": [
+		"ku",
+		"kur",
+		"kurdisch",
+		"kurdish",
+		"kurde"
+	],
+	"kut": [
+		"kut",
+		"kutenai-sprache",
+		"kutenai",
+		"kutenai"
+	],
+	"lad": [
+		"lad",
+		"judenspanisch",
+		"ladino",
+		"judéo-espagnol"
+	],
+	"lah": [
+		"lah",
+		"lahnda",
+		"lahnda",
+		"lahnda"
+	],
+	"lam": [
+		"lam",
+		"lamba-sprache (bantusprache)",
+		"lamba",
+		"lamba"
+	],
+	"lao": [
+		"lo",
+		"lao",
+		"laotisch",
+		"lao",
+		"lao"
+	],
+	"lat": [
+		"la",
+		"lat",
+		"latein",
+		"latin",
+		"latin"
+	],
+	"lav": [
+		"lv",
+		"lav",
+		"lettisch",
+		"latvian",
+		"letton"
+	],
+	"lez": [
+		"lez",
+		"lesgisch",
+		"lezghian",
+		"lezghien"
+	],
+	"lim": [
+		"li",
+		"lim",
+		"limburgisch",
+		"limburgan",
+		"limburger",
+		"limburgish",
+		"limbourgeois"
+	],
+	"lin": [
+		"ln",
+		"lin",
+		"lingala",
+		"lingala",
+		"lingala"
+	],
+	"lit": [
+		"lt",
+		"lit",
+		"litauisch",
+		"lithuanian",
+		"lituanien"
+	],
+	"lol": [
+		"lol",
+		"mongo-sprache",
+		"mongo",
+		"mongo"
+	],
+	"loz": [
+		"loz",
+		"rotse-sprache",
+		"lozi",
+		"lozi"
+	],
+	"ltz": [
+		"lb",
+		"ltz",
+		"luxemburgisch",
+		"luxembourgish",
+		"letzeburgesch",
+		"luxembourgeois"
+	],
+	"lua": [
+		"lua",
+		"lulua-sprache",
+		"luba-lulua",
+		"luba-lulua"
+	],
+	"lub": [
+		"lu",
+		"lub",
+		"luba-katanga-sprache",
+		"luba-katanga",
+		"luba-katanga"
+	],
+	"lug": [
+		"lg",
+		"lug",
+		"ganda-sprache",
+		"ganda",
+		"ganda"
+	],
+	"lui": [
+		"lui",
+		"luiseño-sprache",
+		"luiseno",
+		"luiseno"
+	],
+	"lun": [
+		"lun",
+		"lunda-sprache",
+		"lunda",
+		"lunda"
+	],
+	"luo": [
+		"luo",
+		"luo-sprache",
+		"luo (kenya and tanzania)",
+		"luo (kenya et tanzanie)"
+	],
+	"lus": [
+		"lus",
+		"lushai-sprache",
+		"lushai",
+		"lushai"
+	],
+	"mac": [
+		"mk",
+		"mkd",
+		"mac",
+		"makedonisch",
+		"macedonian",
+		"macédonien"
+	],
+	"mad": [
+		"mad",
+		"maduresisch",
+		"madurese",
+		"madourais"
+	],
+	"mag": [
+		"mag",
+		"khotta",
+		"magahi",
+		"magahi"
+	],
+	"mah": [
+		"mh",
+		"mah",
+		"marschallesisch",
+		"marshallese",
+		"marshall"
+	],
+	"mai": [
+		"mai",
+		"maithili",
+		"maithili",
+		"maithili"
+	],
+	"mak": [
+		"mak",
+		"makassarisch",
+		"makasar",
+		"makassar"
+	],
+	"mal": [
+		"ml",
+		"mal",
+		"malayalam",
+		"malayalam",
+		"malayalam"
+	],
+	"man": [
+		"man",
+		"malinke-sprache",
+		"mandingo",
+		"mandingue"
+	],
+	"mao": [
+		"mi",
+		"mri",
+		"mao",
+		"maori-sprache",
+		"maori",
+		"maori"
+	],
+	"map": [
+		"map",
+		"austronesische sprachen (andere)",
+		"austronesian languages",
+		"austronésiennes, langues"
+	],
+	"mar": [
+		"mr",
+		"mar",
+		"marathi",
+		"marathi",
+		"marathe"
+	],
+	"mas": [
+		"mas",
+		"massai-sprache",
+		"masai",
+		"massaï"
+	],
+	"may": [
+		"ms",
+		"msa",
+		"may",
+		"malaiisch",
+		"malay",
+		"malais"
+	],
+	"mdf": [
+		"mdf",
+		"mokscha-sprache",
+		"moksha",
+		"moksa"
+	],
+	"mdr": [
+		"mdr",
+		"mandaresisch",
+		"mandar",
+		"mandar"
+	],
+	"men": [
+		"men",
+		"mende-sprache",
+		"mende",
+		"mendé"
+	],
+	"mga": [
+		"mga",
+		"mittelirisch",
+		"irish, middle (900-1200)",
+		"irlandais moyen (900-1200)"
+	],
+	"mic": [
+		"mic",
+		"micmac-sprache",
+		"mi'kmaq",
+		"micmac",
+		"mi'kmaq",
+		"micmac"
+	],
+	"min": [
+		"min",
+		"minangkabau-sprache",
+		"minangkabau",
+		"minangkabau"
+	],
+	"mis": [
+		"mis",
+		"einzelne andere sprachen",
+		"uncoded languages",
+		"langues non codées"
+	],
+	"mkd": [
+		"mk",
+		"mkd",
+		"mac",
+		"makedonisch",
+		"macedonian",
+		"macédonien"
+	],
+	"mkh": [
+		"mkh",
+		"mon-khmer-sprachen (andere)",
+		"mon-khmer languages",
+		"môn-khmer, langues"
+	],
+	"mlg": [
+		"mg",
+		"mlg",
+		"malagassi-sprache",
+		"malagasy",
+		"malgache"
+	],
+	"mlt": [
+		"mt",
+		"mlt",
+		"maltesisch",
+		"maltese",
+		"maltais"
+	],
+	"mnc": [
+		"mnc",
+		"mandschurisch",
+		"manchu",
+		"mandchou"
+	],
+	"mni": [
+		"mni",
+		"meithei-sprache",
+		"manipuri",
+		"manipuri"
+	],
+	"mno": [
+		"mno",
+		"manobo-sprachen",
+		"manobo languages",
+		"manobo, langues"
+	],
+	"moh": [
+		"moh",
+		"mohawk-sprache",
+		"mohawk",
+		"mohawk"
+	],
+	"mon": [
+		"mn",
+		"mon",
+		"mongolisch",
+		"mongolian",
+		"mongol"
+	],
+	"mos": [
+		"mos",
+		"mossi-sprache",
+		"mossi",
+		"moré"
+	],
+	"mri": [
+		"mi",
+		"mri",
+		"mao",
+		"maori-sprache",
+		"maori",
+		"maori"
+	],
+	"msa": [
+		"ms",
+		"msa",
+		"may",
+		"malaiisch",
+		"malay",
+		"malais"
+	],
+	"mul": [
+		"mul",
+		"mehrere sprachen",
+		"multiple languages",
+		"multilingue"
+	],
+	"mun": [
+		"mun",
+		"mundasprachen (andere)",
+		"munda languages",
+		"mounda, langues"
+	],
+	"mus": [
+		"mus",
+		"muskogisch",
+		"creek",
+		"muskogee"
+	],
+	"mwl": [
+		"mwl",
+		"mirandesisch",
+		"mirandese",
+		"mirandais"
+	],
+	"mwr": [
+		"mwr",
+		"marwari",
+		"marwari",
+		"marvari"
+	],
+	"mya": [
+		"my",
+		"mya",
+		"bur",
+		"birmanisch",
+		"burmese",
+		"birman"
+	],
+	"myn": [
+		"myn",
+		"maya-sprachen",
+		"mayan languages",
+		"maya, langues"
+	],
+	"myv": [
+		"myv",
+		"erza-mordwinisch",
+		"erzya",
+		"erza"
+	],
+	"nah": [
+		"nah",
+		"nahuatl",
+		"nahuatl languages",
+		"nahuatl, langues"
+	],
+	"nai": [
+		"nai",
+		"indianersprachen, nordamerika (andere)",
+		"north american indian languages",
+		"nord-amérindiennes, langues"
+	],
+	"nap": [
+		"nap",
+		"neapel / mundart",
+		"neapolitan",
+		"napolitain"
+	],
+	"nau": [
+		"na",
+		"nau",
+		"nauruanisch",
+		"nauru",
+		"nauruan"
+	],
+	"nav": [
+		"nv",
+		"nav",
+		"navajo-sprache",
+		"navajo",
+		"navaho",
+		"navaho"
+	],
+	"nbl": [
+		"nr",
+		"nbl",
+		"ndebele-sprache (transvaal)",
+		"ndebele, south",
+		"south ndebele",
+		"ndébélé du sud"
+	],
+	"nde": [
+		"nd",
+		"nde",
+		"ndebele-sprache (simbabwe)",
+		"ndebele, north",
+		"north ndebele",
+		"ndébélé du nord"
+	],
+	"ndo": [
+		"ng",
+		"ndo",
+		"ndonga",
+		"ndonga",
+		"ndonga"
+	],
+	"nds": [
+		"nds",
+		"niederdeutsch",
+		"low german",
+		"low saxon",
+		"german, low",
+		"saxon, low",
+		"bas allemand",
+		"bas saxon",
+		"allemand, bas",
+		"saxon, bas"
+	],
+	"nep": [
+		"ne",
+		"nep",
+		"nepali",
+		"nepali",
+		"népalais"
+	],
+	"new": [
+		"new",
+		"newari",
+		"nepal bhasa",
+		"newari",
+		"nepal bhasa",
+		"newari"
+	],
+	"nia": [
+		"nia",
+		"nias-sprache",
+		"nias",
+		"nias"
+	],
+	"nic": [
+		"nic",
+		"nigerkordofanische sprachen (andere)",
+		"niger-kordofanian languages",
+		"nigéro-kordofaniennes, langues"
+	],
+	"niu": [
+		"niu",
+		"niue-sprache",
+		"niuean",
+		"niué"
+	],
+	"nld": [
+		"nl",
+		"nld",
+		"dut",
+		"niederländisch",
+		"dutch",
+		"flemish",
+		"néerlandais",
+		"flamand"
+	],
+	"nno": [
+		"nn",
+		"nno",
+		"nynorsk",
+		"norwegian nynorsk",
+		"nynorsk, norwegian",
+		"norvégien nynorsk",
+		"nynorsk, norvégien"
+	],
+	"nob": [
+		"nb",
+		"nob",
+		"bokmål",
+		"bokmål, norwegian",
+		"norwegian bokmål",
+		"norvégien bokmål"
+	],
+	"nog": [
+		"nog",
+		"nogaisch",
+		"nogai",
+		"nogaï",
+		"nogay"
+	],
+	"non": [
+		"non",
+		"altnorwegisch",
+		"norse, old",
+		"norrois, vieux"
+	],
+	"nor": [
+		"no",
+		"nor",
+		"norwegisch",
+		"norwegian",
+		"norvégien"
+	],
+	"nqo": [
+		"nqo",
+		"n'ko",
+		"n'ko",
+		"n'ko"
+	],
+	"nso": [
+		"nso",
+		"pedi-sprache",
+		"pedi",
+		"sepedi",
+		"northern sotho",
+		"pedi",
+		"sepedi",
+		"sotho du nord"
+	],
+	"nub": [
+		"nub",
+		"nubische sprachen",
+		"nubian languages",
+		"nubiennes, langues"
+	],
+	"nwc": [
+		"nwc",
+		"alt-newari",
+		"classical newari",
+		"old newari",
+		"classical nepal bhasa",
+		"newari classique"
+	],
+	"nya": [
+		"ny",
+		"nya",
+		"nyanja-sprache",
+		"chichewa",
+		"chewa",
+		"nyanja",
+		"chichewa",
+		"chewa",
+		"nyanja"
+	],
+	"nym": [
+		"nym",
+		"nyamwezi-sprache",
+		"nyamwezi",
+		"nyamwezi"
+	],
+	"nyn": [
+		"nyn",
+		"nkole-sprache",
+		"nyankole",
+		"nyankolé"
+	],
+	"nyo": [
+		"nyo",
+		"nyoro-sprache",
+		"nyoro",
+		"nyoro"
+	],
+	"nzi": [
+		"nzi",
+		"nzima-sprache",
+		"nzima",
+		"nzema"
+	],
+	"oci": [
+		"oc",
+		"oci",
+		"okzitanisch",
+		"occitan (post 1500)",
+		"occitan (après 1500)"
+	],
+	"oji": [
+		"oj",
+		"oji",
+		"ojibwa-sprache",
+		"ojibwa",
+		"ojibwa"
+	],
+	"ori": [
+		"or",
+		"ori",
+		"oriya-sprache",
+		"oriya",
+		"oriya"
+	],
+	"orm": [
+		"om",
+		"orm",
+		"galla-sprache",
+		"oromo",
+		"galla"
+	],
+	"osa": [
+		"osa",
+		"osage-sprache",
+		"osage",
+		"osage"
+	],
+	"oss": [
+		"os",
+		"oss",
+		"ossetisch",
+		"ossetian",
+		"ossetic",
+		"ossète"
+	],
+	"ota": [
+		"ota",
+		"osmanisch",
+		"turkish, ottoman (1500-1928)",
+		"turc ottoman (1500-1928)"
+	],
+	"oto": [
+		"oto",
+		"otomangue-sprachen",
+		"otomian languages",
+		"otomi, langues"
+	],
+	"paa": [
+		"paa",
+		"papuasprachen (andere)",
+		"papuan languages",
+		"papoues, langues"
+	],
+	"pag": [
+		"pag",
+		"pangasinan-sprache",
+		"pangasinan",
+		"pangasinan"
+	],
+	"pal": [
+		"pal",
+		"mittelpersisch",
+		"pahlavi",
+		"pahlavi"
+	],
+	"pam": [
+		"pam",
+		"pampanggan-sprache",
+		"pampanga",
+		"kapampangan",
+		"pampangan"
+	],
+	"pan": [
+		"pa",
+		"pan",
+		"pandschabi-sprache",
+		"panjabi",
+		"punjabi",
+		"pendjabi"
+	],
+	"pap": [
+		"pap",
+		"papiamento",
+		"papiamento",
+		"papiamento"
+	],
+	"pau": [
+		"pau",
+		"palau-sprache",
+		"palauan",
+		"palau"
+	],
+	"peo": [
+		"peo",
+		"altpersisch",
+		"persian, old (ca.600-400 b.c.)",
+		"perse, vieux (ca. 600-400 av. j.-c.)"
+	],
+	"per": [
+		"fa",
+		"fas",
+		"per",
+		"persisch",
+		"persian",
+		"persan"
+	],
+	"phi": [
+		"phi",
+		"philippinisch-austronesisch (andere)",
+		"philippine languages",
+		"philippines, langues"
+	],
+	"phn": [
+		"phn",
+		"phönikisch",
+		"phoenician",
+		"phénicien"
+	],
+	"pli": [
+		"pi",
+		"pli",
+		"pali",
+		"pali",
+		"pali"
+	],
+	"pol": [
+		"pl",
+		"pol",
+		"polnisch",
+		"polish",
+		"polonais"
+	],
+	"pon": [
+		"pon",
+		"ponapeanisch",
+		"pohnpeian",
+		"pohnpei"
+	],
+	"por": [
+		"pt",
+		"por",
+		"portugiesisch",
+		"portuguese",
+		"portugais"
+	],
+	"pra": [
+		"pra",
+		"prakrit",
+		"prakrit languages",
+		"prâkrit, langues"
+	],
+	"pro": [
+		"pro",
+		"altokzitanisch",
+		"provençal, old (to 1500)",
+		"occitan, old (to 1500)",
+		"provençal ancien (jusqu'à 1500)",
+		"occitan ancien (jusqu'à 1500)"
+	],
+	"pus": [
+		"ps",
+		"pus",
+		"paschtu",
+		"pushto",
+		"pashto",
+		"pachto"
+	],
+	"que": [
+		"qu",
+		"que",
+		"quechua-sprache",
+		"quechua",
+		"quechua"
+	],
+	"raj": [
+		"raj",
+		"rajasthani",
+		"rajasthani",
+		"rajasthani"
+	],
+	"rap": [
+		"rap",
+		"osterinsel-sprache",
+		"rapanui",
+		"rapanui"
+	],
+	"rar": [
+		"rar",
+		"rarotonganisch",
+		"rarotongan",
+		"cook islands maori",
+		"rarotonga",
+		"maori des îles cook"
+	],
+	"roa": [
+		"roa",
+		"romanische sprachen (andere)",
+		"romance languages",
+		"romanes, langues"
+	],
+	"roh": [
+		"rm",
+		"roh",
+		"rätoromanisch",
+		"romansh",
+		"romanche"
+	],
+	"rom": [
+		"rom",
+		"romani (sprache)",
+		"romany",
+		"tsigane"
+	],
+	"ron": [
+		"ro",
+		"ron",
+		"rum",
+		"rumänisch",
+		"romanian",
+		"moldavian",
+		"moldovan",
+		"roumain",
+		"moldave"
+	],
+	"rum": [
+		"ro",
+		"ron",
+		"rum",
+		"rumänisch",
+		"romanian",
+		"moldavian",
+		"moldovan",
+		"roumain",
+		"moldave"
+	],
+	"run": [
+		"rn",
+		"run",
+		"rundi-sprache",
+		"rundi",
+		"rundi"
+	],
+	"rup": [
+		"rup",
+		"aromunisch",
+		"aromanian",
+		"arumanian",
+		"macedo-romanian",
+		"aroumain",
+		"macédo-roumain"
+	],
+	"rus": [
+		"ru",
+		"rus",
+		"russisch",
+		"russian",
+		"russe"
+	],
+	"sad": [
+		"sad",
+		"sandawe-sprache",
+		"sandawe",
+		"sandawe"
+	],
+	"sag": [
+		"sg",
+		"sag",
+		"sango-sprache",
+		"sango",
+		"sango"
+	],
+	"sah": [
+		"sah",
+		"jakutisch",
+		"yakut",
+		"iakoute"
+	],
+	"sai": [
+		"sai",
+		"indianersprachen, südamerika (andere)",
+		"south american indian languages",
+		"sud-amérindiennes, langues"
+	],
+	"sal": [
+		"sal",
+		"salish-sprache",
+		"salishan languages",
+		"salishennes, langues"
+	],
+	"sam": [
+		"sam",
+		"samaritanisch",
+		"samaritan aramaic",
+		"samaritain"
+	],
+	"san": [
+		"sa",
+		"san",
+		"sanskrit",
+		"sanskrit",
+		"sanskrit"
+	],
+	"sas": [
+		"sas",
+		"sasak",
+		"sasak",
+		"sasak"
+	],
+	"sat": [
+		"sat",
+		"santali",
+		"santali",
+		"santal"
+	],
+	"scn": [
+		"scn",
+		"sizilianisch",
+		"sicilian",
+		"sicilien"
+	],
+	"sco": [
+		"sco",
+		"schottisch",
+		"scots",
+		"écossais"
+	],
+	"sel": [
+		"sel",
+		"selkupisch",
+		"selkup",
+		"selkoupe"
+	],
+	"sem": [
+		"sem",
+		"semitische sprachen (andere)",
+		"semitic languages",
+		"sémitiques, langues"
+	],
+	"sga": [
+		"sga",
+		"altirisch",
+		"irish, old (to 900)",
+		"irlandais ancien (jusqu'à 900)"
+	],
+	"sgn": [
+		"sgn",
+		"zeichensprachen",
+		"sign languages",
+		"langues des signes"
+	],
+	"shn": [
+		"shn",
+		"schan-sprache",
+		"shan",
+		"chan"
+	],
+	"sid": [
+		"sid",
+		"sidamo-sprache",
+		"sidamo",
+		"sidamo"
+	],
+	"sin": [
+		"si",
+		"sin",
+		"singhalesisch",
+		"sinhala",
+		"sinhalese",
+		"singhalais"
+	],
+	"sio": [
+		"sio",
+		"sioux-sprachen (andere)",
+		"siouan languages",
+		"sioux, langues"
+	],
+	"sit": [
+		"sit",
+		"sinotibetische sprachen (andere)",
+		"sino-tibetan languages",
+		"sino-tibétaines, langues"
+	],
+	"sla": [
+		"sla",
+		"slawische sprachen (andere)",
+		"slavic languages",
+		"slaves, langues"
+	],
+	"slk": [
+		"sk",
+		"slk",
+		"slo",
+		"slowakisch",
+		"slovak",
+		"slovaque"
+	],
+	"slo": [
+		"sk",
+		"slk",
+		"slo",
+		"slowakisch",
+		"slovak",
+		"slovaque"
+	],
+	"slv": [
+		"sl",
+		"slv",
+		"slowenisch",
+		"slovenian",
+		"slovène"
+	],
+	"sma": [
+		"sma",
+		"südsaamisch",
+		"southern sami",
+		"sami du sud"
+	],
+	"sme": [
+		"se",
+		"sme",
+		"nordsaamisch",
+		"northern sami",
+		"sami du nord"
+	],
+	"smi": [
+		"smi",
+		"saamisch",
+		"sami languages",
+		"sames, langues"
+	],
+	"smj": [
+		"smj",
+		"lulesaamisch",
+		"lule sami",
+		"sami de lule"
+	],
+	"smn": [
+		"smn",
+		"inarisaamisch",
+		"inari sami",
+		"sami d'inari"
+	],
+	"smo": [
+		"sm",
+		"smo",
+		"samoanisch",
+		"samoan",
+		"samoan"
+	],
+	"sms": [
+		"sms",
+		"skoltsaamisch",
+		"skolt sami",
+		"sami skolt"
+	],
+	"sna": [
+		"sn",
+		"sna",
+		"schona-sprache",
+		"shona",
+		"shona"
+	],
+	"snd": [
+		"sd",
+		"snd",
+		"sindhi-sprache",
+		"sindhi",
+		"sindhi"
+	],
+	"snk": [
+		"snk",
+		"soninke-sprache",
+		"soninke",
+		"soninké"
+	],
+	"sog": [
+		"sog",
+		"sogdisch",
+		"sogdian",
+		"sogdien"
+	],
+	"som": [
+		"so",
+		"som",
+		"somali",
+		"somali",
+		"somali"
+	],
+	"son": [
+		"son",
+		"songhai-sprache",
+		"songhai languages",
+		"songhai, langues"
+	],
+	"sot": [
+		"st",
+		"sot",
+		"süd-sotho-sprache",
+		"sotho, southern",
+		"sotho du sud"
+	],
+	"spa": [
+		"es",
+		"spa",
+		"spanisch",
+		"spanish",
+		"castilian",
+		"espagnol",
+		"castillan"
+	],
+	"sqi": [
+		"sq",
+		"sqi",
+		"alb",
+		"albanisch",
+		"albanian",
+		"albanais"
+	],
+	"srd": [
+		"sc",
+		"srd",
+		"sardisch",
+		"sardinian",
+		"sarde"
+	],
+	"srn": [
+		"srn",
+		"sranantongo",
+		"sranan tongo",
+		"sranan tongo"
+	],
+	"srp": [
+		"sr",
+		"srp",
+		"serbisch",
+		"serbian",
+		"serbe"
+	],
+	"srr": [
+		"srr",
+		"serer-sprache",
+		"serer",
+		"sérère"
+	],
+	"ssa": [
+		"ssa",
+		"nilosaharanische sprachen (andere)",
+		"nilo-saharan languages",
+		"nilo-sahariennes, langues"
+	],
+	"ssw": [
+		"ss",
+		"ssw",
+		"swasi-sprache",
+		"swati",
+		"swati"
+	],
+	"suk": [
+		"suk",
+		"sukuma-sprache",
+		"sukuma",
+		"sukuma"
+	],
+	"sun": [
+		"su",
+		"sun",
+		"sundanesisch",
+		"sundanese",
+		"soundanais"
+	],
+	"sus": [
+		"sus",
+		"susu",
+		"susu",
+		"soussou"
+	],
+	"sux": [
+		"sux",
+		"sumerisch",
+		"sumerian",
+		"sumérien"
+	],
+	"swa": [
+		"sw",
+		"swa",
+		"swahili",
+		"swahili",
+		"swahili"
+	],
+	"swe": [
+		"sv",
+		"swe",
+		"schwedisch",
+		"swedish",
+		"suédois"
+	],
+	"syc": [
+		"syc",
+		"syrisch",
+		"classical syriac",
+		"syriaque classique"
+	],
+	"syr": [
+		"syr",
+		"neuostaramäisch",
+		"syriac",
+		"syriaque"
+	],
+	"tah": [
+		"ty",
+		"tah",
+		"tahitisch",
+		"tahitian",
+		"tahitien"
+	],
+	"tai": [
+		"tai",
+		"thaisprachen (andere)",
+		"tai languages",
+		"tai, langues"
+	],
+	"tam": [
+		"ta",
+		"tam",
+		"tamil",
+		"tamil",
+		"tamoul"
+	],
+	"tat": [
+		"tt",
+		"tat",
+		"tatarisch",
+		"tatar",
+		"tatar"
+	],
+	"tel": [
+		"te",
+		"tel",
+		"telugu-sprache",
+		"telugu",
+		"télougou"
+	],
+	"tem": [
+		"tem",
+		"temne-sprache",
+		"timne",
+		"temne"
+	],
+	"ter": [
+		"ter",
+		"tereno-sprache",
+		"tereno",
+		"tereno"
+	],
+	"tet": [
+		"tet",
+		"tetum-sprache",
+		"tetum",
+		"tetum"
+	],
+	"tgk": [
+		"tg",
+		"tgk",
+		"tadschikisch",
+		"tajik",
+		"tadjik"
+	],
+	"tgl": [
+		"tl",
+		"tgl",
+		"tagalog",
+		"tagalog",
+		"tagalog"
+	],
+	"tha": [
+		"th",
+		"tha",
+		"thailändisch",
+		"thai",
+		"thaï"
+	],
+	"tib": [
+		"bo",
+		"bod",
+		"tib",
+		"tibetisch",
+		"tibetan",
+		"tibétain"
+	],
+	"tig": [
+		"tig",
+		"tigre-sprache",
+		"tigre",
+		"tigré"
+	],
+	"tir": [
+		"ti",
+		"tir",
+		"tigrinja-sprache",
+		"tigrinya",
+		"tigrigna"
+	],
+	"tiv": [
+		"tiv",
+		"tiv-sprache",
+		"tiv",
+		"tiv"
+	],
+	"tkl": [
+		"tkl",
+		"tokelauanisch",
+		"tokelau",
+		"tokelau"
+	],
+	"tlh": [
+		"tlh",
+		"klingonisch",
+		"klingon",
+		"tlhingan-hol",
+		"klingon"
+	],
+	"tli": [
+		"tli",
+		"tlingit-sprache",
+		"tlingit",
+		"tlingit"
+	],
+	"tmh": [
+		"tmh",
+		"tama\u009aeq",
+		"tamashek",
+		"tamacheq"
+	],
+	"tog": [
+		"tog",
+		"tonga (bantusprache, sambia)",
+		"tonga (nyasa)",
+		"tonga (nyasa)"
+	],
+	"ton": [
+		"to",
+		"ton",
+		"tongaisch",
+		"tonga (tonga islands)",
+		"tongan (îles tonga)"
+	],
+	"tpi": [
+		"tpi",
+		"neumelanesisch",
+		"tok pisin",
+		"tok pisin"
+	],
+	"tsi": [
+		"tsi",
+		"tsimshian-sprache",
+		"tsimshian",
+		"tsimshian"
+	],
+	"tsn": [
+		"tn",
+		"tsn",
+		"tswana-sprache",
+		"tswana",
+		"tswana"
+	],
+	"tso": [
+		"ts",
+		"tso",
+		"tsonga-sprache",
+		"tsonga",
+		"tsonga"
+	],
+	"tuk": [
+		"tk",
+		"tuk",
+		"turkmenisch",
+		"turkmen",
+		"turkmène"
+	],
+	"tum": [
+		"tum",
+		"tumbuka-sprache",
+		"tumbuka",
+		"tumbuka"
+	],
+	"tup": [
+		"tup",
+		"tupi-sprache",
+		"tupi languages",
+		"tupi, langues"
+	],
+	"tur": [
+		"tr",
+		"tur",
+		"türkisch",
+		"turkish",
+		"turc"
+	],
+	"tut": [
+		"tut",
+		"altaische sprachen (andere)",
+		"altaic languages",
+		"altaïques, langues"
+	],
+	"tvl": [
+		"tvl",
+		"elliceanisch",
+		"tuvalu",
+		"tuvalu"
+	],
+	"twi": [
+		"tw",
+		"twi",
+		"twi-sprache",
+		"twi",
+		"twi"
+	],
+	"tyv": [
+		"tyv",
+		"tuwinisch",
+		"tuvinian",
+		"touva"
+	],
+	"udm": [
+		"udm",
+		"udmurtisch",
+		"udmurt",
+		"oudmourte"
+	],
+	"uga": [
+		"uga",
+		"ugaritisch",
+		"ugaritic",
+		"ougaritique"
+	],
+	"uig": [
+		"ug",
+		"uig",
+		"uigurisch",
+		"uighur",
+		"uyghur",
+		"ouïgour"
+	],
+	"ukr": [
+		"uk",
+		"ukr",
+		"ukrainisch",
+		"ukrainian",
+		"ukrainien"
+	],
+	"umb": [
+		"umb",
+		"mbundu-sprache",
+		"umbundu",
+		"umbundu"
+	],
+	"und": [
+		"und",
+		"nicht zu entscheiden",
+		"undetermined",
+		"indéterminée"
+	],
+	"urd": [
+		"ur",
+		"urd",
+		"urdu",
+		"urdu",
+		"ourdou"
+	],
+	"uzb": [
+		"uz",
+		"uzb",
+		"usbekisch",
+		"uzbek",
+		"ouszbek"
+	],
+	"vai": [
+		"vai",
+		"vai-sprache",
+		"vai",
+		"vaï"
+	],
+	"ven": [
+		"ve",
+		"ven",
+		"venda-sprache",
+		"venda",
+		"venda"
+	],
+	"vie": [
+		"vi",
+		"vie",
+		"vietnamesisch",
+		"vietnamese",
+		"vietnamien"
+	],
+	"vol": [
+		"vo",
+		"vol",
+		"volapük",
+		"volapük",
+		"volapük"
+	],
+	"vot": [
+		"vot",
+		"wotisch",
+		"votic",
+		"vote"
+	],
+	"wak": [
+		"wak",
+		"wakash-sprachen",
+		"wakashan languages",
+		"wakashanes, langues"
+	],
+	"wal": [
+		"wal",
+		"walamo-sprache",
+		"wolaitta",
+		"wolaytta",
+		"wolaitta",
+		"wolaytta"
+	],
+	"war": [
+		"war",
+		"waray",
+		"waray",
+		"waray"
+	],
+	"was": [
+		"was",
+		"washo-sprache",
+		"washo",
+		"washo"
+	],
+	"wel": [
+		"cy",
+		"cym",
+		"wel",
+		"kymrisch",
+		"welsh",
+		"gallois"
+	],
+	"wen": [
+		"wen",
+		"sorbisch (andere)",
+		"sorbian languages",
+		"sorabes, langues"
+	],
+	"wln": [
+		"wa",
+		"wln",
+		"wallonisch",
+		"walloon",
+		"wallon"
+	],
+	"wol": [
+		"wo",
+		"wol",
+		"wolof-sprache",
+		"wolof",
+		"wolof"
+	],
+	"xal": [
+		"xal",
+		"kalmückisch",
+		"kalmyk",
+		"oirat",
+		"kalmouk",
+		"oïrat"
+	],
+	"xho": [
+		"xh",
+		"xho",
+		"xhosa-sprache",
+		"xhosa",
+		"xhosa"
+	],
+	"yao": [
+		"yao",
+		"yao-sprache (bantusprache)",
+		"yao",
+		"yao"
+	],
+	"yap": [
+		"yap",
+		"yapesisch",
+		"yapese",
+		"yapois"
+	],
+	"yid": [
+		"yi",
+		"yid",
+		"jiddisch",
+		"yiddish",
+		"yiddish"
+	],
+	"yor": [
+		"yo",
+		"yor",
+		"yoruba-sprache",
+		"yoruba",
+		"yoruba"
+	],
+	"ypk": [
+		"ypk",
+		"ypik-sprachen",
+		"yupik languages",
+		"yupik, langues"
+	],
+	"zap": [
+		"zap",
+		"zapotekisch",
+		"zapotec",
+		"zapotèque"
+	],
+	"zbl": [
+		"zbl",
+		"bliss-symbol",
+		"blissymbols",
+		"blissymbolics",
+		"bliss",
+		"symboles bliss",
+		"bliss"
+	],
+	"zen": [
+		"zen",
+		"zenaga",
+		"zenaga",
+		"zenaga"
+	],
+	"zgh": [
+		"zgh",
+		"standard-marokkanischen tamazight",
+		"standard moroccan tamazight",
+		"amazighe standard marocain"
+	],
+	"zha": [
+		"za",
+		"zha",
+		"zhuang",
+		"zhuang",
+		"chuang",
+		"zhuang",
+		"chuang"
+	],
+	"zho": [
+		"zh",
+		"zho",
+		"chi",
+		"chinesisch",
+		"chinese",
+		"chinois"
+	],
+	"znd": [
+		"znd",
+		"zande-sprachen",
+		"zande languages",
+		"zandé, langues"
+	],
+	"zul": [
+		"zu",
+		"zul",
+		"zulu-sprache",
+		"zulu",
+		"zoulou"
+	],
+	"zun": [
+		"zun",
+		"zuñi-sprache",
+		"zuni",
+		"zuni"
+	],
+	"zza": [
+		"zza",
+		"zazaki",
+		"zaza",
+		"dimili",
+		"dimli",
+		"kirdki",
+		"kirmanjki",
+		"zazaki",
+		"zaza",
+		"dimili",
+		"dimli",
+		"kirdki",
+		"kirmanjki",
+		"zazaki"
+	]
+}
