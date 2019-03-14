@@ -147,12 +147,12 @@ def process_mention(client, notification):
 					if len(post['media_attachments']) > 1:
 						# more than one image, need to seperate them
 						toot += "\nImage {}:\n{}\n".format(i, out)
-					else: 
+					else:
 						# only one image -- don't bother saying "image 1"
 						toot += "\n{}".format(out)
 
 				except:
-					error("Failed to run tesseract.", acct, post_id, visibility)
+					error("Failed to run tesseract. Specified language was: {}".format(lang), acct, post_id, visibility)
 					raise
 					return
 
