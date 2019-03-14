@@ -116,13 +116,13 @@ def process_mention(client, notification):
 
 			if not found:
 				# fall back to default, because we didn't understand this language name
-				toot += "(Couldn't find a language with the name '{}'.)\n".format(lang)
+				toot += "\n(Couldn't find a language with the name '{}'.)\n".format(lang)
 				lang = cfg['default_language']
 
 			else:
 				# now that we have a language code, we need to see if the tesseract language pack is actually installed
 				if lang not in langs:
-					toot += "(Your requested language is supported by OCRbot, but the tesseract data package needs to be installed. Contact the admin and ask them to install language support for {}.)\n".format(lang)
+					toot += "\n(Your requested language is supported by OCRbot, but the tesseract data package needs to be installed. Contact the admin and ask them to install language support for {}.)\n".format(lang)
 					lang = cfg['default_language']
 
 		# the actual OCR
