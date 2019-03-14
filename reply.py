@@ -68,7 +68,7 @@ def error(message, acct, post_id, visibility):
 		client_secret=cfg['client']['secret'], 
 		access_token=cfg['secret'], 
 		api_base_url=cfg['site'])
-	temp_client.status_post("{}\n{}\nContact Lynne (lynnesbian@fedi.lynnesbian.space) for assistance.".format(acct, message), post_id, visibility = visibility, spoiler_text = "Error")
+	temp_client.status_post("{}\n{}\nContact the admin ({}) for assistance.".format(acct, message, admin), post_id, visibility = visibility, spoiler_text = "Error")
 
 def process_mention(client, notification):
 	# for now we'll just ignore what the mention says, but in future we should check for a language name to use
@@ -123,7 +123,7 @@ def process_mention(client, notification):
 			else:
 				# now that we have a language code, we need to see if the tesseract language pack is actually installed
 				if lang not in langs:
-					toot += "\n(Your requested language is supported by OCRbot, but the tesseract data package needs to be installed. Contact the admin and ask them to install language support for {}.)\n".format(lang)
+					toot += "\n(Your requested language may be supported by OCRbot. Unfortunately, the necessary tesseract data package is not installed. Contact the admin ({}) and ask them to install language support for {}, if at all possible.)\n".format(lang, cfg['admin'])
 					lang = cfg['default_language']
 
 		# the actual OCR
