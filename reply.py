@@ -91,6 +91,7 @@ def process_mention(client, notification):
 			if len(post['media_attachments']) == 0:
 				post = None
 		except:
+			# TODO: handle images that haven't federated yet better
 			error("Failed to find post containing image. This may be a federation issue, or you may have tagged OCRbot in a conversation without an image.", acct, post_id, visibility)
 			return
 
@@ -117,7 +118,7 @@ def process_mention(client, notification):
 
 			if not found:
 				# fall back to default, because we didn't understand this language name
-				toot += "\n(Couldn't find a language with the name '{}'.)\n".format(lang)
+				toot += "\n(Couldn't find a language with the name '{}', falling back to default.)\n".format(lang)
 				lang = cfg['default_language']
 
 			else:
@@ -194,6 +195,9 @@ language_dict = json.load(open("language-codes.json"))
 langs = tool.get_available_languages()
 langs.remove("osd") # remove orientation and script detection from the list, as it's not actually a language
 print("Available languages: {}".format(", ".join(langs)))
+if cfg['default_language'] not in langs:
+	print("{} is not a supported language. Please edit default_language in config.json to choose a supported option.")
+	sys.exit(1)
 print("Starting OCRbot.")
 
 rl = ReplyListener()
