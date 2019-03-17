@@ -21,7 +21,7 @@ import pyocr
 import sys
 
 from multiprocessing import Pool
-import os, random, re, json, re
+import os, random, re, json, re, textwrap
 
 cfg = json.load(open('config.json', 'r'))
 
@@ -165,7 +165,17 @@ def process_mention(client, notification):
 			visibility = "unlisted"
 		if toot.replace("\n", "").replace(" ", "") != "":
 			# toot isn't blank -- go ahead
-			client.status_post(toot, post_id, visibility=visibility, spoiler_text = cfg['cw']) #send toost
+			if len(toot) < cfg['char_limit']:
+				client.status_post(toot, post_id, visibility=visibility, spoiler_text = cfg['cw']) #send toost
+			else:
+				wrapped = textwrap.wrap(toot, cfg['char_limit'] - len(cfg['cw']) - len(acct) - 1)
+				first = False
+				for post in wrapped:
+					if not first:
+						first = True
+					else:
+						post = acct + "\n" + post
+					post_id = client.status_post(post, post_id, visibility=visibility, spoiler_text = cfg['cw'])['id']
 		else:
 			# it's blank :c
 			error("Tesseract returned no text.", acct, post_id, visibility)
@@ -198,6 +208,8 @@ print("Available languages: {}".format(", ".join(langs)))
 if cfg['default_language'] not in langs:
 	print("{} is not a supported language. Please edit default_language in config.json to choose a supported option.")
 	sys.exit(1)
+if cfg['char_limit'] < len(cfg['cw']) + 1:
+	print("Character limit is too low. It must be at least {}, preferably more. Try setting it to the character limit on {}.".format(len(cfg['cw']) + 1), cfg['site'])
 print("Starting OCRbot.")
 
 rl = ReplyListener()
