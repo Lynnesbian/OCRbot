@@ -31,6 +31,7 @@ pip3 install -r requirements.txt
 
 ## Running OCRbot
 Copy or rename `config.sample.json` to `config.json`, and edit the settings as you wish. Here is an explanation of the options in the config file:
+
 | Setting          | Meaning                                                                                                                                                                                                                                     | Example              |
 |------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------|
 | site             | The instance your bot will log in to and post from.                                                                                                                                                                                         | https://botsin.space |
