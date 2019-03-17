@@ -30,7 +30,17 @@ pip3 install -r requirements.txt
 ```
 
 ## Running OCRbot
-Copy or rename `config.sample.json` to `config.json`, and edit the settings as you wish. Most importantly, make sure you choose the instance your OCRbot account will post from. Then, run `main.py` and log in with the account you'd like OCRbot to post from. Finally, run `reply.py` and OCRbot will take care of the rest.
+Copy or rename `config.sample.json` to `config.json`, and edit the settings as you wish. Here is an explanation of the options in the config file:
+| Setting          | Meaning                                                                                                                                                                                                                                     | Example              |
+|------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------|
+| site             | The instance your bot will log in to and post from.                                                                                                                                                                                         | https://botsin.space |
+| cw               | The content warning (aka subject) OCRbot will apply to non-error posts.                                                                                                                                                                     | OCR output           |
+| ocr_threads      | The amount of CPU threads to use for running tesseract.                                                                                                                                                                                     | 8                    |
+| char_limit       | The maximum length of an OCRbot post. This limit does not apply to errors. I recommend setting it to your instance's character limit.                                                                                                       | 500                  |
+| default_language | The language you'd like OCRbot to default to.                                                                                                                                                                                               | eng                  |
+| admin            | The account you'd like OCRbot to tell users to report errors to. If you format it as `user@example.com` (omitting the leading @ sign), it won't automatically tag you. This ensures your notifications don't get flooded if the bot breaks. | admin@example.com    |
+
+Most importantly, make sure you choose the instance your OCRbot account will post from. Then, run `main.py` and log in with the account you'd like OCRbot to post from. Finally, run `reply.py` and OCRbot will take care of the rest.
 
 You can use something like systemd or SysVinit to manage running `reply.py` for you. I've provided an example systemd script [here](systemd-example.service). It requires some editing (to specify where your OCRbot folder is located, and to specify the user to run it as -- *don't run it as root*), and then you simply need to
 ```
