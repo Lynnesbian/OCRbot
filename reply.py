@@ -68,7 +68,7 @@ def error(message, acct, post_id, visibility):
 		client_secret=cfg['client']['secret'], 
 		access_token=cfg['secret'], 
 		api_base_url=cfg['site'])
-	temp_client.status_post("{}\n{}\nContact the admin ({}) for assistance.".format(acct, message, admin), post_id, visibility = visibility, spoiler_text = "Error")
+	temp_client.status_post("{}\n{}\nContact the admin ({}) for assistance.".format(acct, message, cfg['admin']), post_id, visibility = visibility, spoiler_text = "Error")
 
 def process_mention(client, notification):
 	# for now we'll just ignore what the mention says, but in future we should check for a language name to use
