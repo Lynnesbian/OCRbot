@@ -92,7 +92,7 @@ def process_mention(client, notification):
 				post = None
 		except:
 			# TODO: handle images that haven't federated yet better
-			error("Failed to find post containing image. This may be a federation issue, or you may have tagged OCRbot in a conversation without an image.", acct, post_id, visibility)
+			error("Failed to find post containing image. This may be a federation issue, or you may have tagged OCRbot in a conversation without an image.\nin_reply_to_id: {}".format(notification['status']['in_reply_to_id']), acct, post_id, visibility)
 			return
 
 	if post != None:
