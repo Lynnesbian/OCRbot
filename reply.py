@@ -111,6 +111,12 @@ def process_mention(client, notification):
 							break
 			else:
 				found = True
+			
+			# fixes for language codes not described by tesseract
+			replacements = {
+				"chi": "chi_sim",
+				"zho": "chi_sim"
+			}
 
 			if not found:
 				# fall back to default, because we didn't understand this language name
