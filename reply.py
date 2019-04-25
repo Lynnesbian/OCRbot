@@ -71,10 +71,6 @@ def error(message, acct, post_id, visibility):
 	temp_client.status_post("{}\n{}\nContact the admin ({}) for assistance.".format(acct, message, cfg['admin']), post_id, visibility = visibility, spoiler_text = "Error")
 
 def process_mention(client, notification):
-	# for now we'll just ignore what the mention says, but in future we should check for a language name to use
-	# first, we'll check if the mention contains at least one image. if so, we'll use that.
-	# otherwise, we'll check if the post the mention is replying to (if any) contains any images.
-	# if not, we'll give up.
 	acct = "@" + notification['account']['acct'] #get the account's @
 	print("mention detected")
 	post = None
@@ -124,7 +120,7 @@ def process_mention(client, notification):
 			else:
 				# now that we have a language code, we need to see if the tesseract language pack is actually installed
 				if lang not in langs:
-					toot += "\n(Your requested language may be supported by OCRbot. Unfortunately, the necessary tesseract data package is not installed. Contact the admin ({}) and ask them to install language support for {}, if at all possible.)\n".format(lang, cfg['admin'])
+					toot += "\n(Your requested language may be supported by OCRbot. Unfortunately, the necessary tesseract data package is not installed. Contact the admin ({}) and ask them to install language support for {}, if at all possible.)\n".format(cfg['admin'], lang)
 					lang = cfg['default_language']
 
 		# the actual OCR
