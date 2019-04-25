@@ -118,6 +118,11 @@ def process_mention(client, notification):
 				"zho": "chi_sim"
 			}
 
+			for code, replacement in replacements.items():
+				if lang == code:
+					lang = replacement
+					break
+
 			if not found:
 				# fall back to default, because we didn't understand this language name
 				toot += "\n(Couldn't find a language with the name '{}', falling back to default.)\n".format(lang)
