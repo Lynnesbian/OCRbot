@@ -182,6 +182,7 @@ def process_mention(client, notification):
 						first = True
 					else:
 						post = acct + "\n" + post
+					post = post.replace("@", "@\u200B") # don't @ people
 					post_id = client.status_post(post, post_id, visibility=visibility, spoiler_text = cfg['cw'])['id']
 		else:
 			# it's blank :c
