@@ -165,14 +165,14 @@ def process_mention(client, notification):
 					error("Failed to run tesseract. Specified language was: {}".format(lang), acct, post_id, visibility)
 					raise
 					return
-
+		
+		toot = toot.replace("@", "@\u200B") # don't mistakenly @ people
 		toot = acct + toot #prepend the @
 		visibility = post['visibility']
 		if visibility == "public":
 			visibility = "unlisted"
 		if toot.replace("\n", "").replace(" ", "") != "":
 			# toot isn't blank -- go ahead
-			toot = toot.replace("@", "@\u200B") # don't @ people
 			if len(toot) < cfg['char_limit']:
 				client.status_post(toot, post_id, visibility=visibility, spoiler_text = cfg['cw']) #send toost
 			else:
