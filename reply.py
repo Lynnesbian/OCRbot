@@ -172,6 +172,7 @@ def process_mention(client, notification):
 			visibility = "unlisted"
 		if toot.replace("\n", "").replace(" ", "") != "":
 			# toot isn't blank -- go ahead
+			toot = toot.replace("@", "@\u200B") # don't @ people
 			if len(toot) < cfg['char_limit']:
 				client.status_post(toot, post_id, visibility=visibility, spoiler_text = cfg['cw']) #send toost
 			else:
@@ -182,7 +183,6 @@ def process_mention(client, notification):
 						first = True
 					else:
 						post = acct + "\n" + post
-					post = post.replace("@", "@\u200B") # don't @ people
 					post_id = client.status_post(post, post_id, visibility=visibility, spoiler_text = cfg['cw'])['id']
 		else:
 			# it's blank :c
