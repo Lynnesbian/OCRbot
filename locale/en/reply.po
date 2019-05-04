@@ -1,0 +1,35 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2019 Lynnear Software
+# FIRST AUTHOR <lynne@bune.city>, 2019.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2019-05-04 19:33+1000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Lynne <lynne@bune.city>\n"
+"Language-Team: English <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: pygettext.py 1.5\n"
+
+
+#: reply.py:98
+msgid "Failed to find post containing image. This may be a federation issue, or you may have tagged OCRbot in a conversation without an image."
+msgstr ""
+
+#: reply.py:162
+msgid ""
+"Couldn't read this image, sorry!\n"
+"OCRbot works best with plain black text on a plain white background. Here is some information about what it can and can't do: https://github.com/Lynnesbian/OCRbot/blob/master/README.md#caveats"
+msgstr ""
+
+#: reply.py:196
+msgid "Tesseract returned no text."
+msgstr ""
+
+#: reply.py:198
+msgid "Failed to find post with media attached."
+msgstr ""
+

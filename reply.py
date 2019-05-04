@@ -18,13 +18,13 @@ import requests
 from mastodon import Mastodon, StreamListener
 from bs4 import BeautifulSoup
 import pyocr
-import sys
 
 from multiprocessing import Pool
-import os, random, re, json, re, textwrap
+import os, random, re, json, re, textwrap, sys, gettext
+
+_ = gettext.gettext()
 
 cfg = json.load(open('config.json', 'r'))
-strings = json.load(open('strings.json', 'r'))
 
 print("Logging in...")
 
@@ -38,18 +38,8 @@ handle = "@{}@{}".format(client.account_verify_credentials()['username'], re.mat
 def cw(toot):
 	if cfg['char_count_in_cw']:
 		return "{} (chars: {})".format(cfg['cw'], len(toot))
-	return cfg['cw']
+	return cfg['cw'
 
-def string(key, language = None):
-	lang_list = [cfg['ui_language'], cfg['default_language'], 'eng']
-	if language != None:
-		lang_list = [language] + lang_list
-	for lang in lang_list:
-		# try the specified lang if any, then the UI lang, then the default lang, then finally english
-		if key in strings[lang]:
-			return strings[lang][key]
-	return "String lookup error."
-	
 
 def extract_toot(toot):
 	toot = toot.replace("&apos;", "'") #convert HTML stuff to normal stuff
@@ -105,7 +95,7 @@ def process_mention(client, notification):
 				post = None
 		except:
 			# TODO: handle images that haven't federated yet better
-			error(string("couldn't find media from reply"), acct, post_id, visibility)
+			error(_("Failed to find post containing image. This may be a federation issue, or you may have tagged OCRbot in a conversation without an image."), acct, post_id, visibility)
 			return
 
 	if post != None:
@@ -169,7 +159,7 @@ def process_mention(client, notification):
 					out = tool.image_to_string(image, lang).replace("|", "I") # tesseract often mistakenly identifies I as a |
 					out = re.sub("(?:\n\s*){3,}", "\n\n", out) #replace any group of 3+ linebreaks with just two
 					if out == "":
-						out = "Couldn't read this image, sorry!\nOCRbot works best with plain black text on a plain white background. Here is some information about what it can and can't do: https://github.com/Lynnesbian/OCRbot/blob/master/README.md#caveats"
+						out = _("Couldn't read this image, sorry!\nOCRbot works best with plain black text on a plain white background. Here is some information about what it can and can't do: https://github.com/Lynnesbian/OCRbot/blob/master/README.md#caveats")
 
 					if len(post['media_attachments']) > 1:
 						# more than one image, need to seperate them
@@ -203,9 +193,9 @@ def process_mention(client, notification):
 					post_id = client.status_post(post, post_id, visibility=visibility, spoiler_text = cw(toot))['id']
 		else:
 			# it's blank :c
-			error("Tesseract returned no text.", acct, post_id, visibility)
+			error(_("Tesseract returned no text."), acct, post_id, visibility)
 	else:
-		error(string("couldn't find media"), acct, post_id, visibility)
+		error(_("Failed to find post with media attached."), acct, post_id, visibility)
 
 class ReplyListener(StreamListener):
 	def __init__(self):
