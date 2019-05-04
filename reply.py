@@ -24,6 +24,7 @@ from multiprocessing import Pool
 import os, random, re, json, re, textwrap
 
 cfg = json.load(open('config.json', 'r'))
+strings = json.load(open('strings.json', 'r'))
 
 print("Logging in...")
 
@@ -38,6 +39,17 @@ def cw(toot):
 	if cfg['char_count_in_cw']:
 		return "{} (chars: {})".format(cfg['cw'], len(toot))
 	return cfg['cw']
+
+def string(key, language = None):
+	lang_list = [cfg['ui_language'], cfg['default_language'], 'eng']
+	if language != None:
+		lang_list = [language] + lang_list
+	for lang in lang_list:
+		# try the specified lang if any, then the UI lang, then the default lang, then finally english
+		if key in strings[lang]:
+			return strings[lang][key]
+	return "String lookup error."
+	
 
 def extract_toot(toot):
 	toot = toot.replace("&apos;", "'") #convert HTML stuff to normal stuff
@@ -93,7 +105,7 @@ def process_mention(client, notification):
 				post = None
 		except:
 			# TODO: handle images that haven't federated yet better
-			error("Failed to find post containing image. This may be a federation issue, or you may have tagged OCRbot in a conversation without an image.", acct, post_id, visibility)
+			error(string("couldn't find media from reply"), acct, post_id, visibility)
 			return
 
 	if post != None:
@@ -193,7 +205,7 @@ def process_mention(client, notification):
 			# it's blank :c
 			error("Tesseract returned no text.", acct, post_id, visibility)
 	else:
-		error("Failed to find post with media attached.", acct, post_id, visibility)
+		error(string("couldn't find media"), acct, post_id, visibility)
 
 class ReplyListener(StreamListener):
 	def __init__(self):
