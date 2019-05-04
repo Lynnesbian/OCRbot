@@ -4,5 +4,6 @@
 	"ocr_threads": 8,
 	"char_limit": 500,
 	"default_language":"eng",
-	"admin":"admin@example.com"
+	"admin": "admin@example.com",
+	"char_count_in_cw": true
 }

@@ -34,6 +34,11 @@ client = Mastodon(
 	api_base_url=cfg['site'])
 handle = "@{}@{}".format(client.account_verify_credentials()['username'], re.match("https://([^/]*)/?", cfg['site']).group(1)).lower()
 
+def cw(toot):
+	if cfg['char_count_in_cw']:
+		return "{} (chars: {})".format(cfg['cw'], len(toot))
+	return cfg['cw']
+
 def extract_toot(toot):
 	toot = toot.replace("&apos;", "'") #convert HTML stuff to normal stuff
 	toot = toot.replace("&quot;", '"') #ditto
@@ -167,23 +172,23 @@ def process_mention(client, notification):
 					return
 		
 		toot = toot.replace("@", "@\u200B") # don't mistakenly @ people
-		toot = acct + toot #prepend the @
+		toot = acct + toot # prepend the @
 		visibility = post['visibility']
 		if visibility == "public":
 			visibility = "unlisted"
 		if toot.replace("\n", "").replace(" ", "") != "":
 			# toot isn't blank -- go ahead
-			if len(toot) < cfg['char_limit']:
-				client.status_post(toot, post_id, visibility=visibility, spoiler_text = cfg['cw']) #send toost
+			if len(toot + cw(toot)) < cfg['char_limit']:
+				client.status_post(toot, post_id, visibility=visibility, spoiler_text = cw(toot)) # send toost
 			else:
-				wrapped = textwrap.wrap(toot, cfg['char_limit'] - len(cfg['cw']) - len(acct) - 1)
+				wrapped = textwrap.wrap(toot, cfg['char_limit'] - len(cw(toot)) - len(acct) - 1)
 				first = False
 				for post in wrapped:
 					if not first:
 						first = True
 					else:
 						post = acct + "\n" + post
-					post_id = client.status_post(post, post_id, visibility=visibility, spoiler_text = cfg['cw'])['id']
+					post_id = client.status_post(post, post_id, visibility=visibility, spoiler_text = cw(toot))['id']
 		else:
 			# it's blank :c
 			error("Tesseract returned no text.", acct, post_id, visibility)
@@ -196,7 +201,6 @@ class ReplyListener(StreamListener):
 
 	def on_notification(self, notification): #listen for notifications
 		if notification['type'] == 'mention': #if we're mentioned:
-			# p = Process(target=process_mention, args=(client, notification))
 			self.pool.apply_async(process_mention, args=(client, notification))
 			
 
@@ -216,8 +220,8 @@ print("Available languages: {}".format(", ".join(langs)))
 if cfg['default_language'] not in langs:
 	print("{} is not a supported language. Please edit default_language in config.json to choose a supported option.")
 	sys.exit(1)
-if cfg['char_limit'] < len(cfg['cw']) + 1:
-	print("Character limit is too low. It must be at least {}, preferably more. Try setting it to the character limit on {}.".format(len(cfg['cw']) + 1), cfg['site'])
+if cfg['char_limit'] < len(cw("test")) + 1:
+	print("Character limit is too low. It must be at least ~{}, preferably more. Try setting it to the character limit on {}.".format(len(cw("test")) + 50), cfg['site'])
 print("Starting OCRbot.")
 
 rl = ReplyListener()
