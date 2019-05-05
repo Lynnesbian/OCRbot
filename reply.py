@@ -38,7 +38,7 @@ handle = "@{}@{}".format(client.account_verify_credentials()['username'], re.mat
 def cw(toot):
 	if cfg['char_count_in_cw']:
 		return "{} (chars: {})".format(cfg['cw'], len(toot))
-	return cfg['cw'
+	return cfg['cw']
 
 
 def extract_toot(toot):
