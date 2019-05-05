@@ -188,6 +188,7 @@ def process_mention(client, notification):
 			if failed == i:
 				# transcribing failed for every image
 				error(out, acct, post_id, visibility)
+				return
 			if len(toot + cw(toot)) < cfg['char_limit']:
 				client.status_post(toot, post_id, visibility=visibility, spoiler_text = cw(toot)) # send toost
 			else:
