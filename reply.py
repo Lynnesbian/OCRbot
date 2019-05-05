@@ -143,6 +143,7 @@ def process_mention(client, notification):
 
 		# the actual OCR
 		i = 0
+		failed = 0
 		for media in post['media_attachments']:
 			if media['type'] == "image":
 				i += 1
@@ -159,6 +160,7 @@ def process_mention(client, notification):
 					out = tool.image_to_string(image, lang).replace("|", "I") # tesseract often mistakenly identifies I as a |
 					out = re.sub("(?:\n\s*){3,}", "\n\n", out) #replace any group of 3+ linebreaks with just two
 					if out == "":
+						failed += 1
 						out = _("Couldn't read this image, sorry!\nOCRbot works best with plain black text on a plain white background. Here is some information about what it can and can't do: https://github.com/Lynnesbian/OCRbot/blob/master/README.md#caveats")
 
 					if len(post['media_attachments']) > 1:
@@ -180,6 +182,9 @@ def process_mention(client, notification):
 			visibility = "unlisted"
 		if toot.replace("\n", "").replace(" ", "") != "":
 			# toot isn't blank -- go ahead
+			if failed == i:
+				# transcribing failed for every image
+				error(out, acct, post_id, visibility)
 			if len(toot + cw(toot)) < cfg['char_limit']:
 				client.status_post(toot, post_id, visibility=visibility, spoiler_text = cw(toot)) # send toost
 			else:
