@@ -22,7 +22,7 @@ import pyocr
 from multiprocessing import Pool
 import os, random, re, json, re, textwrap, sys, gettext
 
-_ = gettext.gettext()
+_ = gettext.gettext
 
 cfg = json.load(open('config.json', 'r'))
 
