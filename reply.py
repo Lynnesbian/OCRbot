@@ -174,6 +174,9 @@ def process_mention(client, notification):
 					error("Failed to run tesseract. Specified language was: {}".format(lang), acct, post_id, visibility)
 					raise
 					return
+		if no_images:
+			error("Specified post has no images.", acct, post_id, visibility)
+			return
 		
 		toot = toot.replace("@", "@\u200B") # don't mistakenly @ people
 		toot = acct + toot # prepend the @
