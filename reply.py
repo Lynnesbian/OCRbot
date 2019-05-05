@@ -142,6 +142,11 @@ def process_mention(client, notification):
 					lang = cfg['default_language']
 
 		# the actual OCR
+
+		visibility = post['visibility']
+		if visibility == "public":
+			visibility = "unlisted"
+
 		i = 0
 		failed = 0
 		for media in post['media_attachments']:
@@ -180,9 +185,6 @@ def process_mention(client, notification):
 		
 		toot = toot.replace("@", "@\u200B") # don't mistakenly @ people
 		toot = acct + toot # prepend the @
-		visibility = post['visibility']
-		if visibility == "public":
-			visibility = "unlisted"
 		if toot.replace("\n", "").replace(" ", "") != "":
 			# toot isn't blank -- go ahead
 			if failed == i:
