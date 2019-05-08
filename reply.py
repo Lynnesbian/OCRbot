@@ -11,9 +11,9 @@
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU Affero General Public License for more details.
 try:
-	from PIL import Image, ImageOps, ImageEnhance
+	from PIL import Image
 except ImportError:
-	import Image, ImageOps, ImageEnhance
+	import Image
 import requests
 from mastodon import Mastodon, StreamListener
 from bs4 import BeautifulSoup
