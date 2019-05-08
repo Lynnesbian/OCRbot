@@ -19,13 +19,13 @@ import os, json, re, shutil
 
 cfg = {
 	"site": "https://botsin.space",
-	"cw": None,
-	"instance_blacklist": [
-		"bofa.lol",
-		"witches.town"
-	],
+	"cw": "OCR Output",
+	"ocr_threads": 8,
 	"char_limit": 500,
-	"ocr_threads": None
+	"default_language":"eng",
+	"ui_language": "eng",
+	"admin": "admin@example.com",
+	"char_count_in_cw": True
 }
 
 scopes = ["read:statuses", "read:accounts", "write:statuses", "read:notifications"]
@@ -61,8 +61,8 @@ json.dump(cfg, open("config.json", "w+"))
 
 client = Mastodon(
 	client_id=cfg['client']['id'],
-	client_secret = cfg['client']['secret'], 
-	access_token=cfg['secret'], 
+	client_secret = cfg['client']['secret'],
+	access_token=cfg['secret'],
 	api_base_url=cfg['site'])
 
 me = client.account_verify_credentials()
