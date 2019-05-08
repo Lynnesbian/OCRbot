@@ -31,7 +31,7 @@ pip3 install -r requirements.txt
 
 ## Running OCRbot
 ### Initial Setup
-Copy or rename `config.sample.json` to `config.json`, and edit the settings as you wish. Here is an explanation of the options in the config file:
+Run `main.py`, and answer the interactive prompts. To further configure OCRbot, open `config.json` and edit the settings as you wish. Here is an explanation of the options in the config file:
 
 | Setting          | Meaning                                                                                                                                                                                                                                     | Example              |
 |------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------|

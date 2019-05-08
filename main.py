@@ -18,7 +18,7 @@ import os, json, re, shutil
 # specify defaults
 
 cfg = {
-	"site": "https://botsin.space",
+	# "site": "https://botsin.space",
 	"cw": "OCR Output",
 	"ocr_threads": 8,
 	"char_limit": 500,
@@ -35,6 +35,14 @@ except:
 	print("No config.json found, creating default...")
 	json.dump(cfg, open("config.json", "w+"))
 
+if "site" not in cfg:
+	print("Enter site to post from, e.g. https://botsin.space.")
+	while "site" not in cfg:
+		site = input("Site: ")
+		if not re.match(r"^https:\/\/[^\/]+\/?$", site):
+			print("Invalid input. Please format your input as 'https://[domain name]'.")
+		else:
+			cfg['site'] = site
 
 if "client" not in cfg:
 	print("No application info -- registering application with {}".format(cfg['site']))
