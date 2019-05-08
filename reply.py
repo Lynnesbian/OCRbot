@@ -94,9 +94,24 @@ def process_mention(client, notification):
 			if len(post['media_attachments']) == 0:
 				post = None
 		except:
-			# TODO: handle images that haven't federated yet better
-			error(_("Failed to find post containing image. This may be a federation issue, or you may have tagged OCRbot in a conversation without an image."), acct, post_id, visibility)
-			return
+			# the person is either replying to nothing, or the post they're replying to hasn't federated yet.
+			# we'll assume the latter first.
+			try:
+				# get instance, e.g. mastodon.social from https://mastodon.social/blah/blah
+				temp_instance = re.match(r"(https://[^/]+)", notification['status']['uri']).group(1)
+				temp_client = Mastodon(api_base_url=temp_instance)
+				# get status, e.g. 12345 from https://instan.ce/statuses/blah/12345
+				temp_status = re.match(r".*/([^/]+)").group(1)
+				temp_toot = temp_client.status(temp_status)
+				if temp_toot['in_reply_to_id'] != None:
+					# we found the post!!
+					post = temp_client.status(temp_toot['in_reply_to_id'])
+				else:
+					error("No image provided.", acct, post_id, visibility)
+					return
+			except:
+				error(_("Failed to find post containing image. This may be a federation issue, or you may have tagged OCRbot in a conversation without an image."), acct, post_id, visibility)
+				return
 
 	if post != None:
 		print("found post with media, extracting content")
