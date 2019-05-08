@@ -35,7 +35,6 @@ except:
 	shutil.copy2("config.sample.json", "config.json")
 	cfg.update(json.load(open('config.json', 'r')))
 
-
 if "client" not in cfg:
 	print("No application info -- registering application with {}".format(cfg['site']))
 	client_id, client_secret = Mastodon.create_app("OCRbot",
@@ -66,3 +65,4 @@ client = Mastodon(
 	api_base_url=cfg['site'])
 
 me = client.account_verify_credentials()
+print("Ready! To get started, run reply.py.")
