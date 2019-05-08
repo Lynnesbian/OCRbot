@@ -30,8 +30,8 @@ print("Logging in...")
 
 client = Mastodon(
 	client_id=cfg['client']['id'],
-	client_secret=cfg['client']['secret'], 
-	access_token=cfg['secret'], 
+	client_secret=cfg['client']['secret'],
+	access_token=cfg['secret'],
 	api_base_url=cfg['site'])
 handle = "@{}@{}".format(client.account_verify_credentials()['username'], re.match("https://([^/]*)/?", cfg['site']).group(1)).lower()
 
@@ -72,10 +72,10 @@ def error(message, acct, post_id, visibility):
 	print("error: {}".format(message))
 	temp_client = Mastodon(
 		client_id=cfg['client']['id'],
-		client_secret=cfg['client']['secret'], 
-		access_token=cfg['secret'], 
+		client_secret=cfg['client']['secret'],
+		access_token=cfg['secret'],
 		api_base_url=cfg['site'])
-	temp_client.status_post("{}\n{}\nContact the admin ({}) for assistance.".format(acct, message, cfg['admin']), post_id, visibility = visibility, spoiler_text = "Error")
+	temp_client.status_post(_("{}\n{}\nContact the admin ({}) for assistance.").format(acct, message, cfg['admin']), post_id, visibility = visibility, spoiler_text = "Error")
 
 def process_mention(client, notification):
 	acct = "@" + notification['account']['acct'] #get the account's @
@@ -107,7 +107,7 @@ def process_mention(client, notification):
 					# we found the post!!
 					post = temp_client.status(temp_toot['in_reply_to_id'])
 				else:
-					error("No image provided.", acct, post_id, visibility)
+					error(_("No image provided."), acct, post_id, visibility)
 					return
 			except:
 				error(_("Failed to find post containing image. This may be a federation issue, or you may have tagged OCRbot in a conversation without an image."), acct, post_id, visibility)
@@ -133,7 +133,7 @@ def process_mention(client, notification):
 							break
 			else:
 				found = True
-			
+
 			# fixes for language codes not described by tesseract
 			replacements = {
 				"chi": "chi_sim",
@@ -147,13 +147,13 @@ def process_mention(client, notification):
 
 			if not found:
 				# fall back to default, because we didn't understand this language name
-				toot += "\n(Couldn't find a language with the name '{}', falling back to default.)\n".format(lang)
+				toot += _("\n(Couldn't find a language with the name '{}', falling back to default.)\n").format(lang)
 				lang = cfg['default_language']
 
 			else:
 				# now that we have a language code, we need to see if the tesseract language pack is actually installed
 				if lang not in langs:
-					toot += "\n(Your requested language may be supported by OCRbot. Unfortunately, the necessary tesseract data package is not installed. Contact the admin ({}) and ask them to install language support for {}, if at all possible.)\n".format(cfg['admin'], lang)
+					toot += _("\n(Your requested language may be supported by OCRbot. Unfortunately, the necessary tesseract data package is not installed. Contact the admin ({}) and ask them to install language support for {}, if at all possible.)\n").format(cfg['admin'], lang)
 					lang = cfg['default_language']
 
 		# the actual OCR
@@ -172,7 +172,7 @@ def process_mention(client, notification):
 				try:
 					image = Image.open(requests.get(media['url'], stream = True, timeout = 30).raw)
 				except:
-					error("Failed to read image. Download may have timed out.", acct, post_id, visibility)
+					error(_("Failed to read image. Download may have timed out."), acct, post_id, visibility)
 					return
 
 				try:
@@ -191,13 +191,13 @@ def process_mention(client, notification):
 						toot += "\n{}".format(out)
 
 				except:
-					error("Failed to run tesseract. Specified language was: {}".format(lang), acct, post_id, visibility)
+					error(_("Failed to run tesseract. Specified language was: {}").format(lang), acct, post_id, visibility)
 					raise
 					return
 		if no_images:
-			error("Specified post has no images.", acct, post_id, visibility)
+			error(_("Specified post has no images."), acct, post_id, visibility)
 			return
-		
+
 		toot = toot.replace("@", "@\u200B") # don't mistakenly @ people
 		toot = acct + toot # prepend the @
 		if toot.replace("\n", "").replace(" ", "") != "":
@@ -230,11 +230,11 @@ class ReplyListener(StreamListener):
 	def on_notification(self, notification): #listen for notifications
 		if notification['type'] == 'mention': #if we're mentioned:
 			self.pool.apply_async(process_mention, args=(client, notification))
-			
+
 
 tools = pyocr.get_available_tools()
 if len(tools) == 0:
-	print("No OCR tools found. Please install tesseract-ocr and/or libtesseract.")
+	print(_("No OCR tools found. Please install tesseract-ocr and/or libtesseract."))
 	sys.exit(1)
 
 tool = tools[0]
