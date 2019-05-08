@@ -28,7 +28,7 @@ cfg = {
 	"char_count_in_cw": True
 }
 
-scopes = ["read:statuses", "read:accounts", "write:statuses", "read:notifications"]
+scopes = ["read:statuses", "read:accounts", "write:statuses", "read:notifications", "read:search"]
 try:
 	cfg.update(json.load(open('config.json', 'r')))
 except:
