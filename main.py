@@ -32,8 +32,9 @@ scopes = ["read:statuses", "read:accounts", "write:statuses", "read:notification
 try:
 	cfg.update(json.load(open('config.json', 'r')))
 except:
-	shutil.copy2("config.sample.json", "config.json")
-	cfg.update(json.load(open('config.json', 'r')))
+	print("No config.json found, creating default...")
+	json.dump(cfg, open("config.json", "w+"))
+
 
 if "client" not in cfg:
 	print("No application info -- registering application with {}".format(cfg['site']))
