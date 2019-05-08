@@ -1,35 +1,74 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) 2019 Lynnear Software
-# FIRST AUTHOR <lynne@bune.city>, 2019.
+# Copyright (C) YEAR ORGANIZATION
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2019-05-04 19:33+1000\n"
+"POT-Creation-Date: 2019-05-08 20:32+AEST\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Lynne <lynne@bune.city>\n"
-"Language-Team: English <LL@li.org>\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: ENCODING\n"
 "Generated-By: pygettext.py 1.5\n"
 
 
-#: reply.py:98
+#: reply.py:78
+msgid ""
+"{}\n"
+"{}\n"
+"Contact the admin ({}) for assistance."
+msgstr ""
+
+#: reply.py:110
+msgid "No image provided."
+msgstr ""
+
+#: reply.py:113
 msgid "Failed to find post containing image. This may be a federation issue, or you may have tagged OCRbot in a conversation without an image."
 msgstr ""
 
-#: reply.py:162
+#: reply.py:150
+msgid ""
+"\n"
+"(Couldn't find a language with the name '{}', falling back to default.)\n"
+msgstr ""
+
+#: reply.py:156
+msgid ""
+"\n"
+"(Your requested language may be supported by OCRbot. Unfortunately, the necessary tesseract data package is not installed. Contact the admin ({}) and ask them to install language support for {}, if at all possible.)\n"
+msgstr ""
+
+#: reply.py:175
+msgid "Failed to read image. Download may have timed out."
+msgstr ""
+
+#: reply.py:184
 msgid ""
 "Couldn't read this image, sorry!\n"
 "OCRbot works best with plain black text on a plain white background. Here is some information about what it can and can't do: https://github.com/Lynnesbian/OCRbot/blob/master/README.md#caveats"
 msgstr ""
 
-#: reply.py:196
-msgid "Tesseract returned no text."
+#: reply.py:194
+msgid "Failed to run tesseract. Specified language was: {}"
 msgstr ""
 
 #: reply.py:198
+msgid "Specified post has no images."
+msgstr ""
+
+#: reply.py:222
+msgid "Tesseract returned no text."
+msgstr ""
+
+#: reply.py:224
 msgid "Failed to find post with media attached."
+msgstr ""
+
+#: reply.py:237
+msgid "No OCR tools found. Please install tesseract-ocr and/or libtesseract."
 msgstr ""
 
