@@ -107,7 +107,7 @@ def process_mention(client, notification):
 					# we found the post!!
 					post = temp_client.status(temp_toot['in_reply_to_id'])
 				else:
-					error(_("No image provided."), acct, post_id, visibility)
+					error(_("Couldn't find any media."), acct, post_id, visibility)
 					return
 			except Exception as e:
 				error(_("Failed to find post containing image. This may be a federation issue, or you may have tagged OCRbot in a conversation without an image.\nDebug info:\n{}, {}".format(type(e), e), acct, post_id, visibility))
