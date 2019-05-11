@@ -74,4 +74,4 @@ client = Mastodon(
 	api_base_url=cfg['site'])
 
 me = client.account_verify_credentials()
-print("Ready! To get started, run reply.py.")
+print("Ready! To get started, run service.py.")
