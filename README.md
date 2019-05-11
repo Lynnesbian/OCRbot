@@ -31,7 +31,7 @@ pip3 install -r requirements.txt
 
 ## Running OCRbot
 ### Initial Setup
-Run `main.py`, and answer the interactive prompts. To further configure OCRbot, open `config.json` and edit the settings as you wish. Here is an explanation of the options in the config file:
+Run `login.py`, and answer the interactive prompts. To further configure OCRbot, open `config.json` and edit the settings as you wish. Here is an explanation of the options in the config file:
 
 | Setting          | Meaning                                                                                                                                                                                                                                     | Example              |
 |------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------|
@@ -42,10 +42,10 @@ Run `main.py`, and answer the interactive prompts. To further configure OCRbot, 
 | default_language | The language you'd like OCRbot to default to.                                                                                                                                                                                               | eng                  |
 | admin            | The account you'd like OCRbot to tell users to report errors to. If you format it as `user@example.com` (omitting the leading @ sign), it won't automatically tag you. This ensures your notifications don't get flooded if the bot breaks. | admin@example.com    |
 
-Most importantly, make sure you choose the instance your OCRbot account will post from. Then, run `main.py` and log in with the account you'd like OCRbot to post from. Finally, run `reply.py` and OCRbot will take care of the rest.
+Most importantly, make sure you choose the instance your OCRbot account will post from. Then, run `login.py` and log in with the account you'd like OCRbot to post from. Finally, run `service.py` and OCRbot will take care of the rest.
 
 ### Running OCRbot as a Service
-You can use something like systemd or SysVinit to manage running `reply.py` for you. I've provided an example systemd script [here](systemd-example.service). It requires some editing (to specify where your OCRbot folder is located, and to specify the user to run it as -- *don't run it as root*), and then you simply need to
+You can use something like systemd or SysVinit to manage running `service.py` for you. I've provided an example systemd script [here](systemd-example.service). It requires some editing (to specify where your OCRbot folder is located, and to specify the user to run it as -- *don't run it as root*), and then you simply need to
 ```
 sudo mv systemd-example.service /etc/systemd/system/OCRbot.service
 sudo systemctl start OCRbot
