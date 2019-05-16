@@ -12,6 +12,7 @@
 # GNU Affero General Public License for more details.
 try:
 	from PIL import Image
+	from PIL import ImageOps
 except ImportError:
 	import Image
 import requests
@@ -175,6 +176,9 @@ def process_mention(client, notification):
 					error(_("Failed to read image. Download may have timed out."), acct, post_id, visibility)
 					return
 
+				image = check_image_background(image)
+
+
 				try:
 					print(lang)
 					out = tool.image_to_string(image, lang).replace("|", "I") # tesseract often mistakenly identifies I as a |
@@ -222,6 +226,44 @@ def process_mention(client, notification):
 			error(_("Tesseract returned no text."), acct, post_id, visibility)
 	else:
 		error(_("Failed to find post with media attached."), acct, post_id, visibility)
+
+def convert_to_bw(image):
+	gray = image.convert('L')
+	# decide what is black and what is white. Very basic as it doesn't need to be nice.
+	gray.point(lambda x: 0 if x < 128 else 255, '1')
+	return gray
+
+def check_image_background(image):
+	im = convert_to_bw(image)
+	im.show()
+	im_smol = im.resize((int(x / 4) for x in im.size), Image.NEAREST)
+	im_smol.show()
+	pixels = im_smol.getdata()
+	black_threshold = 150 # Threshold doesnt really matter as the image is only 0 and 255
+	nblack = 0
+	n = len(pixels)
+	for pixel in pixels:
+		if pixel < black_threshold:
+			nblack += 1
+
+	if (nblack / float(n)) > 0.5:
+		image = invert_image(image) # Invert image is more than half of the bw image is considered black
+	image.show()
+	return image
+
+def invert_image(image):
+	if image.mode == 'RGBA':
+		# Remove alpha channel before inverting image then re-add it
+		r, g, b, a = image.split()
+		rgb_image = Image.merge('RGB', (r, g, b))
+		inverted_image = ImageOps.invert(rgb_image)
+		r2, g2, b2 = inverted_image.split()
+		final_transparent_image = Image.merge('RGBA', (r2, g2, b2, a))
+		return final_transparent_image
+	else:
+		inverted_image = ImageOps.invert(image)
+		return inverted_image
+
 
 class ReplyListener(StreamListener):
 	def __init__(self):
