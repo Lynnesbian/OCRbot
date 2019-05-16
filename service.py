@@ -235,9 +235,7 @@ def convert_to_bw(image):
 
 def check_image_background(image):
 	im = convert_to_bw(image)
-	im.show()
 	im_smol = im.resize((int(x / 4) for x in im.size), Image.NEAREST)
-	im_smol.show()
 	pixels = im_smol.getdata()
 	black_threshold = 150 # Threshold doesnt really matter as the image is only 0 and 255
 	nblack = 0
@@ -248,7 +246,6 @@ def check_image_background(image):
 
 	if (nblack / float(n)) > 0.5:
 		image = invert_image(image) # Invert image is more than half of the bw image is considered black
-	image.show()
 	return image
 
 def invert_image(image):
