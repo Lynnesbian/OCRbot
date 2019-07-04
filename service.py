@@ -182,7 +182,7 @@ def process_mention(client, notification):
 				try:
 					print(lang)
 					out = tool.image_to_string(image, lang).replace("|", "I") # tesseract often mistakenly identifies I as a |
-					out = re.sub("(?:\n\s*){3,}", "\n\n", out) #replace any group of 3+ linebreaks with just two
+					out = re.sub(r"(?:\n\s*){3,}", "\n\n", out) #replace any group of 3+ linebreaks with just two
 					if out == "":
 						failed += 1
 						out = _("Couldn't read this image, sorry!\nOCRbot works best with plain black text on a plain white background. Here is some information about what it can and can't do: https://github.com/Lynnesbian/OCRbot/blob/master/README.md#caveats")
