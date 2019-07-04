@@ -102,7 +102,7 @@ def process_mention(client, notification):
 				temp_instance = re.match(r"(https://[^/]+)", notification['status']['uri']).group(1)
 				temp_client = Mastodon(api_base_url=temp_instance)
 				# get status, e.g. 12345 from https://instan.ce/statuses/blah/12345
-				temp_status = re.match(r".*/([^/]+)").group(1)
+				temp_status = re.match(r".*/([^/]+)", notification['status']['url']).group(1)
 				temp_toot = temp_client.status(temp_status)
 				if temp_toot['in_reply_to_id'] != None:
 					# we found the post!!
@@ -288,7 +288,7 @@ if cfg['default_language'] not in langs:
 	print("{} is not a supported language. Please edit default_language in config.json to choose a supported option.")
 	sys.exit(1)
 if cfg['char_limit'] < len(cw("test")) + 1:
-	print("Character limit is too low. It must be at least ~{}, preferably more. Try setting it to the character limit on {}.".format(len(cw("test")) + 50), cfg['site'])
+	print("Character limit is too low. It must be at least ~{}, preferably more. Try setting it to the character limit on {}.".format(len(cw("test") + 50), cfg['site']))
 print("Starting OCRbot.")
 
 rl = ReplyListener()
