@@ -1,5 +1,4 @@
-Mastodon.py==1.4.1
-beautifulsoup4==4.6.0
-pyocr==0.6
-requests==2.21.0
-
+Mastodon.py==1.4.5
+beautifulsoup4==4.7.1
+pyocr==0.7.2
+requests==2.22.0
