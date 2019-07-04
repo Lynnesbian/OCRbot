@@ -15,6 +15,7 @@ try:
 	from PIL import ImageOps
 except ImportError:
 	import Image
+	import ImageOps
 import requests
 from mastodon import Mastodon, StreamListener
 from bs4 import BeautifulSoup
@@ -197,7 +198,6 @@ def process_mention(client, notification):
 				except:
 					error(_("Failed to run tesseract. Specified language was: {}").format(lang), acct, post_id, visibility)
 					raise
-					return
 		if no_images:
 			error(_("Specified post has no images."), acct, post_id, visibility)
 			return
