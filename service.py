@@ -27,6 +27,7 @@ import os, random, re, json, re, textwrap, sys, gettext
 _ = gettext.gettext
 
 cfg = json.load(open('config.json', 'r'))
+blacklist = json.load(open('blacklist.json', 'r'))
 
 print("Logging in...")
 
@@ -86,6 +87,11 @@ def process_mention(client, notification):
 	no_images = True
 	visibility = "unlisted"
 	post_id = notification['status']['id']
+
+	if acct in blacklist:
+		client.status_post("Abuse of OCRbot will not be tolerated. You have been added to the blacklist and are now unable to use OCRbot.", post_id)
+		return
+
 	if len(notification['status']['media_attachments']) != 0:
 		post = notification['status']
 	else:
