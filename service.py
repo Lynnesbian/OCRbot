@@ -89,7 +89,7 @@ def process_mention(client, notification):
 	post_id = notification['status']['id']
 
 	if acct in blacklist:
-		client.status_post("Abuse of OCRbot will not be tolerated. You have been added to the blacklist and are now unable to use OCRbot.", post_id)
+		client.status_post(acct + " Abuse of OCRbot will not be tolerated. You have been added to the blacklist and are now unable to use OCRbot.", post_id)
 		return
 
 	if len(notification['status']['media_attachments']) != 0:
