@@ -73,6 +73,7 @@ OCRbot is capable of supporting languages other than English. If you are using D
 
 ## Errors
 While invoking OCRbot, you may encounter a number of errors. While the text is somewhat self explanatory, this section exists to provide further elaboration on their meaning.
+
 | Error message |  Explanation |
 |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Couldn't find any media. | OCRbot was unable to find any posts that had images attached, usually because your post or the one you're replying to doesn't have any images. It could also happen if the images have failed to federate properly. |
