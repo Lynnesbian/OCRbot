@@ -71,6 +71,19 @@ So in short, please caption your images if you can. Don't rely on OCRbot.
 ## Support for Other Languages
 OCRbot is capable of supporting languages other than English. If you are using Debian, you can install the package `tesseract-ocr-all` to install all language files, or install individual ones, such as `tesseract-ocr-jpn` for Japanese. Arch also provides these packages, with slightly different names (e.g. `tesseract-data-jpn`), although it does not have an "all" package.
 
+## Errors
+While invoking OCRbot, you may encounter a number of errors. While the text is somewhat self explanatory, this section exists to provide further elaboration on their meaning.
+| Error message |  Explanation |
+|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Couldn't find any media. | OCRbot was unable to find any posts that had images attached, usually because your post or the one you're replying to doesn't have any images. It could also happen if the images have failed to federate properly. |
+| Failed to find post containing image. This may be a federation issue, or you may have tagged OCRbot in a conversation without an image. Please note that OCRbot can only see images in the post you are directly replying to, and can't see images that are provided as URLs rather than attachments. | (see above) |
+| Specified post has no images. | OCRbot successfully loaded the post, and was unable to find any images. This means that your post or the one you're replying to definitely doesn't have any images. |
+|  Couldn't read the specified image(s), sorry!  OCRbot works best with plain black text on a plain white background. Here is some information about what it can and can't do: https://github.com/Lynnesbian/OCRbot/blob/master/README.md#caveats |  OCRbot couldn't read your image. In the same way that you would have trouble reading a blurry photo of text, OCRbot has trouble with things such as cursive handwriting, rotated text, strange fonts, and more. Check the caveats section on this page for more information. |
+| Tesseract returned no text. | Either your image contains no text, or tesseract (the program OCRbot relies on) encountered an error and returned nothing. |
+| Failed to read image. Download may have timed out. | If any one image takes longer than 30 seconds to download, OCRbot gives up on it. This can occur because a server is down, experiencing slowdown, or most likely, because wasabi is down. |
+| Failed to run tesseract. Specified language was: \[language\] | Tesseract, the program OCRbot relies on to provide captions, crashed. |
+
+
 ## Donating
 Donations can be provided via [Patreon](https://patreon.com/lynnesbian) (recurring), [LiberaPay](https://liberapay.com/lynnesbian) (recurring), [PayPal](https://paypal.me/lynnesbian) (singular), or [Ko-fi](https://ko-fi.com/lynnesbian) (singular). Don't feel obligated to donate!
 

@@ -79,7 +79,7 @@ def error(message, err_info):
 		client_secret=cfg['client']['secret'],
 		access_token=cfg['secret'],
 		api_base_url=cfg['site'])
-	temp_client.status_post(_("{}\n{}\nContact the admin ({}) for assistance.").format(acct, message, cfg['admin']), post_id, visibility = visibility, spoiler_text = "Error")
+	temp_client.status_post(_("{}\n{}\nContact the admin ({}) for assistance.\nFor further information, check https://github.com/Lynnesbian/OCRbot/blob/master/README.md#Errors ").format(acct, message, cfg['admin']), post_id, visibility = visibility, spoiler_text = "Error")
 
 def process_mention(client, notification):
 	acct = "@" + notification['account']['acct'] #get the account's @
@@ -158,7 +158,7 @@ def process_mention(client, notification):
 
 			if not found:
 				# fall back to default, because we didn't understand this language name
-				toot += _("\n(Couldn't find a language with the name '{}', falling back to default.)\n").format(lang)
+				toot += _("\n(Couldn't find a language with the name '{}', falling back to {}.)\n").format(lang, cfg['default_language'])
 				lang = cfg['default_language']
 
 			else:
@@ -203,7 +203,7 @@ def process_mention(client, notification):
 			# it's blank :c
 			error(_("Tesseract returned no text."), err_info)
 	else:
-		error(_("Failed to find post with media attached."), err_info)
+		error(_("Couldn't find any media."), err_info)
 
 
 def caption_images(post, lang, err_info):
