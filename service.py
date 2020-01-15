@@ -174,7 +174,7 @@ def process_mention(client, notification):
 		# update err_info to match new visibility setting
 		err_info = (acct, post_id, visibility)
 
-		ocr_out, failed = caption_images(post, lang, err_info)
+		ocr_out, no_images, failed = caption_images(post, lang, err_info)
 		toot += ocr_out
 
 		if no_images:
@@ -244,7 +244,7 @@ def caption_images(post, lang, err_info):
 			except:
 				error(_("Failed to run tesseract. Specified language was: {}").format(lang), err_info)
 
-	return toot, failed
+	return toot, no_images, failed
 
 def convert_to_bw(image):
 	gray = image.convert('L')
