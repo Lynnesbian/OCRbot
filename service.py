@@ -72,6 +72,7 @@ def extract_toot(toot):
 	return text
 
 def error(message, err_info):
+	acct, post_id, visibility = err_info
 	print("error: {}".format(message))
 	temp_client = Mastodon(
 		client_id=cfg['client']['id'],
