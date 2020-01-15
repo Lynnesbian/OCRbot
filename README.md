@@ -54,7 +54,7 @@ You may also `sudo systemctl enable OCRbot` if you want it to start on boot.
 
 ## Caveats
 OCRbot is *not* designed to replace captions, merely to supplement them. It works best with plain black text on a plain white background. For example, PDF scans and Wikipedia screenshots will work great, but handwriting and distorted text won't. It will almost always fail (at least partially) for:
-- Anything using handwriting
+- Anything using handwriting, especially cursive
 - Text that is skewed, rotated, stretched, or otherwise distorted
 - Heavily compressed images
 - Text with layouts more complex than this page
@@ -63,10 +63,11 @@ OCRbot is *not* designed to replace captions, merely to supplement them. It work
 - Videos and GIFs
 - Very large or very small text
 - Text on a complex background
+- Vertical text in a language where text is usually written horizontally, and vice versa
 
-Additionally, OCRbot may sometimes fail to find images due to federation issues. This is a known bug, and I am currently looking into solving it, but it will never be completely solved. If any instances have blocked fedi.lynnesbian.space (or vice versa), the post will not make it to my instance, and OCRbot won't be able to find it.
+Additionally, OCRbot may sometimes fail to find images due to federation issues. This is a known issue, and OCRbot does its best to work around it, but due to the way federation works, it will never be completely solved.
 
-So in short, please caption your images if you can. Don't rely on OCRbot.
+If you can caption images yourself, I recommend doing so. If, for example, you are posting a screenshot of a tweet, you'll get better results from copy and pasting the text of the tweet as a caption rather than relying on OCRbot. OCRbot's image recognition is far from perfect and never will be.
 
 ## Support for Other Languages
 OCRbot is capable of supporting languages other than English. If you are using Debian, you can install the package `tesseract-ocr-all` to install all language files, or install individual ones, such as `tesseract-ocr-jpn` for Japanese. Arch also provides these packages, with slightly different names (e.g. `tesseract-data-jpn`), although it does not have an "all" package.
