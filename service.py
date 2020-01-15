@@ -71,7 +71,7 @@ def extract_toot(toot):
 	text = text.lower() #treat text as lowercase for easier keyword matching
 	return text
 
-def error(message, acct, post_id, visibility):
+def error(message, err_info):
 	print("error: {}".format(message))
 	temp_client = Mastodon(
 		client_id=cfg['client']['id'],
@@ -91,6 +91,8 @@ def process_mention(client, notification):
 	if acct in blacklist:
 		client.status_post(acct + " Abuse of OCRbot will not be tolerated. You have been added to the blacklist and are now unable to use OCRbot.", post_id)
 		return
+
+	err_info = (acct, post_id, visibility)
 
 	if len(notification['status']['media_attachments']) != 0:
 		post = notification['status']
@@ -115,10 +117,10 @@ def process_mention(client, notification):
 					# we found the post!!
 					post = temp_client.status(temp_toot['in_reply_to_id'])
 				else:
-					error(_("Couldn't find any media."), acct, post_id, visibility)
+					error(_("Couldn't find any media."), err_info)
 					return
 			except Exception as e:
-				error(_("Failed to find post containing image. This may be a federation issue, or you may have tagged OCRbot in a conversation without an image.\nDebug info:\n{}, {}").format(type(e), e), acct, post_id, visibility)
+				error(_("Failed to find post containing image. This may be a federation issue, or you may have tagged OCRbot in a conversation without an image. Please note that OCRbot can only see images in the post you are directly replying to, and can't see images that are provided as URLs rather than attachments."), err_info)
 				return
 
 	if post != None:
@@ -164,57 +166,26 @@ def process_mention(client, notification):
 					toot += _("\n(Your requested language may be supported by OCRbot. Unfortunately, the necessary tesseract data package is not installed. Contact the admin ({}) and ask them to install language support for {}, if at all possible.)\n").format(cfg['admin'], lang)
 					lang = cfg['default_language']
 
-		# the actual OCR
-
 		visibility = post['visibility']
 		if visibility == "public":
 			visibility = "unlisted"
 
-		i = 0
-		failed = 0
-		for media in post['media_attachments']:
-			if media['type'] == "image":
-				i += 1
-				no_images = False
-				print("downloading image {}".format(i))
-				try:
-					image = Image.open(requests.get(media['url'], stream = True, timeout = 30).raw)
-				except:
-					error(_("Failed to read image. Download may have timed out."), acct, post_id, visibility)
-					return
+		# update err_info to match new visibility setting
+		err_info = (acct, post_id, visibility)
 
-				image = check_image_background(image)
+		ocr_out, failed = caption_images(post, lang, err_info)
+		toot += ocr_out
 
-
-				try:
-					print(lang)
-					out = tool.image_to_string(image, lang).replace("|", "I") # tesseract often mistakenly identifies I as a |
-					out = re.sub(r"(?:\n\s*){3,}", "\n\n", out) #replace any group of 3+ linebreaks with just two
-					if out == "":
-						failed += 1
-						out = _("Couldn't read this image, sorry!\nOCRbot works best with plain black text on a plain white background. Here is some information about what it can and can't do: https://github.com/Lynnesbian/OCRbot/blob/master/README.md#caveats")
-
-					if len(post['media_attachments']) > 1:
-						# more than one image, need to seperate them
-						toot += "\nImage {}:\n{}\n".format(i, out)
-					else:
-						# only one image -- don't bother saying "image 1"
-						toot += "\n{}".format(out)
-
-				except:
-					error(_("Failed to run tesseract. Specified language was: {}").format(lang), acct, post_id, visibility)
-					raise
 		if no_images:
-			error(_("Specified post has no images."), acct, post_id, visibility)
+			error(_("Specified post has no images."), err_info)
 			return
 
-		toot = toot.replace("@", "@\u200B") # don't mistakenly @ people
 		toot = acct + toot # prepend the @
 		if toot.replace("\n", "").replace(" ", "") != "":
 			# toot isn't blank -- go ahead
-			if failed == i:
+			if failed == len(post['media_attachments']):
 				# transcribing failed for every image
-				error(out, acct, post_id, visibility)
+				error(_("Couldn't read the specified image(s), sorry!\nOCRbot works best with plain black text on a plain white background. Here is some information about what it can and can't do: https://github.com/Lynnesbian/OCRbot/blob/master/README.md#caveats"), err_info)
 				return
 			if len(toot + cw(toot)) < cfg['char_limit']:
 				client.status_post(toot, post_id, visibility=visibility, spoiler_text = cw(toot)) # send toost
@@ -226,12 +197,53 @@ def process_mention(client, notification):
 						first = True
 					else:
 						post = acct + "\n" + post
-					post_id = client.status_post(post, post_id, visibility=visibility, spoiler_text = cw(toot))['id']
+					post_id = client.status_post(post, post_id, visibility = visibility, spoiler_text = cw(toot))['id']
 		else:
 			# it's blank :c
-			error(_("Tesseract returned no text."), acct, post_id, visibility)
+			error(_("Tesseract returned no text."), err_info)
 	else:
-		error(_("Failed to find post with media attached."), acct, post_id, visibility)
+		error(_("Failed to find post with media attached."), err_info)
+
+
+def caption_images(post, lang, err_info):
+	err_info = err_info
+	toot = ""
+	i = 0
+	failed = 0
+
+	for media in post['media_attachments']:
+		if media['type'] == "image":
+			i += 1
+			no_images = False
+			print("downloading image {}".format(i))
+			try:
+				image = Image.open(requests.get(media['url'], stream = True, timeout = 30).raw)
+			except:
+				error(_("Failed to read image. Download may have timed out."), err_info)
+				return
+
+			image = check_image_background(image)
+
+
+			try:
+				print(lang)
+				out = tool.image_to_string(image, lang).replace("|", "I") # tesseract often mistakenly identifies I as a |
+				out = re.sub(r"(?:\n\s*){3,}", "\n\n", out) #replace any group of 3+ linebreaks with just two
+				out = out.replace("@", "@\u200B") #don't mistakenly tag people in OCR output
+				if out.replace(" ", "").replace("\n", "") == "":
+					failed += 1
+
+				if len(post['media_attachments']) > 1:
+					# more than one image, need to seperate them
+					toot += "\nImage {}:\n{}\n".format(i, out)
+				else:
+					# only one image -- don't bother saying "image 1"
+					toot += "\n{}".format(out)
+
+			except:
+				error(_("Failed to run tesseract. Specified language was: {}").format(lang), err_info)
+
+	return toot, failed
 
 def convert_to_bw(image):
 	gray = image.convert('L')
