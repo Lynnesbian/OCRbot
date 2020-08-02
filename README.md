@@ -87,7 +87,8 @@ While invoking OCRbot, you may encounter a number of errors. While the text is s
 
 
 ## Donating
-Donations can be provided via [Patreon](https://patreon.com/lynnesbian) (recurring), [LiberaPay](https://liberapay.com/lynnesbian) (recurring), [PayPal](https://paypal.me/lynnesbian) (singular), or [Ko-fi](https://ko-fi.com/lynnesbian) (singular). Don't feel obligated to donate!
+Please don't feel obligated to donate at all.
+Donations can be provided via [PayPal](https://paypal.me/lynnesbian) or [Ko-fi](https://ko-fi.com/lynnesbian). Don't feel obligated to donate!
 
 ## License
 Copyright (C)2019 Lynnesbian (https://fedi.lynnesbian.space/@lynnesbian)
