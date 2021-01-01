@@ -1,4 +1,4 @@
 Mastodon.py==1.5.1
 beautifulsoup4==4.9.1
-pyocr==0.7.2
+pyocr==0.8
 requests==2.24.0
