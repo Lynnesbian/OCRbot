@@ -300,16 +300,17 @@ print("Using {}".format(tool.get_name()))
 
 language_dict = json.load(open("language-codes.json"))
 
-langs = tool.get_available_languages()
-if "osd" in langs:
-	langs.remove("osd") # remove orientation and script detection from the list, as it's not actually a language
-print("Available languages: {}".format(", ".join(langs)))
-if cfg['default_language'] not in langs:
-	print("{} is not a supported language. Please edit default_language in config.json to choose a supported option.")
-	sys.exit(1)
-if cfg['char_limit'] < len(cw("test")) + 1:
-	print("Character limit is too low. It must be at least ~{}, preferably more. Try setting it to the character limit on {}.".format(len(cw("test") + 50), cfg['site']))
-print("Starting OCRbot.")
+if __name__ == "__main__":
+	langs = tool.get_available_languages()
+	if "osd" in langs:
+		langs.remove("osd") # remove orientation and script detection from the list, as it's not actually a language
+	print("Available languages: {}".format(", ".join(langs)))
+	if cfg['default_language'] not in langs:
+		print("{} is not a supported language. Please edit default_language in config.json to choose a supported option.")
+		sys.exit(1)
+	if cfg['char_limit'] < len(cw("test")) + 1:
+		print("Character limit is too low. It must be at least ~{}, preferably more. Try setting it to the character limit on {}.".format(len(cw("test") + 50), cfg['site']))
+	print("Starting OCRbot.")
 
-rl = ReplyListener()
-client.stream_user(rl) #go!
+	rl = ReplyListener()
+	client.stream_user(rl) #go!
