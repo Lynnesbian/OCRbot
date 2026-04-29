@@ -301,7 +301,8 @@ print("Using {}".format(tool.get_name()))
 language_dict = json.load(open("language-codes.json"))
 
 langs = tool.get_available_languages()
-langs.remove("osd") # remove orientation and script detection from the list, as it's not actually a language
+if "osd" in langs:
+	langs.remove("osd") # remove orientation and script detection from the list, as it's not actually a language
 print("Available languages: {}".format(", ".join(langs)))
 if cfg['default_language'] not in langs:
 	print("{} is not a supported language. Please edit default_language in config.json to choose a supported option.")
