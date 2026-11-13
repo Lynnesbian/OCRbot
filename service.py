@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 # Copyright (C) 2020 Lynne (@lynnesbian@fedi.lynnesbian.space)
+from requests.adapters import HTTPAdapter
+from urllib3 import Retry
 
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as published
@@ -28,6 +30,14 @@ _ = gettext.gettext
 
 cfg = json.load(open('config.json', 'r'))
 blacklist = json.load(open('blacklist.json', 'r'))
+
+# https://requests.readthedocs.io/en/latest/user/advanced/#example-automatic-retries
+session = requests.Session()
+retries = Retry(
+	total=3,
+	backoff_factor=2,
+)
+session.mount("https://", HTTPAdapter(max_retries=retries))
 
 print("Logging in...")
 
@@ -218,7 +228,7 @@ def caption_images(post, lang, err_info):
 			no_images = False
 			print("downloading image {}".format(i))
 			try:
-				image = Image.open(requests.get(media['url'], stream = True, timeout = 30).raw)
+				image = Image.open(session.get(media['url'], stream = True, timeout = 30).raw)
 			except:
 				error(_("Failed to read image. Download may have timed out."), err_info)
 				return
