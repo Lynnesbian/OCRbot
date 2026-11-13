@@ -24,7 +24,7 @@ from bs4 import BeautifulSoup
 import pyocr
 
 from multiprocessing import Pool
-import os, random, re, json, re, textwrap, sys, gettext
+import json, re, textwrap, sys, gettext
 
 _ = gettext.gettext
 
@@ -124,7 +124,7 @@ def process_mention(client, notification):
 				# get status, e.g. 12345 from https://instan.ce/statuses/blah/12345
 				temp_status = re.match(r".*/([^/]+)", notification['status']['url']).group(1)
 				temp_toot = temp_client.status(temp_status)
-				if temp_toot['in_reply_to_id'] != None:
+				if temp_toot['in_reply_to_id'] is not None:
 					# we found the post!!
 					post = temp_client.status(temp_toot['in_reply_to_id'])
 				else:
@@ -134,14 +134,14 @@ def process_mention(client, notification):
 				error(_("Failed to find post containing image. This may be a federation issue, or you may have tagged OCRbot in a conversation without an image. Please note that OCRbot can only see images in the post you are directly replying to, and can't see images that are provided as URLs rather than attachments."), err_info)
 				return
 
-	if post != None:
+	if post is not None:
 		print("found post with media, extracting content")
 		toot = ""
 		mention = extract_toot(notification['status']['content'])
 		print("parsing mention: {}".format(mention))
 		search = re.search("{}\\s(\\w+)".format(handle), mention)
 		lang = cfg['default_language']
-		if search != None:
+		if search is not None:
 			lang = search.group(1)
 			found = False
 			print("checking for language: {}".format(lang))
@@ -319,7 +319,7 @@ if __name__ == "__main__":
 		print("{} is not a supported language. Please edit default_language in config.json to choose a supported option.")
 		sys.exit(1)
 	if cfg['char_limit'] < len(cw("test")) + 1:
-		print("Character limit is too low. It must be at least ~{}, preferably more. Try setting it to the character limit on {}.".format(len(cw("test") + 50), cfg['site']))
+		print("Character limit is too low. It must be at least ~{}, preferably more. Try setting it to the character limit on {}.".format(len(cw("test")) + 50, cfg['site']))
 	print("Starting OCRbot.")
 
 	rl = ReplyListener()
