@@ -12,6 +12,7 @@ from urllib3 import Retry
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU Affero General Public License for more details.
+
 try:
 	from PIL import Image
 	from PIL import ImageOps
@@ -23,6 +24,7 @@ from mastodon import Mastodon, StreamListener
 from bs4 import BeautifulSoup
 import pyocr
 
+import logging
 from multiprocessing import Pool
 import json, re, textwrap, sys, gettext
 
@@ -38,6 +40,8 @@ retries = Retry(
 	backoff_factor=2,
 )
 session.mount("https://", HTTPAdapter(max_retries=retries))
+
+logging.basicConfig(level=logging.INFO, format='%(asctime)s %(levelname)s %(message)s', filename='ocrbot.log')
 
 print("Logging in...")
 
@@ -83,7 +87,7 @@ def extract_toot(toot):
 
 def error(message, err_info):
 	acct, post_id, visibility = err_info
-	print("error: {}".format(message))
+	logging.error("error: {}".format(message))
 	temp_client = Mastodon(
 		client_id=cfg['client']['id'],
 		client_secret=cfg['client']['secret'],
@@ -93,13 +97,14 @@ def error(message, err_info):
 
 def process_mention(client, notification):
 	acct = "@" + notification['account']['acct'] #get the account's @
-	print("mention detected")
+	logging.debug("mention detected")
 	post = None
 	no_images = True
 	visibility = "unlisted"
 	post_id = notification['status']['id']
 
 	if acct in blacklist:
+		logging.warning(f"{acct} is blacklisted. ignoring")
 		client.status_post(acct + " Abuse of OCRbot will not be tolerated. You have been added to the blacklist and are now unable to use OCRbot.", post_id)
 		return
 
@@ -110,13 +115,14 @@ def process_mention(client, notification):
 	else:
 		# get the post it's replying to
 		try:
-			print("fetching post being replied to")
+			logging.debug("fetching post being replied to")
 			post = client.status(notification['status']['in_reply_to_id'])
 			if len(post['media_attachments']) == 0:
 				post = None
-		except:
+		except Exception as e:
 			# the person is either replying to nothing, or the post they're replying to hasn't federated yet.
 			# we'll assume the latter first.
+			logging.warning(f"error fetching post being replied to: {e}. trying backup method")
 			try:
 				# get instance, e.g. mastodon.social from https://mastodon.social/blah/blah
 				temp_instance = re.match(r"(https://[^/]+)", notification['status']['uri']).group(1)
@@ -131,20 +137,21 @@ def process_mention(client, notification):
 					error(_("Couldn't find any media."), err_info)
 					return
 			except Exception as e:
+				logging.error(f"error fetching post being replied to: {e}")
 				error(_("Failed to find post containing image. This may be a federation issue, or you may have tagged OCRbot in a conversation without an image. Please note that OCRbot can only see images in the post you are directly replying to, and can't see images that are provided as URLs rather than attachments."), err_info)
 				return
 
 	if post is not None:
-		print("found post with media, extracting content")
+		logging.debug(f"found post with media: {post['url'] or post['uri']}, extracting content")
 		toot = ""
 		mention = extract_toot(notification['status']['content'])
-		print("parsing mention: {}".format(mention))
+		logging.debug("parsing mention: {}".format(mention))
 		search = re.search("{}\\s(\\w+)".format(handle), mention)
 		lang = cfg['default_language']
 		if search is not None:
 			lang = search.group(1)
 			found = False
-			print("checking for language: {}".format(lang))
+			logging.debug("checking for language: {}".format(lang))
 			if lang not in language_dict:
 				for code in language_dict:
 					for name in language_dict[code]:
@@ -199,7 +206,8 @@ def process_mention(client, notification):
 				error(_("Couldn't read the specified image(s), sorry!\nOCRbot works best with plain black text on a plain white background. Here is some information about what it can and can't do: https://github.com/Lynnesbian/OCRbot/blob/master/README.md#caveats"), err_info)
 				return
 			if len(toot + cw(toot)) < cfg['char_limit']:
-				client.status_post(toot, post_id, visibility=visibility, spoiler_text = cw(toot)) # send toost
+				post = client.status_post(toot, post_id, visibility=visibility, spoiler_text = cw(toot)) # send toost
+				logging.info(f"posted toot: {post['url'] or post['uri'] or post['id']}")
 			else:
 				wrapped = textwrap.wrap(toot, cfg['char_limit'] - len(cw(toot)) - len(acct) - 1)
 				first = False
@@ -208,7 +216,9 @@ def process_mention(client, notification):
 						first = True
 					else:
 						post = acct + "\n" + post
-					post_id = client.status_post(post, post_id, visibility = visibility, spoiler_text = cw(toot))['id']
+					post = client.status_post(post, post_id, visibility = visibility, spoiler_text = cw(toot))
+					post_id = post['id']
+					logging.info(f"posted truncated toot: {post['url'] or post['uri'] or post_id}")
 		else:
 			# it's blank :c
 			error(_("Tesseract returned no text."), err_info)
@@ -226,10 +236,11 @@ def caption_images(post, lang, err_info):
 		if media['type'] == "image":
 			i += 1
 			no_images = False
-			print("downloading image {}".format(i))
+			logging.debug("downloading image {}".format(i))
 			try:
 				image = Image.open(session.get(media['url'], stream = True, timeout = 30).raw)
-			except:
+			except Exception as e:
+				logging.error(f"image read error: {e}")
 				error(_("Failed to read image. Download may have timed out."), err_info)
 				return
 
@@ -237,7 +248,6 @@ def caption_images(post, lang, err_info):
 
 
 			try:
-				print(lang)
 				out = tool.image_to_string(image, lang).replace("|", "I") # tesseract often mistakenly identifies I as a |
 				out = re.sub(r"(?:\n\s*){3,}", "\n\n", out) #replace any group of 3+ linebreaks with just two
 				out = out.replace("@", "@\u200B") #don't mistakenly tag people in OCR output
@@ -306,7 +316,7 @@ if len(tools) == 0:
 	sys.exit(1)
 
 tool = tools[0]
-print("Using {}".format(tool.get_name()))
+logging.debug("Using {}".format(tool.get_name()))
 
 language_dict = json.load(open("language-codes.json"))
 
@@ -321,6 +331,7 @@ if __name__ == "__main__":
 	if cfg['char_limit'] < len(cw("test")) + 1:
 		print("Character limit is too low. It must be at least ~{}, preferably more. Try setting it to the character limit on {}.".format(len(cw("test")) + 50, cfg['site']))
 	print("Starting OCRbot.")
+	logging.info("Starting OCRbot.")
 
 	rl = ReplyListener()
 	client.stream_user(rl) #go!
