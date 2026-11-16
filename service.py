@@ -41,7 +41,7 @@ retries = Retry(
 )
 session.mount("https://", HTTPAdapter(max_retries=retries))
 
-logging.basicConfig(level=logging.INFO, format='%(asctime)s %(levelname)s %(message)s', filename='ocrbot.log')
+logging.basicConfig(level=logging.DEBUG, format='%(asctime)s %(levelname)s %(message)s', filename='ocrbot.log')
 
 print("Logging in...")
 
