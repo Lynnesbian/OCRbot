@@ -236,7 +236,7 @@ def caption_images(post, lang, err_info):
 		if media['type'] == "image":
 			i += 1
 			no_images = False
-			logging.debug("downloading image {}".format(i))
+			logging.debug("downloading image {} from {}".format(i, media['url']))
 			try:
 				image = Image.open(session.get(media['url'], stream = True, timeout = 30).raw)
 			except Exception as e:
