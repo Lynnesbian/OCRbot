@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 # Copyright (C) 2020 Lynne (@lynnesbian@fedi.lynnesbian.space)
+from io import BytesIO
+
 from requests.adapters import HTTPAdapter
 from urllib3 import Retry
 
@@ -238,7 +240,10 @@ def caption_images(post, lang, err_info):
 			no_images = False
 			logging.debug("downloading image {} from {}".format(i, media['url']))
 			try:
-				image = Image.open(session.get(media['url'], stream = True, timeout = 30).raw)
+				response = session.get(media['url'], timeout = 30)
+				response.raise_for_status()
+				image = Image.open(BytesIO(response.content))
+				image.load()
 			except Exception as e:
 				logging.error(f"image read error: {e}")
 				error(_("Failed to read image. Download may have timed out."), err_info)
