@@ -148,7 +148,7 @@ def process_mention(client, notification):
 		logging.debug(f"found post with media: {post['url'] or post['uri']}, extracting content")
 		toot = ""
 		mention = extract_toot(notification['status']['content'])
-		logging.debug("parsing mention: {}".format(mention))
+		logging.debug("parsing mention: {}".format(mention.replace('\n', '<newline>')))
 		search = re.search("{}\\s(\\w+)".format(handle), mention)
 		lang = cfg['default_language']
 		if search is not None:
