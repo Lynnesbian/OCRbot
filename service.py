@@ -37,6 +37,7 @@ blacklist = json.load(open('blacklist.json', 'r'))
 
 # https://requests.readthedocs.io/en/latest/user/advanced/#example-automatic-retries
 session = requests.Session()
+session.headers.update({'User-Agent': 'OCRBot/1.0 (+https://github.com/Lynnesbian/OCRbot/)'})
 retries = Retry(
 	total=3,
 	backoff_factor=2,
